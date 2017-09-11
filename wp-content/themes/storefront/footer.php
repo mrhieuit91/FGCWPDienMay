@@ -14,7 +14,7 @@
 <?php do_action('storefront_before_footer'); ?>
 
 <footer id="colophon" class="site-footer" role="contentinfo">
-    <div class="col-full" class="footer_social">
+    <div class="col-full" id="footer_social">
 
         <?php
         /**
@@ -24,8 +24,8 @@
          * @hooked storefront_credit         - 20
          */
         ///do_action( 'storefront_footer' );
-        echo '<h3>Học lớp lập trình onlines miễn phí.</h3><br/>Hướng dẫn xây dựng website bán hàng và thanh toán trực tuyến.<br/>Website :<br/>Fanpage :<br/>';
-        echo '<a href="https://vi-vn.facebook.com/"><img src="images\facebook.png"></a> <a href="https://twitter.com/"> <img  src="images\quadat.png"></a> <a href="https://www.google.com.vn/?gfe_rd=cr&ei=XUYRWcizLoLj8we4haSICw/"><img src="images\goog.png"></a>';
+        echo '<p><h3>Học lớp lập trình onlines miễn phí.</h3><br/>Hướng dẫn xây dựng website bán hàng và thanh toán trực tuyến.<br/>Website :<br/>Fanpage :<br/></p>';
+        echo '<a href="https://vi-vn.facebook.com/"><img src="'. get_template_directory_uri().'/images/goog.png"></a> <a href="https://twitter.com/"> <img  src="'. get_template_directory_uri().'/images/quadat.png"></a> <a href="https://www.google.com.vn/?gfe_rd=cr&ei=XUYRWcizLoLj8we4haSICw/"><img src="'. get_template_directory_uri().'/images/facebook.png"></a>';
         ?>
 
     </div><!-- .col-full -->
