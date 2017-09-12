@@ -24,7 +24,7 @@
          * @hooked storefront_credit         - 20
          */
         ///do_action( 'storefront_footer' );
-        echo '<p><h3>Học lớp lập trình onlines miễn phí.</h3><br/>Hướng dẫn xây dựng website bán hàng và thanh toán trực tuyến.<br/>Website :<br/>Fanpage :<br/></p>';
+        echo '<h3>Học lớp lập trình onlines miễn phí.</h3><br/>Hướng dẫn xây dựng website bán hàng và thanh toán trực tuyến.<br/>Website :<br/>Fanpage :<br/>';
         echo '<a href="https://vi-vn.facebook.com/"><img src="'. get_template_directory_uri().'/images/goog.png"></a> <a href="https://twitter.com/"> <img  src="'. get_template_directory_uri().'/images/quadat.png"></a> <a href="https://www.google.com.vn/?gfe_rd=cr&ei=XUYRWcizLoLj8we4haSICw/"><img src="'. get_template_directory_uri().'/images/facebook.png"></a>';
         ?>
 
