@@ -38,6 +38,8 @@ if($_SERVER["SERVER_NAME"]==="localhost") {
     define('WP_HOME', WP_SITEURL);
     define('DB_NAME', 'wordpress_fgcwpdienmay');
 
+
+
     /** MySQL database username */
     define('DB_USER', 'vanhieu');
 
