@@ -1,4 +1,4 @@
-/*
+﻿/*
 Theme Name:   	Storefront Child Theme
 Theme URI:    	#
 Author:       	fgct
@@ -10,3 +10,41 @@ License:      	GNU Gneral Public License v2 or later
 License URI:  	http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain:  	storefront
 */
+
+body{
+    margin: 0 auto;
+    width: 1349px;
+}
+/* 
+    Created on : Sep 11, 2017, 2:43:22 PM
+    Author     : Nguyễn Minh Quang
+*/
+img {
+    float: right;
+    margin-top: -45px;
+}
+/* phần tạo nút cuối trang trở về đầu trang*/
+#backtotop { 
+        bottom: 7px; 
+        display: none; 
+        margin: 0 20px 20px 0; 
+        position: fixed; 
+        right: 0; 
+        z-index: 2; 
+} 
+#backtotop a { 
+        background: url("http://i.imgur.com/zODWZlw.png") no-repeat scroll 50% 50% rgba(0, 0, 0, 0.5); 
+        border: 0 none; 
+        display: block; 
+        height: 30px; 
+        text-decoration: none; 
+        transition: all 0.1s ease-in-out 0s; 
+        width: 30px; 
+} 
+#backtotop a:hover { 
+        -webkit-box-shadow: 0 0 10px 3px rgba(255, 255, 255, 0.5); 
+        box-shadow: 0 0 10px 3px rgba(255, 255, 255, 0.5); 
+        background-color: red; 
+        
+        
+}    
