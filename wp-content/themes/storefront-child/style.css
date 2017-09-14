@@ -53,6 +53,9 @@ body{
     float: left;
     width: 70%;
 }
+
+/*Style search form vào trong navigation*/
+
 .storefront-primary-navigation .fgc-search-form {
    background-color:  rgb(223,223,223);
     float: right;
