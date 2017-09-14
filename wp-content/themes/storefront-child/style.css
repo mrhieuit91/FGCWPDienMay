@@ -18,6 +18,20 @@ body{
     margin: 0 auto;
     width: 1349px;
 }
+
+/***************************************************************/
+.content-area {
+    float: right;
+}
+.content-area:before {
+    right: 100%;
+    left: inherit;
+}
+.site-branding {
+    float: left;
+}
+/***************************************************************/
+
 .site-header {
     padding: 0;
 }
@@ -31,6 +45,46 @@ body{
 .header-right-box a:hover {
     color: #ff7c00;
 }
+.storefront-primary-navigation {
+    overflow: auto;
+    /*width: 100%;*/
+}
+.storefront-primary-navigation .menu {
+    float: left;
+    width: 70%;
+}
+.storefront-primary-navigation .fgc-search-form {
+   background-color:  rgb(223,223,223);
+    float: right;
+    right: 0px;
+    height: 34px;
+    /*border-bottom: 3px solid rgb(76,102,164);*/
+    /*line-height: 37px;*/
+    width: 30%;
+}
+.storefront-primary-navigation .fgc-search-form .search-form {
+    overflow: auto;
+    padding: 0;
+    /*margin-left: 28px;*/
+    height: 37px;
+    border-bottom: 3px solid rgb(76,102,164);
+    /*border-top-right-radius: 4px;*/
+    /*line-height: 37px;*/
+}
+.storefront-primary-navigation .fgc-search-form .search-form .search-field{
+    height: 34px;
+    padding-bottom: inherit;
+    margin-left: 63px;
+    /*float: right;*/
+}
+.storefront-primary-navigation .fgc-search-form .search-form .search-submit{
+    /*height: 34px;*/
+    height: 34px;padding: 0 5px;
+    margin-right: 2px;
+    padding-bottom: inherit;
+    float: right;
+}
+
 /*Top Menu Style*/ 
 .menu ul {
     list-style: none;
@@ -41,7 +95,7 @@ body{
     background-color: rgb(223,223,223);
     border-bottom: 3px solid rgb(76,102,164);
     border-top-left-radius: 4px;
-    border-top-right-radius: 4px;
+    /*border-top-right-radius: 4px;*/
 
 }
 .menu ul li {
@@ -71,7 +125,7 @@ body{
     color: #fff;
 }
 .menu ul li a{
-    font-size: 12px;
+    font-size: 15px;
     text-decoration: none;
     line-height:27px;
 }
@@ -93,4 +147,7 @@ body{
     background-color: rgb(76,102,164);
 }
 
+.storefront-primary-navigation{
+    overflow: hidden;
+}
 
