@@ -1,0 +1,153 @@
+
+/*
+Theme Name:   	Storefront Child Theme
+Theme URI:    	#
+Author:       	Thach Pham
+Author URI:     http://thachpham.com
+Template:     	storefront
+Description:  	Một child theme trống hoàn toàn dành cho Storefront, dùng để tùy biến lại theme storefront mà không bị mất khi update
+Version:      	1.0.0
+License:      	GNU General Public License v2 or later
+License URI:  	http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain:  	storefront
+*/
+
+
+
+body{
+    margin: 0 auto;
+    width: 1349px;
+}
+
+/***************************************************************/
+.content-area {
+    float: right;
+}
+.content-area:before {
+    right: 100%;
+    left: inherit;
+}
+.site-branding {
+    float: left;
+}
+/***************************************************************/
+
+.site-header {
+    padding: 0;
+}
+.header-right-box {
+    width: 20%;
+    float: right;    
+}
+.header-right-box a:visited{
+    color:  #2c2d33 !important;
+}
+.header-right-box a:hover {
+    color: #ff7c00;
+}
+.storefront-primary-navigation {
+    overflow: auto;
+    /*width: 100%;*/
+}
+.storefront-primary-navigation .menu {
+    float: left;
+    width: 70%;
+}
+.storefront-primary-navigation .fgc-search-form {
+   background-color:  rgb(223,223,223);
+    float: right;
+    right: 0px;
+    height: 34px;
+    /*border-bottom: 3px solid rgb(76,102,164);*/
+    /*line-height: 37px;*/
+    width: 30%;
+}
+.storefront-primary-navigation .fgc-search-form .search-form {
+    overflow: auto;
+    padding: 0;
+    /*margin-left: 28px;*/
+    height: 37px;
+    border-bottom: 3px solid rgb(76,102,164);
+    /*border-top-right-radius: 4px;*/
+    /*line-height: 37px;*/
+}
+.storefront-primary-navigation .fgc-search-form .search-form .search-field{
+    height: 34px;
+    padding-bottom: inherit;
+    margin-left: 63px;
+    /*float: right;*/
+}
+.storefront-primary-navigation .fgc-search-form .search-form .search-submit{
+    /*height: 34px;*/
+    height: 34px;padding: 0 5px;
+    margin-right: 2px;
+    padding-bottom: inherit;
+    float: right;
+}
+
+/*Top Menu Style*/ 
+.menu ul {
+    list-style: none;
+    width: 100%;
+    overflow: hidden;
+    margin:0;
+    padding: 0;
+    background-color: rgb(223,223,223);
+    border-bottom: 3px solid rgb(76,102,164);
+    border-top-left-radius: 4px;
+    /*border-top-right-radius: 4px;*/
+
+}
+.menu ul li {
+    list-style: none;
+    float: left;
+    margin:0;
+    padding: 0;
+    height: 34px;
+}
+.menu ul li::after{
+    content: '';
+    display: block;
+    width: 3px;
+    height: 32px;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+.menu ul li:hover {
+    background-color: rgb(76,102,164);
+}
+.menu ul li:hover:after {
+    background: none;
+}
+.menu ul li:hover a{
+    color: #fff;
+}
+.menu ul li a{
+    font-size: 15px;
+    text-decoration: none;
+    line-height:27px;
+}
+.menu ul a {
+    padding: 5px 17px 5px 10px;
+    display: block;	
+    font-weight: bold;
+    color: black;
+    text-decoration: none;
+}
+.menu ul a:hover {
+    background-color: #ff9900;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    height: 34px;
+
+} 
+.menu ul li.current_page_item {
+    background-color: rgb(76,102,164);
+}
+
+.storefront-primary-navigation{
+    overflow: hidden;
+}
+
