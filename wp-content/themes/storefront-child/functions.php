@@ -87,7 +87,6 @@ if (!function_exists('fgc_storefront_header_customizes')) {
          * @hooked storefront_header_cart                      - 60
          * @hooked storefront_primary_navigation_wrapper_close - 68
          */
-        
         remove_action('storefront_header', 'storefront_product_search', 40);
         remove_action('storefront_header', 'storefront_header_cart', 60);
 //        remove_action('storefront_header', 'storefront_primary_navigation_wrapper', 42);
@@ -241,6 +240,109 @@ if (!function_exists('fgc_customize_single_product_page')) {
          * @hooked WC_Structured_Data::generate_product_data() - 60
          */
         remove_action('woocommerce_single_product_summary', 'woocommerce_template_single_title', 5);
+    }
+
+}
+
+
+//********************************CREATE WIDGETS**********************************************
+//CONTACT WIDGET
+
+/*
+ * Đăng ký widget mới
+ */
+add_action('widgets_init', 'fgc_create_contact_widget');
+
+function fgc_create_contact_widget() {
+    register_widget('Fgc_Contact_Widget');
+}
+
+class FGC_Contact_Widget extends WP_Widget {
+    /*
+     * Thiết lập cơ bản
+     */
+
+    public function __construct() {
+        parent::__construct(
+                'fgc_contact_widget', 'Hỗ Trợ Trực Tuyến', array(
+            'description' => 'Widget chứa thông tin liên hệ của công ty !' // mô tả
+                )
+        );
+    }
+
+    /*
+     * Tạo form option cho widget
+     */
+
+    function form($instance) {
+        parent::form($instance);
+
+        //Biến tạo các giá trị mặc định trong form
+        $default = array(
+            'title' => 'Tiêu đề widget'
+        );
+
+        //Gộp các giá trị trong mảng $default vào biến $instance để nó trở thành các giá trị mặc định
+        $instance = wp_parse_args((array) $instance, $default);
+
+        //Tạo biến riêng cho giá trị mặc định trong mảng $default
+        $title = esc_attr($instance['title']);
+
+        //Hiển thị form trong option của widget       
+        echo 'Nhập tiêu đề <input class="widefat" type="text" name="'.$this->get_field_name('title').'"value="'.$title.'"/>';
+    }
+
+    /*
+     * Lưu widget form
+     */
+
+    function update($new_instance, $old_instance) {
+        parent::update($new_instance, $old_instance);
+
+        $instance = $old_instance;
+        $instance['title'] = strip_tags($new_instance['title']);
+        return $instance;
+    }
+
+    /*
+     * Hiển thị widget
+     */
+
+    function widget($args, $instance) {
+        extract($args);
+        $title = apply_filters('widget_title', $instance['title']);
+
+        echo $before_widget;
+
+        //In tiêu đề widget
+        echo $before_title . $title . $after_title;
+
+        // Nội dung trong widget
+        ?>
+<style>
+    .contact-boder-menu{font-weight: bold;}
+    .contact-boder-menu ul {
+        margin-left: 15px;        
+    }
+    .contact-boder-menu ul li a{
+        text-decoration: none;        
+    }
+    .contact-boder-menu ul li a :hover{
+        text-decoration: underline;        
+    }
+</style>
+        <div class="contact-boder-menu" style="border: dashed 1px">
+            <h4 style="color: red; padding-left: 10px; ">FGC TECHLUTION</h4>
+            <ul>
+                <li><span class="fa fa-phone"></span> SĐT: 0989.675.411</li>
+                <li><span class="fa fa-envelope"></span> Email:<a href="#">support@fgc.net</a></li>
+                <li><span class="fa fa-skype"></span> Skype:<a title="Mở skype để liên hệ bây giờ" href="skype:khanhhuyna?chat" style="color: orangered"> Click để liên hệ</a>      </li>
+            </ul>
+        </div>
+        <?php
+        // Kết thúc nội dung trong widget
+
+        echo $after_widget;
     }
 
 }
