@@ -17,6 +17,7 @@ Text Domain:  	storefront
 body{
     margin: 0 auto;
     width: 1349px;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
 }
 
 /***************************************************************/
@@ -34,6 +35,9 @@ body{
 
 .site-header {
     padding: 0;
+}
+div.col-full {
+    padding: 0px !important;
 }
 .header-right-box {
     width: 20%;
@@ -57,7 +61,7 @@ body{
 /*Style search form vào trong navigation*/
 
 .storefront-primary-navigation .fgc-search-form {
-   background-color:  rgb(223,223,223);
+    background-color:  rgb(223,223,223);
     float: right;
     right: 0px;
     height: 34px;
@@ -82,7 +86,9 @@ body{
 }
 .storefront-primary-navigation .fgc-search-form .search-form .search-submit{
     /*height: 34px;*/
-    height: 34px;padding: 0 5px;
+    height: 34px;
+    line-height: 34px;
+    padding: 0 3px;
     margin-right: 2px;
     padding-bottom: inherit;
     float: right;
@@ -154,3 +160,31 @@ body{
     overflow: hidden;
 }
 
+/*WIDGET CUSTOMIZES*/
+.site-content .col-full .widget-area .widget .widget-title {
+
+    height: 55px;
+    padding-left: 20px;
+    border-bottom: 8px solid #FF9900;
+    margin-top: 0px;
+    margin-bottom: 5px;
+    border-radius: 5px;
+    background-color: #D6D6D6;
+    padding-top: 20px;
+    font-size: 21px;
+    line-height: 11px;
+    min-height: 45px;
+    font-weight: bold;
+    color: #000;
+}
+/*.site-content .col-full .widget-area .widget .widget-title span {
+    padding-left: 15px;
+    
+    
+    padding-top: px;
+    
+}*/
+
+.woocommerce-breadcrumb {
+    margin-bottom: 0;
+}

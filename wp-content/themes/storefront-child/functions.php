@@ -24,7 +24,7 @@ register_nav_menus(
 if (!function_exists('show_custom_menu')) {
 
     function show_custom_menu() {
-       
+
         wp_nav_menu(array(
             'theme_location' => 'main-nav', // tên location cần hiển thị
             'container' => 'nav', // thẻ container của menu
@@ -38,6 +38,7 @@ if (!function_exists('show_custom_menu')) {
 
 }
 //Customize Search box
+
 if (!function_exists('fgc_custom_search_box')) {
 
     function fgc_custom_search_box() {
@@ -68,6 +69,8 @@ if (!function_exists('fgc_custom_header_right_box')) {
     }
 
 }
+
+// Function customizes Page Header
 if (!function_exists('fgc_storefront_header_customizes')) {
 
     function fgc_storefront_header_customizes() {
@@ -84,6 +87,7 @@ if (!function_exists('fgc_storefront_header_customizes')) {
          * @hooked storefront_header_cart                      - 60
          * @hooked storefront_primary_navigation_wrapper_close - 68
          */
+        
         remove_action('storefront_header', 'storefront_product_search', 40);
         remove_action('storefront_header', 'storefront_header_cart', 60);
 //        remove_action('storefront_header', 'storefront_primary_navigation_wrapper', 42);
@@ -96,6 +100,21 @@ if (!function_exists('fgc_storefront_header_customizes')) {
     }
 
     add_action('init', 'fgc_storefront_header_customizes');
+}
+//Customize Main Content
+if (!function_exists('fgc_storefont_homepage_custom')) {
+
+    function fgc_storefont_homepage_custom() {
+        /**
+         * Functions hooked in to storefront_page add_action
+         *
+         * @hooked storefront_homepage_header      - 10
+         * @hooked storefront_page_content         - 20
+         */
+        remove_action('storefront_page', 'storefront_page_content', 20);
+    }
+
+    add_action('init', 'fgc_storefont_homepage_custom');
 }
 
 function add_search_form($items, $args) {
@@ -114,10 +133,6 @@ function add_search_form($items, $args) {
 }
 
 //add_filter('wp_nav_menu_items', 'add_search_form', 10, 2);
-// ko chạy àh ò nó không tự thêm vào sau luôn anh thử mà xem,
-// trang chủ mô? code layout?
-
-
 //******************************************************************************
 
 add_filter('woocommerce_breadcrumb_defaults', 'fgc_change_breadcrumb_home_text');
@@ -129,3 +144,103 @@ function fgc_change_breadcrumb_home_text($defaults) {
 }
 
 show_admin_bar(false);
+
+//CUSTOM SINGLE PRODUCT PAGE
+function fgc_single_product() {
+    ?>
+    <div class="col-xs-9">
+        <div id="main-center">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="title-box">
+                        <img src="">
+                        <h3><a href="#"><?php add_action('woocommerce_single_product_summary', 'woocommerce_template_single_title'); ?></a></h3>
+                    </div> <!-- End title -->
+
+                    <div class="conten_product col-xs-12" style="width:500px;float:left;">
+                        <div id="gallery_01" class="col-xs-2">
+                            <div class="list_img_products">
+                                <?php
+                                foreach ($product->image as $image) {
+                                    echo '<a class="elevatezoom-gallery active " href="#" data-update="" data-image="' . $image["url"] . '" data-zoom-image="' . $image["url"] . '">
+                            <img src="' . $image['url'] . '" width="80%">
+                        </a>';
+                                }
+                                ?>
+
+                            </div>
+                        </div>
+                        <div class="col-xs-10 col-xs-push-1 smallimage">
+                            <img id="zoom_03f"  width="100%" style="text-align: center; border:1px solid #e8e8e6;" src="<?php echo @$product->image[0]['url'] ?>" data-zoom-image="<?php echo @$product->image[0]['url'] ?>" >
+                        </div>
+                        <script type="text/javascript">
+                            jQuery(document).ready(function ($) {
+                                $("#zoom_03f").elevateZoom({
+                                    gallery: 'gallery_01',
+                                    cursor: 'zoom-in',
+                                    easing: true,
+                                    galleryActiveClass: "active"
+                                });
+                            });
+                        </script>
+
+                        <div class="col-xs-12 ">                                        
+                            <p style="text-align: center; font-weight: bold; font-size: 24px;padding-top: 11px;
+                               margin-bottom: -3px; color: #ea28ff;"><?php echo $title; ?></p>
+                            <div class="product-price col-xs-4 col-xs-push-4" style = "height: auto;padding: 2px;margin: 2px; text-align: center; font-weight: bold; font-size: 29px; color: red; ">
+                                <?php
+                                echo($product->price);
+                                ?>
+                            </div>
+                            <div class="clearfix"></div>
+                            <div style="text-align: center;">
+                                <button type="button" class="btn btn-primary btn-buy" data-product-id="<?= $product->id ?>">Mua ngay</button> 
+                                <?php
+                                //var_dump($this->session->userdata("cart"));exit;
+                                //var_dump($this->session->userdata("compare"));exit;
+                                if (is_array($this->session->userdata("cart")) && array_key_exists($product->id, $this->session->userdata("cart")))
+                                    echo '<button type="button" class="btn btn-success disable" data-product-id="' . $product->id . '" onclick="window.location=\'cart\'">Đã có trong giỏ hàng</button> ';
+                                else
+                                    echo '<button type="button" class="btn btn-success btn-addtocart" data-product-id="' . $product->id . '">Thêm vào giỏ hàng</button> ';
+
+                                if (is_array($this->session->userdata("compare")) && in_array($product->id, $this->session->userdata("compare")))
+                                    echo '<button type="button" class="btn btn-info btn-compare" data-product-id="' . $product->id . '" onclick="window.location=\'compare\'">Đã có trong danh sách so sánh</button> ';
+                                else
+                                    echo '<button type="button" class="btn btn-info btn-compare" data-product-id="' . $product->id . '">Thêm vào danh sách so sánh</button> ';
+                                ?>
+
+                            </div>
+                            <br /><br />
+                            <div class="col-xs-12 ">
+                                <span>
+                                    <?= nl2br($product->description) ?>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <?php
+}
+
+if (!function_exists('fgc_customize_single_product_page')) {
+
+    function fgc_customize_single_product_page() {
+        /**
+         * woocommerce_single_product_summary hook.
+         *
+         * @hooked woocommerce_template_single_title - 5
+         * @hooked woocommerce_template_single_rating - 10
+         * @hooked woocommerce_template_single_price - 10
+         * @hooked woocommerce_template_single_excerpt - 20
+         * @hooked woocommerce_template_single_add_to_cart - 30
+         * @hooked woocommerce_template_single_meta - 40
+         * @hooked woocommerce_template_single_sharing - 50
+         * @hooked WC_Structured_Data::generate_product_data() - 60
+         */
+        remove_action('woocommerce_single_product_summary', 'woocommerce_template_single_title', 5);
+    }
+
+}
