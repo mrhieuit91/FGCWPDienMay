@@ -16,7 +16,7 @@
 <footer id="colophon" class="site-footer" role="contentinfo">
     <div class="col-full" id="footer_social">
 
-        <?php
+        <div id="footerL"><?php
         /**
          * Functions hooked in to storefront_footer action
          *
@@ -24,10 +24,13 @@
          * @hooked storefront_credit         - 20
          */
         ///do_action( 'storefront_footer' );
-        echo '<h3>Học lớp lập trình onlines miễn phí.</h3><br/>Hướng dẫn xây dựng website bán hàng và thanh toán trực tuyến.<br/>Website :<br/>Fanpage :<br/>';
-        echo '<a href="https://vi-vn.facebook.com/"><img src="'. get_template_directory_uri().'/images/goog.png"></a> <a href="https://twitter.com/"> <img  src="'. get_template_directory_uri().'/images/quadat.png"></a> <a href="https://www.google.com.vn/?gfe_rd=cr&ei=XUYRWcizLoLj8we4haSICw/"><img src="'. get_template_directory_uri().'/images/facebook.png"></a>';
+        echo '<h4>Học lớp lập trình onlines miễn phí.</h4><br/>Hướng dẫn xây dựng website bán hàng và thanh toán trực tuyến.<br/>Website :<br/>Fanpage :<br/>';
+      
         ?>
-
+        </div><!end footerL-->
+        <?php
+          echo '<a href="https://vi-vn.facebook.com/"><img src="'. get_template_directory_uri().'/images/goog.png"></a> <a href="https://twitter.com/"> <img  src="'. get_template_directory_uri().'/images/quadat.png"></a> <a href="https://www.google.com.vn/?gfe_rd=cr&ei=XUYRWcizLoLj8we4haSICw/"><img src="'. get_template_directory_uri().'/images/facebook.png"></a>';
+        ?>
     </div><!-- .col-full -->
 </footer><!-- #colophon -->
 

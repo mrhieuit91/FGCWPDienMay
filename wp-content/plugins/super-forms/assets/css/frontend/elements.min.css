@@ -1,0 +1,2970 @@
+/*--------------------------------------------------------------
+>>> TABLE OF CONTENTS:
+
+Copy the number with the hashtag like (# 12.7) and
+use CTRL+F to search your specific style elements
+----------------------------------------------------------------
+
+# 1.0 Common form elements & styles
+	# 1.1 - Transition elements
+	# 1.2 - Spacers
+	# 1.3 - Dividers
+	# 1.4 - Thanks title
+	# 1.5 - Field label
+	# 1.6 - Field description
+	# 1.7 - Error positioning
+	# 1.8 - Error & Success messages
+
+---
+
+# 3.0 Columns
+# 4.0 Form & fields
+# 5.0 Dropdown UI
+# 6.0 File upload
+# 7.0 Rating
+# 8.0 Date picker
+# 9.0 Time picker
+# 10.0 - 
+# 11.0 Custom HTML
+
+---
+
+# 12.0 Submit button
+
+	General styles -
+	# 12.1 - General
+	# 12.2 - Wrapper for middle aligned buttons
+	# 12.3 - Name wrapper
+
+	Button styles -
+	# 12.4 - 2D style
+	# 12.5 - 3D style
+	# 12.6 - Outline style
+	# 12.7 - Diagonal style
+	# 12.8 - Flat style
+	# 12.9 - Rounded style
+	# 12.10 - Full Rounded style
+
+	Icon styles -
+	# 12.11 - Icon animation
+	# 12.12 - Alignment
+	# 12.13 - Fullwidth
+
+	Button sizes -
+	# 12.14 - Mini Size
+	# 12.15 - Tiny Size
+	# 12.16 - Small Size
+	# 12.17 - Medium Size
+	# 12.18 - Large Size
+	# 12.19 - Big Size
+	# 12.20 - Huge Size
+	# 12.21 - Massive Size
+	
+	Button loading state -
+	# 12.22 - Button loading state
+
+---
+
+# 13.0 Multiparts
+	# 13.1 - Progress bar
+	# 13.2 - Progress steps
+	
+---
+
+# 14.0 Form Themes
+# 14.1 Square Theme
+# 14.2 Rounded Theme
+# 14.3 RTL Support
+
+---
+
+# 15.0 WP Editor (TinyMCE)
+
+
+--------------------------------------------------------------*/
+
+
+
+/*--------------------------------------------------------------
+# 1.0 Common form elements & styles
+--------------------------------------------------------------*/
+.super-form,
+.super-form *,
+.super-datepicker-dialog * {
+	font-family:"Open Sans",sans-serif;
+	font-size:12px;
+}
+.super-form .fa {
+	font-family:'Fontawesome';
+}
+.super-align-center {
+	text-align:center;
+}
+.super-invisible {
+	height:0px;
+	overflow:hidden;
+	visibility:hidden;
+}
+.super-form .align-right {
+	float:right;
+	text-align:right;
+}
+.super-form .align-left {
+	float:left;
+	text-align:left;
+}
+.super-form .align-center img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+.super-noselect,
+.super-msg .close,
+.super-msg a,
+.super-field-wrapper label,
+ul.super-multipart-steps .super-multipart-step,
+.super-field .super-field-wrapper .super-dropdown-ui,
+.super-field .super-field-wrapper .super-dropdown-ui li,
+.super-field .super-field-wrapper .super-dropdown-arrow {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    outline: 0;
+}
+
+/* # 1.1 Transition elements */
+.super-button .super-button-name,
+.super-button.super-type-diagonal a .super-after {
+	-webkit-transition: all .25s ease-in-out;
+	-moz-transition: all .25s ease-in-out;
+	-ms-transition: all .25s ease-in-out;
+	-o-transition: all .25s ease-in-out;
+	transition: all .25s ease-in-out;
+}
+
+/* # 1.2 Spacers */
+.super-spacer {
+	width:100%;
+	float:left;
+	clear:both;
+}
+
+/* # 1.3 Dividers */
+.super-divider {
+    float: left;
+    width: 100%;
+}
+.super-divider.back-1 {
+	padding-right: 40px;
+}
+.super-divider .super-divider-inner {
+	position:relative;
+}
+.super-divider .super-divider-inner.custom-thickness {
+	display:inline-block;
+}
+.super-divider .super-divider-inner .super-back-to-top {
+	position:absolute;
+	top:-9px;
+	right: -40px;
+	cursor:pointer;
+}
+.super-divider .super-divider-inner .super-back-to-top i {
+	font-size:18px;
+    font-family: FontAwesome;
+}
+.super-divider.border-single .super-divider-inner {
+	border:0px;
+	border-top:1px solid;
+	border-bottom: 0px!important;
+}
+.super-divider.border-double .super-divider-inner {
+	border:0px;
+	border-top:1px solid;
+	border-bottom:1px solid;
+	height: 5px;
+}
+.super-divider.style-dashed .super-divider-inner {
+	border-style:dashed;
+}
+.super-divider.style-dotted .super-divider-inner {
+	border-style:dotted;
+}
+
+/* # 1.4 Thanks title */
+h1.super-thanks-title {
+	margin:0px 0px 20px 0px;
+}
+
+/* # 1.5 Field label */
+.super-field .super-label {
+	font-size: 14px;
+	font-weight: bold;
+	line-height: 14px;
+	padding: 0px 0px 5px 0px;
+}
+.super-field .super-label.super-bottom-margin {
+	padding: 0px 0px 5px 0px;
+}
+
+/* # 1.6 Field description */
+.super-field .super-description {
+    font-size: 12px;
+    line-height: 14px;
+    padding: 0px 0px 5px 0px;
+}
+
+/* # 1.7 Error positioning */
+.super-form .super-field.top-right > p {
+	float:right;
+}
+.super-form .super-field.top-left > p {
+	float:left;
+	width: 100%;
+	clear: both;
+}
+.super-form .super-field.bottom-right > p {
+	float:right;
+}
+.super-form .super-field.bottom-left > p {
+	width:100%;
+	float:left;
+}
+
+/* # 1.8 Error & Success messages */
+.super-msg {
+    border: 1px solid #FFCBCB;
+    background-color: #FFEBEB;
+    padding: 20px 50px 20px 60px;
+    position: relative;
+    text-align: left;
+    margin-bottom: 30px;
+    font-size: 12px;
+}
+.super-msg .close {
+    width:20px;
+    height:20px;
+    display:block;
+    position:absolute;
+    right:6px;
+    top:5px;
+    text-align:center;
+    cursor:pointer;
+    opacity:0.5;
+    font-size: 14px;
+    font-weight: 100;
+    color: #D08080;
+}
+.super-msg .close:hover {
+    opacity:1;
+    color: #D08080;
+}
+.super-msg .close:after {
+    content:'\f00d';
+    font-family:'Fontawesome';
+} 
+.super-msg:after {
+    content: '\f071';
+    color: #FF9A9A;
+    font-family:'Fontawesome';
+    font-size: 25px;
+    position: absolute;
+    left: 20px;
+    top: 11px;
+}
+.super-msg.super-success:after {
+	color: #9DD2A4;
+	content: '\f058';
+}
+.super-msg > h1 {
+	margin:0px;
+	padding:0px;
+	font-size:14px;
+}
+.super-msg a {
+    font-weight: bold;
+}
+.super-msg.super-error {
+    color: #D08080;
+}
+.super-msg.super-error a {
+    color: #943B3B;
+    border: 0;
+    text-decoration: underline;
+    font-weight: normal;
+    box-shadow: none;
+}
+.super-msg a.resend-code.loading {
+	background-image: url("../../images/loading.gif");
+	background-repeat:no-repeat;
+	background-position: center center;
+	padding: 0px 0px 0px 0px;
+	text-align:left;
+	text-indent: -9999999px;
+	display: inline-block;
+	width: 36px;
+}
+.super-msg.super-success {
+    border: 1px solid #90C397;
+    background-color: #C5FFCD;
+    color: #5E7F62;
+}
+.super-msg.super-success .close {
+	color: #5E7F62;
+}
+.super-msg.info:before {
+    content: '\f058';
+}
+.super-msg.super-success a {
+    color: #5E7F62;
+}
+.super-msg.super-success:before {
+    color: #90C397;
+}
+.super-msg.super-info {
+    border: 1px solid #DCCF6E;
+    background-color: #FDF3AA;
+    color: #ADA254;
+}
+.super-msg.super-info:before {
+    content: '\f05a';
+}
+.super-msg.super-info a {
+    color: #756E39;
+}
+.super-msg.super-info:before {
+    color: #DCCF6E;
+}
+.super-rtl .super-msg {
+	text-align:right;
+	padding: 20px 60px 20px 50px;
+}
+.super-rtl .super-msg .close {
+	right:inherit;
+	left:6px;
+}
+.super-rtl .super-msg:after {
+	left:inherit;
+	right:20px;
+}
+
+
+/*--------------------------------------------------------------
+# 3.0 Columns
+--------------------------------------------------------------*/
+.super-grid {
+    width: 100%;
+    float: left;
+}
+.super-multipart {
+	visibility:hidden;
+	height: 0.005rem;
+	overflow: hidden;
+}
+.super-multipart > * {
+	opacity:0;
+}
+.super-multipart[data-icon]:before {
+	content:'';
+	display:none;
+}
+.super-form.initialized .super-multipart.active {
+	visibility: visible;
+	height: auto;
+}
+.super-form.initialized .super-multipart.active > * {
+	opacity:1;
+}
+.super-multipart:before {
+	display:none;
+}
+.super-preview-elements .super-grid {
+	margin:0px;
+}
+.super-grid > .super-column {
+    position:relative;
+    float:left;
+    margin-bottom: 0px;
+    min-height: 0.01rem;
+    background-size:cover;
+}
+.super-grid > .super-column > .super-column-custom-padding {
+	float:left;
+	width:100%;
+}
+.super-grid > .super-column .super-duplicate-column-fields {
+	border-bottom: 1px dashed #CDCDCD;
+	padding-bottom: 15px;
+	margin-bottom: 20px;
+	float: left;
+	width: 100%;
+}
+.super-grid > .super-column .super-duplicate-column-fields > .super-duplicate-actions {
+	width:100%;
+	float:left;
+	position:relative;
+}
+.super-grid > .super-column .super-duplicate-column-fields > .super-duplicate-actions > .super-add-duplicate,
+.super-grid > .super-column .super-duplicate-column-fields > .super-duplicate-actions > .super-delete-duplicate {
+	display:block;
+	width:25px;
+	height:30px;
+	font-size: 20px;
+	text-align:center;
+	line-height:30px;
+	font-family:'FontAwesome';
+	float: right;
+	cursor: pointer;
+	opacity: 0.5;
+	position:absolute;
+	right:0px;
+	top: -20px;
+}
+.super-grid > .super-column .super-duplicate-column-fields > .super-duplicate-actions > .super-add-duplicate,
+.super-grid > .super-column .super-duplicate-column-fields > .super-duplicate-actions > .super-delete-duplicate {
+	display:none;
+}
+.super-grid > .super-column [class~='super-duplicate-column-fields']:last-of-type > .super-duplicate-actions > .super-add-duplicate,
+.super-grid > .super-column [class~='super-duplicate-column-fields']:last-of-type > .super-duplicate-actions > .super-delete-duplicate {
+	display:block;
+}
+.super-grid > .super-column .super-duplicate-column-fields:first-child > .super-duplicate-actions > .super-delete-duplicate {
+	display:none;
+}
+.super-grid > .super-column .super-duplicate-column-fields > .super-duplicate-actions > .super-delete-duplicate {
+	right:25px;
+}
+.super-grid > .super-column .super-duplicate-column-fields > .super-duplicate-actions > .super-add-duplicate:hover,
+.super-grid > .super-column .super-duplicate-column-fields > .super-duplicate-actions > .super-delete-duplicate:hover {
+	opacity: 1;
+}
+.super-grid > .super-column .super-duplicate-column-fields > .super-duplicate-actions > .super-add-duplicate:before {
+	content: '\f055';
+	color:green;
+}
+.super-grid > .super-column .super-duplicate-column-fields > .super-duplicate-actions > .super-delete-duplicate:before {
+	content:'\f057';
+	color:red;
+}
+.super-grid > .super-column.super_one_full {
+	width:100%;
+	padding: 0!important;
+}
+.super-grid > .super-column.first-column {
+	padding-left:0px;
+}
+
+.super-grid > .super-column {
+	padding-left: 25px;
+}
+
+.super-grid > .super-column.first-column {
+	padding-right: 0px;
+}
+.super-grid > .super-column.last-column {
+	padding-left: 25px;
+	padding-right: 0px;
+}
+.super-grid > .super-column.no_margin {
+    padding: 0;
+}
+.super-grid > .first-column {
+    left: 0px;
+}
+.super-grid > .last-column {
+    right: 0px;
+}
+
+/*----- 1/5 -----*/
+.super-grid > .super_one_fifth {
+  width: 20%;
+}
+.super-grid > .super-column.super_one_fifth.first-column {
+	width: -moz-calc(20% - 20px);
+	width: calc(20% - 20px);
+}
+.super-grid > .super-column.super_one_fifth {
+	width: -moz-calc(20% + 5px);
+	width: calc(20% + 5px);
+}
+
+/*----- 1/4 -----*/
+.super-grid > .super_one_fourth {
+  width: 25%;
+}
+.super-grid > .super-column.super_one_fourth.first-column {
+	width: -moz-calc(25% - 18.75px);
+	width: calc(25% - 18.75px);
+}
+.super-grid > .super-column.super_one_fourth {
+	width: -moz-calc(25% + 6.20px);
+	width: calc(25% + 6.20px);
+}
+
+/*----- 1/3 -----*/
+.super-grid > .super_one_third {
+  width: 33.333333333%;
+}
+.super-grid > .super-column.super_one_third.first-column {
+	width: -moz-calc(33.333333333% - 16.7px);
+	width: calc(33.333333333% - 16.7px);
+}
+.super-grid > .super-column.super_one_third {
+	width: -moz-calc(33.333333333% + 8.3px);
+	width: calc(33.333333333% + 8.3px);
+}
+
+/*----- 2/5 -----*/
+.super-grid > .super_two_fifth {
+  width: 40%;
+}
+.super-grid > .super-column.super_two_fifth.first-column {
+	width: -moz-calc(40% - 20px);  
+	width: calc(40% - 20px);
+}
+.super-grid > .super-column.super_two_fifth {
+	width: -moz-calc(40% + 5px);
+	width: calc(40% + 5px);
+}
+
+/*----- 1/2 -----*/
+.super-grid > .super_one_half {
+  width: 50%;
+}
+.super-grid > .super-column.super_one_half.first-column {
+	width: -moz-calc(50% - 12.5px);
+	width: calc(50% - 12.5px);
+}
+.super-grid > .super-column.super_one_half {
+	width: -moz-calc(50% + 12.5px);
+	width: calc(50% + 12.5px);
+}
+
+/*----- 3/5 -----*/
+.super-grid > .super_three_fifth {
+  width: 60%;
+}
+.super-grid > .super-column.super_three_fifth.first-column {
+	width: -moz-calc(60% - 5px);
+	width: calc(60% - 5px);
+}
+.super-grid > .super-column.super_three_fifth {
+	width: -moz-calc(60% + 5px);
+	width: calc(60% + 5px);
+}
+
+/*----- 2/3 -----*/
+.super-grid > .super_two_third {
+  width: 66.66666666666666%;
+}
+.super-grid > .super-column.super_two_third.first-column {
+	width: -moz-calc(66.66666666666666% - 8.5px);
+	width: calc(66.66666666666666% - 8.5px);
+}
+.super-grid > .super-column.super_two_third {
+	width: -moz-calc(66.66666666666666% + 5px);
+	width: calc(66.66666666666666% + 5px);
+}
+
+/*----- 3/4 -----*/
+.super-grid > .super_three_fourth {
+  width: 75%;
+}
+.super-grid > .super-column.super_three_fourth.first-column {
+	width: -moz-calc(75% - 6.5px);
+	width: calc(75% - 6.5px);
+}
+.super-grid > .super-column.super_three_fourth {
+	width: -moz-calc(75% + 5px);
+	width: calc(75% + 5px);
+}
+
+/*----- 4/5 -----*/
+.super-grid > .super_four_fifth {
+  width: 80%;
+}
+.super-grid > .super-column.super_four_fifth.first-column {
+	width: -moz-calc(80% - 5px);
+	width: calc(80% - 5px);
+}
+.super-grid > .super-column.super_four_fifth {
+	width: -moz-calc(80% + 5px);
+	width: calc(80% + 5px);
+}
+
+
+.super-column.super-vertical-align {
+    width: 50%;
+    float: left;
+    position: absolute!important;
+    height: 100%;
+    right: 0px;
+    top: 0px;
+    padding-left: 6%;
+    padding-right: 6%;
+}
+.super-column.super-vertical-align .super-vertical-align {
+	position: relative;
+	top: 50%;
+	-webkit-transform: translateY(-50%);
+	-ms-transform: translateY(-50%);
+	transform: translateY(-50%);
+}
+/*Responsive Columns*/
+.super-first-responsiveness {
+}
+.super-first-responsiveness .super-grid > .super-column:not(.super-not-responsive),
+.super-first-responsiveness .super-grid > .super-column.super-force-responsiveness-window {
+	width: 100%!important;
+	padding-left: 0px;
+}
+.super-first-responsiveness .super-grid > .super-column.first-column:not(.super-not-responsive) {
+	padding-right:0px;
+}
+.super-first-responsiveness .super-grid > .super-column.last-column:not(.super-not-responsive) {
+	padding-left:0px;
+}
+.super-first-responsiveness .super-hide-mobile,
+.super-second-responsiveness .super-hide-mobile {
+	display:none;
+}
+.super-window-first-responsiveness .super-hide-mobile-window,
+.super-window-second-responsiveness .super-hide-mobile-window {
+	display:none;
+}
+
+
+
+/*--------------------------------------------------------------
+# 4.0 Form & fields
+--------------------------------------------------------------*/
+.super-form {
+    width: 100%;
+    background-image: url("../../images/loading.gif");
+    background-repeat: no-repeat;
+    background-position: center 50px;
+    padding: 0px 0px 0px 0px;
+    display: inline-block;
+}
+.super-form.initialized {
+	background:none;
+}
+::-webkit-input-placeholder { /* WebKit browsers */
+    color:#000;
+}
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+   color:#000;
+   opacity:1;
+}
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+   color:#000;
+   opacity:1;
+}
+:-ms-input-placeholder { /* Internet Explorer 10+ */
+   color:#000;
+}
+.super-form * {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+.super-form > * {
+    visibility: hidden;
+}
+.super-form.initialized > * {
+    visibility: visible;
+}
+.super-form *[data-conditional_action="show"] {
+	display:none;
+}
+.super-form *[data-conditional_action="hide"] {
+	display:block;
+}
+.super-form input:focus, .super-form select:focus {
+	outline:0;
+}
+.super-form.preload-disabled > * {
+    visibility:visible;
+}
+.super-form.preload-disabled {
+	background:none;
+}
+.super-field {
+	width:100%;
+	max-width: 100%;
+	margin: 0px 0px 25px 0px;
+	float: left;
+}
+
+/* @since 2.3.0 */
+.super-image,
+.super-image img {
+	max-width: 100%!important;
+}
+
+.super-field.super-tooltip {
+	position:initial;
+	display:initial;
+}
+
+/* @since 1.2.8 */
+.super-field input[name="super-dropdown-search"],
+
+/* @since 1.7 */
+.super-variable-conditions,
+.super-conditional-logic {
+	height: 0px!important;
+	min-height: 0px!important;
+	padding: 0px!important;
+	border: none!important;
+	margin: 0px!important;
+	width: 0px!important;
+	display: block!important;
+	position: absolute!important;
+	left: 0!important;
+	top: 0!important;
+	z-index: -9999!important;
+}
+
+.super-field.super-spacer {
+	margin:0px 0px 0px 0px;
+}
+.super-field.super-remove-margin {
+	margin:0px 0px 0px 0px;
+}
+.super-field.super-divider {
+	margin: 0px 0px 0px 0px;
+}
+.super-field.super-skype {
+	z-index:1;
+	position:relative;
+}
+.super-field.hidden {
+	display:none;
+}
+.super-preview-elements .super-field {
+	margin:0px 0px 0px 0px;
+	display: block!important;
+}
+.super-field.grouped {
+	width:auto;
+	padding:0px 15px 0px 15px;
+}
+.super-preview-elements .super-field.grouped {
+	padding: 0px 0px 0px 0px;
+}
+.super-field.grouped.grouped-start {
+	padding-left:0px;
+}
+.super-field.grouped.grouped-end {
+	padding-right:0px;
+}
+.super-field-wrapper {
+	width:100%;
+	float: left;
+	position:relative;
+}
+.super-field-wrapper.super-populating:after {
+	content:'';
+	position:absolute;
+	right:5px;
+	top:0px;
+	height:100%;
+	display:block;
+	width:40px;
+	text-align:center;
+	line-height:27px;
+	background-image: url("../../images/loading.gif");
+	background-repeat:no-repeat;
+	background-position:center;
+}
+.super-custom-regex {
+	display:none!important;
+	opacity:0!important;
+	visibility:hidden!important;
+}
+.super-field-wrapper .super-icon {
+	position:absolute;
+	top: 10px;
+	left: 10px;
+	font-size:14px;
+	font-family: FontAwesome;
+	z-index: 1;
+}
+.super-field-wrapper.super-icon-outside .super-icon {
+	top:0px;
+	left:0px;
+	margin:0px;
+	width:33px;
+	height:33px;
+	text-align:center;
+	line-height:30px;
+}
+.super-field-wrapper.super-icon-inside .super-icon {
+	top:0px;
+	left:0px;
+	margin:0px;
+	width:33px;
+	height:33px;
+	text-align:center;
+	line-height:30px;
+}
+.super-field.super-focus {
+	z-index: 99999;
+	position:relative;
+}
+.super-field.super-focus .super-field-wrapper.super-icon-inside .super-icon {
+	background:none!important;
+}
+.super-field-wrapper.super-icon-outside.super-icon-right .super-icon {
+	left:initial;
+	right:0px;
+}
+.super-field-wrapper.super-icon-inside.super-icon-right .super-icon {
+	left:initial;
+	right: 0px;
+}
+.super-field .super-field-wrapper .super-shortcode-field,
+.super-captcha .captcha {
+	width:100%;
+	margin:0px;
+	padding:7px 15px;
+	font-size:12px;
+	height: 33px;
+	min-height: 33px;
+	line-height: normal;
+	-webkit-border-radius: 0px;
+	-moz-border-radius:0px;
+	border-radius:0px;
+}
+.super-transparent-fields input, 
+.super-transparent-fields .super-dropdown-ui, 
+.super-transparent-fields textarea, 
+.super-transparent-fields .super-field div .super-fileupload-button {
+	background:none!important;
+	background-image:none!important;
+}
+.super-transparent-fields input:focus, 
+.super-transparent-fields .super-focus .super-dropdown-ui, 
+.super-transparent-fields textarea:focus, 
+.super-transparent-fields .super-field div .super-fileupload-button {
+	background:none!important;
+	background-image:none!important;
+}
+.super-field .super-field-wrapper .super-shortcode-field[disabled] {
+	background: inherit;
+	background-color: #EAEAEA;
+	border: 1px solid #CDCDCD;
+	background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0.25, #EAEAEA), color-stop(1, #EAEAEA))!important;
+}
+.super-field .super-field-wrapper textarea.super-shortcode-field {
+	min-height: 100px;
+	line-height: 20px;
+}
+.super-field .super-field-wrapper.super-icon-inside.super-icon-left .super-shortcode-field {
+	padding-left: 40px;
+}
+.super-field .super-field-wrapper.super-icon-outside.super-icon-left {
+	padding-left:40px;
+}
+.super-field .super-field-wrapper.super-icon-outside.super-icon-right {
+	padding-right:40px;
+}
+.super-captcha {
+	width:100%;
+	float:left;
+}
+.super-captcha .captcha {
+    width: 50px;
+    text-align: center;
+}
+.super-captcha p {
+    max-width:inherit!important;
+}
+.super-form .super-field > p {
+	font-size:12px;
+	width: auto;
+	float: right;
+	position: relative;
+	font-weight:900;
+	margin: 0px;
+	padding: 5px 0px 0px 0px;
+	clear: both;
+	line-height: 14px;
+}
+.super-form .super-field.super-dropdown.super-focus > p {
+	display:none;
+}
+.super-checkbox .super-field-wrapper label input,
+.super-radio .super-field-wrapper label input,
+.super-shipping .super-field-wrapper label input {
+	margin-right:5px;
+}
+.super-checkbox.display-vertical .super-field-wrapper,
+.super-radio.display-vertical .super-field-wrapper,
+.super-shipping.display-vertical .super-field-wrapper {
+	float:left;
+	position: relative;
+	margin-bottom: 0px;
+}
+.super-checkbox.display-vertical .super-field-wrapper label,
+.super-radio.display-vertical .super-field-wrapper label,
+.super-shipping.display-vertical .super-field-wrapper label {
+	margin:0px 0px 0px 0px;
+	float:left;
+	clear:both;
+}
+.super-radio.display-vertical .super-field-wrapper.super-icon-left ,
+.super-checkbox.display-vertical .super-field-wrapper.super-icon-left {
+	padding:1px 0px 0px 30px;
+}
+.super-radio.display-vertical .super-field-wrapper label,
+.super-checkbox.display-vertical .super-field-wrapper label {
+	font-size:12px;
+	line-height: 15px;
+	padding: 5px 0px 0px 25px;
+}
+.super-radio.display-vertical .super-field-wrapper.super-icon-left label,
+.super-checkbox.display-vertical .super-field-wrapper.super-icon-left label {
+	padding-left: 40px;
+}
+.super-radio.display-vertical .super-field-wrapper label input,
+.super-checkbox.display-vertical .super-field-wrapper label input {
+	float:left;
+	margin: -1px 10px 0px 0px;
+}
+.super-checkbox.display-vertical .super-field-wrapper p,
+.super-radio.display-vertical .super-field-wrapper p,
+.super-shipping.display-vertical .super-field-wrapper p {
+	position: inherit;
+	float: left;
+	width: 100%;
+	padding: 2px 0px 2px 0px;
+}
+.super-checkbox.display-horizontal .super-field-wrapper,
+.super-radio.display-horizontal .super-field-wrapper,
+.super-shipping.display-horizontal .super-field-wrapper {
+	float:left;
+	position: relative;
+}
+.super-field.display-horizontal .super-field-wrapper.super-icon-inside.super-icon-left {
+	padding-left: 40px;
+}
+.super-checkbox.display-horizontal .super-field-wrapper label,
+.super-radio.display-horizontal .super-field-wrapper label,
+.super-shipping.display-horizontal .super-field-wrapper label {
+	margin:0px 30px 0px 0px;
+	float:left;
+}
+.super-checkbox.display-horizontal .super-field-wrapper p,
+.super-radio.display-horizontal .super-field-wrapper p,
+.super-shipping.display-horizontal .super-field-wrapper p {
+	position: inherit;
+	float: left;
+	width: 100%;
+	padding: 2px 0px 2px 0px;
+	right: initial;
+}
+.super-checkbox.display-horizontal .super-field-wrapper {
+	float:left;
+	padding:0;
+	margin:0;
+	width: 100%;
+}
+.super-checkbox.display-horizontal .super-field-wrapper.super-icon-outside.super-icon-left,
+.super-radio.display-horizontal .super-field-wrapper.super-icon-outside.super-icon-left {
+	padding: 0px 0px 0px 40px;
+}
+.super-field-wrapper label {
+	cursor:pointer;
+	font-weight: normal;
+}
+.super-checkbox .super-field-wrapper label,
+.super-radio .super-field-wrapper label {
+	float:left;
+	padding: 0px 40px 0px 0px;
+	margin:0;
+	position:relative;
+}
+.super-checkbox .super-field-wrapper label > input,
+.super-radio .super-field-wrapper label > input {
+	display:none!important;
+}
+.super-checkbox .super-field-wrapper label:before,
+.super-checkbox .super-field-wrapper label:after,
+.super-radio .super-field-wrapper label:before,
+.super-radio .super-field-wrapper label:after {
+	-webkit-box-sizing: inherit;
+    -moz-box-sizing: inherit;
+    box-sizing: inherit;
+}
+.super-checkbox .super-field-wrapper label:before,
+.super-checkbox .super-field-wrapper label:after {
+	content: '';
+	position:absolute;
+	left: 0px;
+	top: 8px;
+	width:17px;
+	height:17px;
+	border: 2px solid #4EB1B6;
+	display:block;
+}
+.super-checkbox .super-field-wrapper.super-icon-left label:before,
+.super-checkbox .super-field-wrapper.super-icon-left label:after {
+	left: 5px;
+}
+.super-checkbox.display-vertical .super-field-wrapper label:before {
+	top: 4px;
+	left: 0px;
+}
+.super-checkbox.display-vertical .super-field-wrapper.super-icon-left label:before {
+	top: 4px;
+	left: 15px;
+}
+.super-checkbox .super-field-wrapper label:after {
+	background-color: #4EB1B6;
+	border:0px;
+	width:9px;
+	height:9px;
+	top: 12px;
+	left: 4px;
+	display:none;
+}
+.super-checkbox.display-vertical .super-field-wrapper label:after {
+	top: 8px;
+	left: 4px;
+}
+.super-checkbox.display-vertical .super-field-wrapper.super-icon-left label:after {
+	top: 8px;
+	left: 19px;
+}
+.super-checkbox .super-field-wrapper label.super-selected:after {
+	display:block;
+}
+.super-radio .super-field-wrapper label:before,
+.super-radio .super-field-wrapper label:after {
+	content: '';
+	position:absolute;
+	left: 0px;
+	top: 8px;
+	width:17px;
+	height:17px;
+	border: 2px solid #4EB1B6;
+	display:block;
+	-webkit-border-radius: 15px;
+	-moz-border-radius: 15px;
+	border-radius: 15px;
+}
+.super-radio .super-field-wrapper.super-icon-left label:before {
+	left: 5px;
+}
+.super-radio.display-horizontal .super-field-wrapper.super-icon-left label:after {
+	left: 9px;
+}
+.super-radio.display-vertical .super-field-wrapper label:before {
+	top: 4px;
+	left: 0px;
+}
+.super-radio.display-vertical .super-field-wrapper.super-icon-left label:before {
+	top:4px;
+	left:15px;
+}
+.super-radio .super-field-wrapper label:after {
+	background-color: #4EB1B6;
+	border:0px;
+	width:9px;
+	height:9px;
+	top: 12px;
+	left: 4px;
+	display:none;
+}
+.super-radio.display-vertical .super-field-wrapper label:after {
+	top: 8px;
+	left: 4px;
+}
+.super-radio.display-vertical .super-field-wrapper.super-icon-left label:after {
+	top: 8px;
+	left: 19px;
+}
+.super-radio .super-field-wrapper label.super-selected:after {
+	display:block;
+}
+.super-radio.display-horizontal .super-field-wrapper label,
+.super-checkbox.display-horizontal .super-field-wrapper label {
+	font-size:12px;
+	line-height: 13px;
+	padding: 10px 20px 10px 25px;
+}
+.super-radio.display-horizontal .super-field-wrapper.super-icon-left label,
+.super-checkbox.display-horizontal .super-field-wrapper.super-icon-left label {
+	padding: 10px 20px 10px 30px;
+}
+
+/* @since 1.2.4 */
+.super-field.super-quantity .super-field-wrapper .super-shortcode-field  {
+	text-align: center;
+	padding: 7px 0px;
+	border-right: 0;
+	border-left: 0;
+}
+.super-quantity .super-minus-button i,
+.super-quantity .super-plus-button i {
+	display:none;
+}
+.super-quantity .super-minus-button,
+.super-quantity .super-plus-button {
+	float: left;
+	height:33px;
+	line-height:33px;
+	background-color: #4EB1B6;
+	color: white;
+	width: 33px;
+	text-align: center;
+	font-size:14px;
+	cursor: pointer;
+}
+.super-quantity .super-minus-button:after {
+	content:'\f068';
+	font-family:'FontAwesome';
+}
+.super-quantity .super-plus-button:after {
+	content:'\f067';
+	font-family:'FontAwesome';
+}
+
+/* @since 1.2.3 */
+.super-checkbox .super-field-wrapper label.super-has-image,
+.super-radio .super-field-wrapper label.super-has-image {
+	display: inline-block;
+	padding: 5px;
+	text-align:center;
+	margin: 0px 0px 0px 0px;
+}
+.super-checkbox .super-field-wrapper label.super-has-image.display-horizontal,
+.super-radio .super-field-wrapper label.super-has-image.display-horizontal {
+	clear: initial;
+}
+.super-checkbox..super-has-image.display-horizontal .super-field-wrapper label,
+.super-radio..super-has-image.display-horizontal .super-field-wrapper label {
+	padding: 5px;
+}
+.super-checkbox .super-field-wrapper label.super-has-image:before,
+.super-radio .super-field-wrapper label.super-has-image:before {
+	display:none;
+}
+.super-checkbox .super-field-wrapper label.super-has-image .image,
+.super-radio .super-field-wrapper label.super-has-image .image {
+	height: 150px;
+	width: 130px;
+	background-size: cover;
+	background-position: center center;
+	position:relative;
+	background-repeat: no-repeat;
+	margin-bottom: 5px;
+}
+.super-checkbox .super-field-wrapper label.super-has-image .image > img,
+.super-radio .super-field-wrapper label.super-has-image .image > img {
+	display:none;
+}
+.super-checkbox .super-field-wrapper label.super-has-image.super-selected:after,
+.super-radio .super-field-wrapper label.super-has-image.super-selected:after {
+	display:none;
+}
+.super-checkbox .super-field-wrapper label.super-has-image.super-selected .image:before,
+.super-checkbox .super-field-wrapper label.super-has-image.super-selected .image:after,
+.super-radio .super-field-wrapper label.super-has-image.super-selected .image:before,
+.super-radio .super-field-wrapper label.super-has-image.super-selected .image:after {
+	content:'';
+	width:100%;
+	height:100%;
+	top:0px;
+	left:0px;
+	position:absolute;
+	background-color: black;
+	opacity: 0.4;
+}
+.super-checkbox .super-field-wrapper label.super-has-image.super-selected .image:before,
+.super-radio .super-field-wrapper label.super-has-image.super-selected .image:before {
+	opacity:1;
+	background:none;
+	content:'\f058';
+	font-family:'Fontawesome';
+	color:white;
+	z-index:2;
+	font-size: 28px;
+	top: 10px;
+	right: 5px;
+	left: initial;
+	width: auto;
+	height: auto;
+	text-align: center;
+}
+.super-captcha p {
+	position:relative;
+	float: left;
+	width: 100%;
+	padding:2px 0px 2px 0px;
+}
+
+/*Responsive Fields*/
+.super-first-responsiveness .super-field.grouped {
+	width:50%;
+}
+
+
+
+/*--------------------------------------------------------------
+# 5.0 Dropdown UI
+--------------------------------------------------------------*/
+.super-shortcode.super-field.super-focus-dropdown .super-field-wrapper {
+	min-height: 33px;
+}
+.super-field .super-field-wrapper .super-dropdown-arrow {
+	position:absolute;
+	right: 10px;
+	top:0px;
+	height: 30px;
+	width:20px;
+	text-align:center;
+	z-index: 0;
+	cursor: pointer;
+}
+.super-field .super-field-wrapper.super-icon-inside.super-icon-right .super-dropdown-arrow {
+	right:40px;
+}
+.super-field.super-focus-dropdown .super-field-wrapper .super-dropdown-arrow {
+	display:none;
+}
+.super-field .super-field-wrapper .super-dropdown-arrow:after {
+	content:'\f0d7';
+	font-family: 'FontAwesome';
+	font-size:18px;
+	line-height:35px;
+}
+.super-field .super-field-wrapper .super-dropdown-ui {
+	list-style:none;
+	height: auto;
+	line-height: 16px;
+	margin:0;
+	padding:0;
+	cursor: pointer;
+	position: relative;
+	z-index: 0;
+}
+.super-field.super-text .super-field-wrapper .super-dropdown-ui {
+	display:none;
+	margin-top: -1px;
+	border-top: 0px;
+	position: absolute;
+	width: 100%;
+}
+.super-field.super-text.super-string-found.super-focus .super-field-wrapper .super-dropdown-ui {
+	display:block;
+}
+.super-field.super-text.super-string-found .super-field-wrapper .super-dropdown-ui li.super-active {
+	display:block;
+}
+.super-field.super-text.super-string-found .super-field-wrapper .super-dropdown-ui li {
+	font-weight:bold;
+}
+.super-field.super-text.super-string-found .super-field-wrapper .super-dropdown-ui li span {
+	font-weight:normal;
+}
+.super-field .super-field-wrapper.super-icon-inside .super-dropdown-ui {
+	margin-left:32px;
+}
+.super-field .super-field-wrapper.super-icon-inside.super-icon-right .super-dropdown-ui {
+	margin-left:0px;
+}
+.super-field .super-field-wrapper .super-dropdown-ui li.super-placeholder {
+	display:block;
+	height: 31px;
+	line-height: 31px;
+	padding-left: 15px;
+}
+.super-field .super-field-wrapper .super-dropdown-ui li {
+	margin:0;
+	padding: 0px 10px 0px 15px;
+	display: none;
+	line-height: 30px;
+	overflow: hidden;
+}
+.super-first-responsiveness .super-field .super-field-wrapper .super-dropdown-ui li,
+.super-second-responsiveness .super-field .super-field-wrapper .super-dropdown-ui li {
+	line-height: 20px;
+	padding: 5px 0px 5px 15px;
+}
+.super-field .super-field-wrapper .super-dropdown-ui li:hover:not(:first-child),
+.super-field.super-text .super-field-wrapper .super-dropdown-ui li:hover {
+	background-color: #1E90FF;
+	color: white;
+}
+.super-field.super-focus-dropdown.super-dropdown .super-field-wrapper:after,
+.super-field.super-focus-dropdown.super-countries .super-field-wrapper:after,
+.super-field.super-focus-dropdown.super-dropdown .super-field-wrapper:before,
+.super-field.super-focus-dropdown.super-countries .super-field-wrapper:before {
+	bottom: 1px;
+}
+
+/* @since 1.2.8 */
+.super-field.super-dropdown.super-string-found .super-field-wrapper .super-dropdown-ui li:not(.super-placeholder),
+.super-field.super-countries.super-string-found .super-field-wrapper .super-dropdown-ui li:not(.super-placeholder) {
+	font-weight:bold;
+}
+.super-field.super-dropdown.super-string-found .super-field-wrapper .super-dropdown-ui li span,
+.super-field.super-countries.super-string-found .super-field-wrapper .super-dropdown-ui li span {
+	font-weight:normal;
+}
+
+.super-field.super-dropdown.super-focus-dropdown .super-field-wrapper {
+	height: 33px;
+}
+.super-field.super-focus-dropdown .super-field-wrapper .super-dropdown-ui {
+	padding: 0px 0px 0px 0px;
+	position: absolute;
+	width: 100%;
+	z-index: 999999;
+}
+.super-field.super-focus-dropdown .super-field-wrapper .super-dropdown-ui {
+	left: 0px;
+	max-height: 200px;
+	overflow: auto;
+}
+.super-field.super-focus-dropdown .super-field-wrapper.super-icon-outside.super-icon-left .super-dropdown-ui  {
+	left: 40px;
+	width: -moz-calc(100% - 40px); /* Firefox 4+ */    
+	width: calc(100% - 40px); /* IE9+ and future browsers */;
+}
+.super-checkbox.display-horizontal .super-field-wrapper.super-icon-outside.super-icon-left,
+.super-radio.display-horizontal .super-field-wrapper.super-icon-outside.super-icon-left {
+	/*
+	width: -moz-calc(100% - 40px);/* Firefox 4+ */
+	/*
+	width: calc(100% - 40px);/* IE9+ and future browsers */
+}	
+.super-field.super-focus-dropdown .super-field-wrapper .super-dropdown-arrow {
+	z-index: 9999999;
+}
+.super-field.super-focus-dropdown .super-field-wrapper .super-dropdown-ui li {
+	display:block;
+}
+.super-field.super-focus-dropdown .super-field-wrapper .super-dropdown-ui li.selected {
+	font-weight:bold;
+	padding-left: 15px;
+	background-color: #1E90FF;
+    color: white;
+}
+
+
+/*--------------------------------------------------------------
+# 6.0 File Upload
+--------------------------------------------------------------*/
+.super-fileupload-button {
+	float:left;
+	cursor:pointer;	
+	width: 100%;
+	margin: 0px;
+	padding: 8px 15px 7px 35px;
+	font-size: 12px;
+	height: 33px;
+	line-height: 16px;
+	position:relative;
+}
+
+/* @since 1.2.8 */
+.super-fileupload-button.super-fileupload-image {
+	height:auto;
+	border:0px!important;
+	padding:0;
+	width: auto;
+}
+.super-fileupload-button.super-fileupload-image > * {
+	display:none;
+}
+.super-fileupload-button.super-fileupload-image > img {
+	display:block;
+	max-width:100%;
+	max-height:100%;
+}
+
+.super-icon-inside.super-icon-left .super-fileupload-button {
+	padding-left:65px;
+}
+.super-icon-inside.super-icon-left .super-fileupload-button i{
+	left:45px;
+}
+.super-fileupload-button i {
+	font-size:14px;
+	position:absolute;
+	top:9px;
+	left:15px;
+	font-family: 'Fontawesome';
+}
+.super-fileupload {
+  opacity: 0;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  cursor: pointer;
+  z-index: -1;
+}
+.super-progress-bar {
+	float: left;
+	height: 4px;
+	background-color: #72C55C;
+}
+.super-fileupload-files {
+	margin: 0px 0px 0px 0px;
+	float:left;
+	clear:both;
+}
+.super-fileupload-files > div .super-fileupload-name {
+	padding:0px 10px 0px 0px;
+}
+.super-fileupload-files > div .super-fileupload-name .super-error {
+	color:red;
+}
+.super-fileupload-files > div .super-fileupload-delete {
+	color:red;
+	font-size:14px;
+	letter-spacing:2px;
+	cursor:pointer;
+}
+.super-fileupload-files > div .super-fileupload-delete:hover {
+	font-weight:bold;
+}
+
+
+
+/*--------------------------------------------------------------
+# 7.0 Rating
+--------------------------------------------------------------*/
+.super-rating {
+	float:left;
+}
+.super-icon-inside.super-icon-left .super-rating {
+	margin-left:32px;
+}
+.super-rating .super-rating-star {
+	top: 0px;
+	left: 0px;
+	margin: 0px;
+	width: 33px;
+	height: 33px;
+	text-align: center;
+	line-height: 30px;
+	margin-right:-1px;
+	font-size: 14px;
+	cursor:pointer;
+	font-family: 'Fontawesome';
+}
+
+/*--------------------------------------------------------------
+# 7.5 Slider
+--------------------------------------------------------------*/
+.super-slider .super-field-wrapper {
+	height:33px;
+}
+.super-slider .super-field-wrapper .slider {
+	height:33px;
+	margin-left: 8px!important;
+	width: auto;
+	margin-top: 5px;
+}
+.super-slider .super-field-wrapper .slider .track {
+	background: none;
+	-webkit-box-shadow: inherit;
+	-moz-box-shadow: inherit;
+	box-shadow: inherit;
+	border: 0px;
+	-webkit-border-radius: inherit;
+	-moz-border-radius: inherit;
+	border-radius: inherit;
+	background-color: #CDCDCD;
+}
+.super-slider .super-field-wrapper .slider .dragger {
+	background: none;
+	-webkit-box-shadow: inherit;
+	-moz-box-shadow: inherit;
+	box-shadow: inherit;
+	border: 0px;
+	background-color: #4EB1B6;
+}
+.super-slider .super-field-wrapper span.amount {
+	position:absolute;
+	top: 0px;
+	left: 0px;
+	display: block;
+	text-align: center;
+	font-size: 12px;
+	line-height: 12px;
+}
+.super-slider .super-field-wrapper.super-icon-left span.amount {
+	padding-left:40px;
+}
+
+
+/*--------------------------------------------------------------
+# 8.0 Date picker
+--------------------------------------------------------------*/
+.super-datepicker {
+	cursor:text;
+}
+.super-datepicker-dialog {
+	margin-top:5px;
+	padding:10px;
+	font-size: 13px;
+	line-height: 1.4em;
+	z-index: 2147483647!important;
+	border: solid 1px #cdcdcd;
+	background-color:white;
+	width:280px;
+}
+.super-datepicker-dialog .ui-datepicker-header {
+	position:relative;
+	height: 40px;
+}
+.super-datepicker-dialog .ui-datepicker-header .ui-datepicker-month,
+.super-datepicker-dialog .ui-datepicker-header .ui-datepicker-year {
+	font-size:16px;
+	line-height:20px;
+	margin: 0px 0px 0px 5px;
+	min-height: initial;
+	background-color: white;
+	border: 1px solid #cdcdcd;
+	-webkit-border-radius:0;
+	-moz-border-radius:0;
+	border-radius:0;
+	height:30px;
+	padding: 0px 5px;
+	width: 125px;
+	margin: 0px 0px 0px 0px;
+}
+.super-datepicker-dialog .ui-datepicker-header .ui-datepicker-month {
+	margin-right:7px;
+}
+.super-datepicker-dialog .ui-datepicker-header .ui-datepicker-prev,
+.super-datepicker-dialog .ui-datepicker-header .ui-datepicker-next {
+	display:none;
+	position:absolute;
+	right:0px;
+	top: 0px;
+	text-align:center;
+	cursor:pointer;
+	color: #444444;
+	text-decoration: none;
+	border: 1px solid #cdcdcd;
+	height:30px;
+	width:30px;
+	line-height:27px;
+}
+.super-datepicker-dialog .ui-datepicker-header .ui-datepicker-prev:hover,
+.super-datepicker-dialog .ui-datepicker-header .ui-datepicker-next:hover {
+}
+.super-datepicker-dialog .ui-datepicker-header .ui-datepicker-prev {
+	right: 29px;
+}
+.super-datepicker-dialog .ui-datepicker-header .ui-datepicker-prev span,
+.super-datepicker-dialog .ui-datepicker-header .ui-datepicker-next span {
+	display:none;
+}
+.super-datepicker-dialog .ui-datepicker-header .ui-datepicker-prev::after {
+	content:"<";
+	color: #cdcdcd;
+}
+.super-datepicker-dialog .ui-datepicker-header .ui-datepicker-next::after {
+	content:">";
+	color: #cdcdcd;
+}
+.super-datepicker-dialog .ui-datepicker-calendar th,
+.super-datepicker-dialog .ui-datepicker-calendar td {
+	border:0px;
+	text-align: center;
+}
+.super-datepicker-dialog .ui-datepicker-calendar {
+    border-spacing: 5px;
+    width: auto;
+    border: 0px;
+}
+.super-datepicker-dialog .ui-datepicker-calendar td {
+	text-align:center;
+	margin:0px;
+	padding:0px;
+	cell-padding:0px;
+}
+.super-datepicker-dialog .ui-datepicker-calendar td a,
+.super-datepicker-dialog .ui-datepicker-calendar td span.ui-state-default {
+	text-align:center;
+	width: 33px;
+	text-decoration: none;
+	line-height: 33px;
+	height: 33px;
+	border: solid 1px #cdcdcd;
+	display:inline-block;
+	color: #444444;
+	margin: 2px;
+}
+.super-datepicker-dialog .ui-datepicker-calendar td span.ui-state-default {
+	border:0;
+	height: 27px;
+	line-height: 27px;
+}
+.super-datepicker-dialog .ui-datepicker-calendar td a.ui-state-active {
+	border: 1px solid #909090;
+	background-color: #E4E4E4;
+}
+
+
+
+/*--------------------------------------------------------------
+# 9.0 Time picker
+--------------------------------------------------------------*/
+.ui-timepicker-wrapper {
+	overflow-y: auto;
+	height: 150px;
+	width: 110px;
+	padding: 0px;
+	outline: none;
+	z-index: 2147483647!important;
+	margin-top: 5px;
+	font-size: 12px;
+	line-height:1.4em;
+	color: #444444;
+	background-color: #ffffff;
+	border: solid 1px #cdcdcd;
+	font-family: "Open Sans",sans-serif;
+}
+.ui-timepicker-wrapper.ui-timepicker-with-duration {
+	width: 13em;
+}
+.ui-timepicker-wrapper.ui-timepicker-with-duration.ui-timepicker-step-30,
+.ui-timepicker-wrapper.ui-timepicker-with-duration.ui-timepicker-step-60 {
+	width: 11em;
+}
+.ui-timepicker-list {
+	margin: 0;
+	padding: 4px 0px 4px 0px;
+	list-style: none;
+}
+.ui-timepicker-duration {
+	margin-left: 5px;
+}
+.ui-timepicker-list li {
+	padding: 2px 0px 2px 15px;
+	cursor: pointer;
+	white-space: nowrap;
+	list-style: none;
+	margin: 0;
+}
+.ui-timepicker-list li:hover,
+.ui-timepicker-list li.ui-timepicker-selected {
+	background-color:#1E90FF;
+	color:white;
+}
+.ui-timepicker-list li.ui-timepicker-disabled,
+.ui-timepicker-list li.ui-timepicker-disabled:hover,
+.ui-timepicker-list li.ui-timepicker-selected.ui-timepicker-disabled {
+	cursor: default;
+	text-decoration: line-through;
+}
+@media (max-width:776px) {
+	.ui-timepicker-list li {
+		font-size:16px;
+	}
+}
+
+
+
+/*--------------------------------------------------------------
+# 11.0 Custom HTML
+--------------------------------------------------------------*/
+.super-html {
+	margin-bottom:0px;
+}
+.super-html > textarea {
+	display:none!important;
+	visibility:hidden!important;
+	height:0px!important;
+	width:0px!important;
+}
+.super-html .super-html-title {
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 14px;
+    padding: 0px 0px 5px 0px;
+}
+.super-html .super-html-title.super-bottom-margin {
+	padding: 0px 0px 15px 0px;
+}
+.super-html .super-html-subtitle {
+    font-size: 12px;
+    line-height: 14px;
+    padding: 0px 0px 15px 0px;
+}
+.super-html .super-html-subtitle.super-no-bottom-margin {
+	padding: 0px 0px 0px 0px;
+}
+.super-html .super-html-content {
+    font-size: 12px;
+    line-height: 14px;
+    padding: 0px 0px 0px 0px;
+}
+
+/*--------------------------------------------------------------
+# 12.0 Submit Button
+--------------------------------------------------------------*/
+
+/* # 12.1 General */
+.super-button {
+    display: inline-block;
+    margin: 0px 6px 0px 0px;
+    width: auto;
+    clear: both;
+}
+.super-button > p {
+	display:none;
+}
+.super-button.super-clear-none {
+	clear:none;
+}
+.super-button.super-loading {
+	opacity:0.7;
+}
+.super-button a {
+	overflow: hidden;
+	text-decoration:none;
+	position: relative;
+	display: inline-block;
+	margin: 0px 10px 10px 0px;
+	vertical-align: middle;
+	text-align: center;
+	cursor: pointer;
+	letter-spacing: 1px;
+	min-width: 0;
+	-webkit-transition: all .15s ease-in-out;
+	-moz-transition: all .15s ease-in-out;
+	-ms-transition: all .15s ease-in-out;
+	-o-transition: all .15s ease-in-out;
+	transition: all .15s ease-in-out;
+	-webkit-backface-visibility: hidden;
+	-moz-backface-visibility: hidden;
+	-ms-backface-visibility: hidden;
+	-o-backface-visibility: hidden;
+	backface-visibility: hidden;
+	ms-backface-visibility: hidden;
+}
+.super-button a:hover,
+.super-button a:focus {
+	text-decoration: none!important;
+}
+.super-button a:focus {
+	-webkit-transition:none;
+	-moz-transition:none;
+	-ms-transition:none;
+	-o-transition:none;
+	transition:none;
+	outline: none;
+}
+.super-button a .super-button-name,
+.super-button a i {
+	text-shadow: 0 1px rgba(0,0,0,0.2);
+	line-height: 100%;
+}
+.super-button.super-type-flat a {
+	-webkit-box-shadow: none!important;
+    -moz-box-shadow: none!important;
+    box-shadow: none!important;
+	border: none;
+}
+
+
+/* # 12.2 Wrapper for middle aligned buttons */
+.super-buttons-wrapper {
+	width:100%;
+	float:left;
+	text-align:center;
+}
+.super-buttons-wrapper .super-button-align-center {
+	width:auto;
+	float: none;
+}
+
+/* # 12.3 Name wrapper */
+.super-button .super-button-name {
+	width: 100%;
+	height: 100%;
+	display: block;
+	text-align: center;
+	-webkit-backface-visibility: hidden;
+	-moz-backface-visibility: hidden;
+	-ms-backface-visibility: hidden;
+	-o-backface-visibility: hidden;
+	backface-visibility: hidden;
+	ms-backface-visibility: hidden;
+	-webkit-transform: translate(0,0);
+	-moz-transform: translate(0,0);
+	-ms-transform: translate(0,0);
+	-o-transform: translate(0,0);
+	transform: translate(0,0);
+	ms-transform: translate(0,0);
+}
+.super-button.super-loading .super-button-name {
+	opacity:0.7;
+}
+/*
+.super-button .super-button-name i {
+	position: absolute;
+	display: block;
+	-webkit-transform: translate(-50%,-50%);
+	-moz-transform: translate(-50%,-50%);
+	-ms-transform: translate(-50%,-50%);
+	-o-transform: translate(-50%,-50%);
+	transform: translate(-50%,-50%);
+	ms-transform: translate(-50%,-50%);
+	top: -200%;
+	left: 50%;
+	font-family: FontAwesome;
+}
+.super-button.super-loading .super-button-name i {
+	top: -2px;
+	left: -10px;
+}
+*/
+
+/* # 12.4 2D style */
+.super-button.super-type-2d a {
+	-webkit-box-shadow: none!important;
+    -moz-box-shadow: none!important;
+    box-shadow: none!important;
+	background-image: -webkit-gradient(linear,left top,left bottom,from(rgba(0,0,0,.1)),to(rgba(0,0,0,.15)));
+	background-image: -webkit-linear-gradient(top,rgba(0,0,0,.1),rgba(0,0,0,.15));
+	background-image: -moz-linear-gradient(top,rgba(0,0,0,.1),rgba(0,0,0,.15));
+	background-image: -ms-linear-gradient(top,rgba(0,0,0,.1),rgba(0,0,0,.15));
+	background-image: -o-linear-gradient(top,rgba(0,0,0,.1),rgba(0,0,0,.15));
+	box-shadow: inset 0 0 1px rgba(0,0,0,.8);
+}
+.super-button.super-type-2d a:hover {
+	background-image:-webkit-gradient(linear,left top,left bottom,from(rgba(0,0,0,.1)),to(rgba(0,0,0,.20)));
+	background-image:-webkit-linear-gradient(top,rgba(0,0,0,.1),rgba(0,0,0,.20));
+	background-image:-moz-linear-gradient(top,rgba(0,0,0,.1),rgba(0,0,0,.20));
+	background-image:-ms-linear-gradient(top,rgba(0,0,0,.1),rgba(0,0,0,.20));
+	background-image:-o-linear-gradient(top,rgba(0,0,0,.1),rgba(0,0,0,.20))
+}
+.super-button.super-type-2d a:active {
+	background-image:-webkit-gradient(linear,left top,left bottom,from(rgba(0,0,0,.15)),to(rgba(0,0,0,.1)));
+	background-image:-webkit-linear-gradient(top,rgba(0,0,0,.15),rgba(0,0,0,.1));
+	background-image:-moz-linear-gradient(top,rgba(0,0,0,.15),rgba(0,0,0,.1));
+	background-image:-ms-linear-gradient(top,rgba(0,0,0,.15),rgba(0,0,0,.1));
+	background-image:-o-linear-gradient(top,rgba(0,0,0,.15),rgba(0,0,0,.1))
+}
+
+/* # 12.5 3D style */
+.super-button.super-type-3d a:active {
+    -webkit-box-shadow: 0px 1px 0px;
+    -moz-box-shadow: 0px 1px 0px;
+    box-shadow: 0px 1px 0px;
+}
+.super-button.super-type-3d.super-button-mini a:active {
+	top:1px;
+    -webkit-box-shadow:none!important;
+    -moz-box-shadow:none!important;
+    box-shadow:none!important;
+}
+.super-button.super-type-3d.super-button-tiny a:active {
+	top:1px;
+}
+.super-button.super-type-3d.super-button-small a:active {
+	top:2px;
+}
+.super-button.super-type-3d.super-button-medium a:active {
+	top:3px;
+}
+.super-button.super-type-3d.super-button-large a:active {
+	top:4px;
+}
+.super-button.super-type-3d.super-button-big a:active {
+	top:5px;
+}
+.super-button.super-type-3d.super-button-huge a:active {
+	top:6px;
+}
+.super-button.super-type-3d.super-button-massive a:active {
+	top:7px;
+}
+
+/* # 12.6 Outline style */
+.super-button.super-type-outline a {
+	border-width:2px;
+	border-style:solid;
+	background:none;
+    -webkit-box-shadow:none!important;
+    -moz-box-shadow:none!important;
+    box-shadow:none!important;
+}
+.super-button.super-type-outline a .super-button-name,
+.super-button.super-type-outline a i {
+	text-shadow:none;
+	font-weight: 900;
+}
+
+/* # 12.7 Diagonal style */
+.super-button.super-type-diagonal a {
+	border-width:2px;
+	border-style:solid;
+	background:none;
+    -webkit-box-shadow:none!important;
+    -moz-box-shadow:none!important;
+    box-shadow:none!important;
+}
+.super-button.super-type-diagonal a .super-button-name,
+.super-button.super-type-diagonal a i {
+	text-shadow:none;
+	font-weight: 900;
+}
+.super-button.super-type-diagonal a .super-button-name {
+	z-index:2;
+	position:relative
+}
+.super-button.super-type-diagonal a .super-after {
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translateX(-50%) translateY(-50%) rotate(25deg);
+	-webkit-transform: translateX(-50%) translateY(-50%) rotate(25deg);
+	-moz-transform: translateX(-50%) translateY(-50%) rotate(25deg);
+	height: 100%;
+	width: 0px;
+	z-index:1;
+}
+.super-button.super-type-diagonal a:hover .super-after {
+	width: 150%;
+	height: 650%;
+}
+
+/* # 12.8 Flat style */
+.super-button.super-type-flat a .super-button-name,
+.super-button.super-type-flat a i {
+	text-shadow:none;
+}
+
+/* # 12.9 Rounded style */
+.super-button.super-radius-rounded a {
+	-webkit-border-radius:5px;
+	-moz-border-radius:5px;
+	border-radius:5px;
+}
+
+/* # 12.10 Full Rounded style */
+.super-button.super-radius-full-rounded a {
+	-webkit-border-radius:100px;
+	-moz-border-radius:100px;
+	border-radius:100px;
+}
+.super-button.super-radius-full-rounded a .super-after {
+	width:102%;
+	-webkit-border-radius:100px;
+	-moz-border-radius:100px;
+	border-radius:100px;
+	transform: translateX(-1%) translateY(0px) rotate(0deg);
+	-webkit-transform: translateX(-1%) translateY(0px) rotate(0deg);
+	-moz-transform: translateX(-1%) translateY(0px) rotate(0deg);   
+	left:0;  
+	top:50%;
+	height: 0;
+}
+.super-button.super-radius-full-rounded a:hover .super-after {
+	width:102%;
+	height:100%;
+	-webkit-border-radius:100px;
+	-moz-border-radius:100px;
+	border-radius:100px;
+	transform: translateX(-1%) translateY(0px) rotate(0deg);
+	-webkit-transform: translateX(-1%) translateY(0px) rotate(0deg);
+	-moz-transform: translateX(-1%) translateY(0px) rotate(0deg);   
+	left:0;  
+	top:0;
+}
+
+/* # 12.12 Alignment */
+.super-button-align-center {
+    text-align:center;
+    width: 100%;
+    margin: 0;
+}
+.super-button-align-right {
+    text-align:right;
+    float: right;
+    margin: 0px 0px 0px 6px;
+}
+
+/* # 12.13 Fullwidth */
+.super-button-width-fullwidth {
+	width:100%;
+}
+.super-button-width-fullwidth > a {
+	display:block;
+}
+
+/* # 12.14 Mini Size */
+.super-button-mini a {
+	font-size: 10px;
+	padding: 1px 10px 1px 10px!important;
+	-webkit-box-shadow: 0px 1px 0px;
+	-moz-box-shadow: 0px 1px 0px;
+	box-shadow: 0px 1px 0px;
+	margin: 0px;
+}
+.super-button-mini .super-button-name {
+	font-size: 10px;
+}
+.super-button-mini.super-type-flat a {
+	padding: 3px 11px 3px 11px!important;
+}
+.super-button-mini.super-type-outline a,
+.super-button-mini.super-type-diagonal a {
+	padding: 1px 9px 1px 8px!important;
+}
+.super-button-mini.super-type-outline.super-loading a,
+.super-button-mini.super-type-diagonal.super-loading a {
+	padding: 1px 4px 1px 0px!important;
+}
+.super-button-mini.super-type-3d a {
+	margin-top:-1px!important;
+	padding: 2px 10px 1px 10px!important;
+    border-bottom:1px solid;
+}
+.super-button-mini.super-type-2d a {
+	padding: 2px 10px 2px 10px!important;
+}
+.super-button-mini.super-type-3d {
+	margin-top:1px;
+}
+.super-button-mini.super-button-icon-visibility-visible a {
+	padding: 1px 10px 2px 10px!important;
+}
+
+
+/* # 12.15 Tiny Size */
+.super-button-tiny a {
+	font-size: 10px;
+	padding: 4px 20px 4px 20px!important;
+	-webkit-box-shadow: 0px 2px 0px;
+	-moz-box-shadow: 0px 2px 0px;
+	box-shadow: 0px 2px 0px;
+	margin: 0px;
+}
+.super-button-tiny .super-button-name {
+	font-size: 10px;
+}
+.super-button-tiny.super-type-flat a {
+	padding: 6px 21px 6px 21px!important;
+}
+.super-button-tiny.super-type-outline a,
+.super-button-tiny.super-type-diagonal a {
+	padding: 4px 19px 4px 18px!important;
+}
+.super-button-tiny.super-type-3d a {
+	margin-top:-2px!important;
+	padding: 4px 20px 4px 20px!important;
+    border-bottom:1px solid;
+}
+.super-button-tiny.super-type-3d.super-loading a {
+	padding: 4px 10px 4px 10px!important;
+}
+.super-button-tiny.super-type-2d a {
+	padding: 5px 20px 5px 20px!important;
+}
+.super-button-tiny.super-type-3d {
+	margin-top:2px;
+}
+.super-button-tiny.super-button-icon-visibility-visible a {
+	padding: 4px 12px 4px 12px!important;
+}
+
+
+/* # 12.16 Small Size */
+.super-button-small a {
+	font-size: 12px;
+	padding: 7px 30px 7px 30px!important;
+	-webkit-box-shadow: 0px 3px 0px;
+	-moz-box-shadow: 0px 3px 0px;
+	box-shadow: 0px 3px 0px;    
+	margin: 0px;
+}
+.super-first-responsiveness .super-button-small a {
+	padding: 7px 15px 7px 15px!important;
+}
+.super-button-small .super-button-name {
+	font-size: 12px;
+}
+.super-button-small.super-type-flat a {
+	padding: 9px 31px 9px 31px!important;
+}
+.super-first-responsiveness .super-button-small.super-type-flat a {
+	padding: 9px 15px 9px 15px!important;
+}
+.super-button-small.super-type-outline a,
+.super-button-small.super-type-diagonal a {
+	padding: 7px 28px 7px 28px!important;
+}
+.super-first-responsiveness .super-button-small.super-type-outline a,
+.super-first-responsiveness .super-button-small.super-type-diagonal a {
+	padding: 7px 14px 7px 14px!important;
+}
+.super-button-small.super-type-3d a {
+	margin-top:-3px!important;
+	padding: 7px 30px 6px 30px!important;
+    border-bottom:1px solid;
+}
+.super-first-responsiveness .super-button-small.super-type-3d a {
+	padding: 7px 15px 6px 15px!important;
+}
+.super-button-small.super-type-2d a {
+	padding: 8px 30px 8px 30px!important;
+}
+.super-button-small.super-type-2d.super-loading a {
+	padding: 8px 20px 8px 20px!important;
+}
+.super-first-responsiveness .super-button-small.super-type-2d a {
+	padding: 8px 15px 8px 15px!important;
+}
+.super-button-small.super-button-icon-visibility-visible a {
+	padding: 7px 22px 7px 22px!important;
+}
+.super-first-responsiveness .super-button-small.super-button-icon-visibility-visible a {
+	padding: 7px 11px 7px 11px!important;
+}
+
+
+/* # 12.17 Medium Size */
+.super-button-medium a {
+	padding: 10px 40px 10px 40px!important;
+	-webkit-box-shadow: 0px 4px 0px;
+	-moz-box-shadow: 0px 4px 0px;
+	box-shadow: 0px 4px 0px;    
+	margin: 0px;
+}
+.super-first-responsiveness .super-button-medium a {
+	padding: 10px 20px 10px 20px!important;
+}
+.super-button-medium .super-button-name {
+	font-size: 12px;
+}
+.super-button-medium.super-type-flat a {
+	padding: 12px 41px 12px 41px!important;
+}
+.super-button-medium.super-type-flat.super-loading a {
+	padding: 12px 31px 12px 31px!important;
+}
+.super-first-responsiveness .super-button-medium.super-type-flat a {
+	padding: 12px 21px 12px 21px!important;
+}
+.super-button-medium.super-type-outline a,
+.super-button-medium.super-type-diagonal a {
+	padding: 10px 39px 10px 38px!important;
+}
+.super-first-responsiveness .super-button-medium.super-type-outline a,
+.super-first-responsiveness .super-button-medium.super-type-diagonal a {
+	padding: 10px 19px 10px 18px!important;
+}
+.super-button-medium.super-type-3d a {
+	margin-top:-4px!important;
+	padding: 9px 40px 9px 40px!important;
+    border-bottom:1px solid;
+}
+.super-first-responsiveness .super-button-medium.super-type-3d a {
+	padding: 9px 20px 9px 20px!important;
+}
+.super-button-medium.super-type-2d a {
+	padding: 11px 40px 11px 40px!important;
+}
+.super-first-responsiveness .super-button-medium.super-type-2d a {
+	padding: 11px 20px 11px 20px!important;
+}
+.super-button-medium.super-type-3d {
+	margin-top:4px;
+}
+
+
+/* # 12.18 Large Size */
+.super-button-large a {
+	font-size: 14px;
+	padding: 13px 50px 13px 50px!important;
+	-webkit-box-shadow: 0px 5px 0px;
+	-moz-box-shadow: 0px 5px 0px;
+	box-shadow: 0px 5px 0px;    
+	margin: 0px;
+}
+.super-first-responsiveness .super-button-large a {
+	padding: 13px 25px 13px 25px!important;
+}
+.super-button-large .super-button-name {
+	font-size: 14px;
+}
+.super-button-large.super-type-flat a {
+	padding: 15px 51px 15px 51px!important;
+}
+.super-first-responsiveness .super-button-large.super-type-flat a {
+	padding: 15px 25px 15px 25px!important;
+}
+.super-button-large.super-type-outline a,
+.super-button-large.super-type-diagonal a {
+	padding: 13px 49px 13px 48px!important;
+}
+.super-button-large.super-type-outline.super-loading a,
+.super-button-large.super-type-diagonal.super-loading a {
+	padding: 13px 39px 13px 38px!important;
+}
+.super-first-responsiveness .super-button-large.super-type-outline a,
+.super-first-responsiveness .super-button-large.super-type-diagonal a {
+	padding: 13px 25px 13px 24px!important;
+}
+.super-button-large.super-type-3d a {
+	margin-top:-4px!important;
+	padding: 12px 50px 11px 50px!important;
+    border-bottom:1px solid;
+}
+.super-first-responsiveness .super-button-large.super-type-3d a {
+	padding: 12px 25px 11px 25px!important;
+}
+.super-button-large.super-type-2d a {
+	padding: 14px 50px 14px 50px!important;
+}
+.super-first-responsiveness .super-button-large.super-type-2d a {
+	padding: 14px 25px 14px 25px!important;
+}
+.super-button-large.super-type-3d {
+	margin-top:4px;
+}
+
+
+/* # 12.19 Big Size */
+.super-button-big a {
+	font-size: 14px;
+	padding: 16px 60px 16px 60px!important;
+	-webkit-box-shadow: 0px 6px 0px;
+	-moz-box-shadow: 0px 6px 0px;
+	box-shadow: 0px 6px 0px;    
+	margin: 0px;
+}
+.super-first-responsiveness .super-button-big a {
+	padding: 16px 30px 16px 30px!important;
+}
+.super-button-big .super-button-name {
+	font-size: 14px;
+}
+.super-button-big.super-type-flat a {
+	padding: 18px 61px 18px 61px!important;
+}
+.super-first-responsiveness .super-button-big.super-type-flat a {
+	padding: 12px 21px 12px 21px!important;
+}
+.super-button-big.super-type-outline a,
+.super-button-big.super-type-diagonal a {
+	padding: 16px 59px 16px 58px!important;
+}
+.super-button-big.super-type-outline.super-loading a,
+.super-button-big.super-type-diagonal.super-loading a {
+	padding: 16px 49px 16px 48px!important;
+}
+.super-first-responsiveness .super-button-big.super-type-outline a,
+.super-first-responsiveness .super-button-big.super-type-diagonal a {
+	padding: 12px 20px 12px 19px!important;
+}
+.super-button-big.super-type-3d a {
+	margin-top:-6px!important;
+	padding: 14px 60px 14px 60px!important;
+    border-bottom:1px solid;
+}
+.super-first-responsiveness .super-button-big.super-type-3d a {
+	padding: 10px 20px 10px 20px!important;
+}
+.super-button-big.super-type-2d a {
+	padding: 17px 60px 17px 60px!important;
+}
+.super-first-responsiveness .super-button-big.super-type-2d a {
+	padding: 12px 20px 12px 20px!important;
+}
+.super-button-big.super-type-3d {
+	margin-top:6px;
+}
+
+
+/* # 12.20 Huge Size */
+.super-button-huge a {
+	font-size: 16px;
+	padding: 19px 70px 19px 70px!important;
+	-webkit-box-shadow: 0px 7px 0px;
+	-moz-box-shadow: 0px 7px 0px;
+	box-shadow: 0px 7px 0px;    
+	margin: 0px;
+}
+.super-first-responsiveness .super-button-huge a {
+	padding: 19px 35px 19px 35px!important;
+}
+.super-button-huge .super-button-name {
+	font-size: 16px;
+}
+.super-button-huge.super-type-flat a {
+	padding: 21px 71px 21px 71px!important;
+}
+.super-first-responsiveness .super-button-huge.super-type-flat a {
+	padding: 10px 17px 10px 17px!important;
+}
+.super-button-huge.super-type-outline a,
+.super-button-huge.super-type-diagonal a {
+	padding: 19px 69px 19px 69px!important;
+}
+.super-first-responsiveness .super-button-huge.super-type-outline a,
+.super-first-responsiveness .super-button-huge.super-type-diagonal a {
+	padding: 10px 17px 10px 17px!important;
+}
+.super-button-huge.super-type-3d a {
+	margin-top:-7px!important;
+	padding: 16px 70px 17px 70px!important;
+    border-bottom:1px solid;
+}
+.super-button-huge.super-type-3d.super-loading a {
+	padding: 16px 60px 17px 60px!important;
+}
+.super-first-responsiveness .super-button-huge.super-type-3d a {
+	padding: 8px 17px 8px 17px!important;
+}
+.super-button-huge.super-type-2d a {
+	padding: 20px 70px 20px 70px!important;
+}
+.super-first-responsiveness .super-button-huge.super-type-2d a {
+	padding: 10px 17px 10px 17px!important;
+}
+.super-button-huge.super-type-3d {
+	margin-top:7px;
+}
+ 
+
+/* # 12.21 Massive Size */
+.super-button-massive a {
+	font-size: 18px;
+	padding: 22px 78px 22px 78px!important;
+	-webkit-box-shadow: 0px 8px 0px;
+	-moz-box-shadow: 0px 8px 0px;
+	box-shadow: 0px 8px 0px;    
+	margin: 0px;
+}
+.super-first-responsiveness .super-button-massive a {
+	padding: 22px 39px 22px 39px!important;
+}
+.super-button-massive .super-button-name {
+	font-size: 18px;
+}
+.super-button-massive.super-type-flat a {
+	padding: 24px 81px 24px 81px!important;
+}
+.super-first-responsiveness .super-button-massive.super-type-flat a {
+	padding: 12px 21px 12px 21px!important;
+}
+.super-button-massive.super-type-outline a,
+.super-button-massive.super-type-diagonal a {
+	padding: 22px 78px 22px 78px!important;
+}
+.super-first-responsiveness .super-button-massive.super-type-outline a,
+.super-first-responsiveness .super-button-massive.super-type-diagonal a {
+	padding: 11px 19px 11px 19px!important;
+}
+.super-button-massive.super-type-3d a {
+	margin-top: -7px!important;
+	padding: 19px 80px 19px 80px!important;
+    border-bottom:1px solid;
+}
+.super-first-responsiveness .super-button-massive.super-type-3d a {
+	padding: 10px 20px 10px 20px!important;
+}
+.super-button-massive.super-type-2d a {
+	padding: 23px 80px 23px 80px!important;
+}
+.super-button-massive.super-type-2d.super-loading a {
+	padding: 23px 70px 23px 70px!important;
+}
+.super-first-responsiveness .super-button-massive.super-type-2d a {
+	padding: 13px 20px 13px 20px!important;
+}
+.super-button-massive.super-type-3d {
+	margin-top:7px;
+}
+
+
+
+/*--------------------------------------------------------------
+# 13.0 Multiparts
+--------------------------------------------------------------*/
+
+/* # 2.1 Progress bar */
+.super-multipart .super-button {
+	float:right;
+	clear: inherit;
+	margin-right: 0;
+}
+.super-button.super-prev-multipart {
+	float:left;
+	margin-left: 0px;
+}
+.super-button.super-prev-multipart,
+.super-button.super-next-multipart {
+	width:auto;
+}
+.super-multipart-progress {
+	height:20px;
+	margin-bottom: 25px;
+}
+.super-multipart-progress * {
+    -webkit-transition: all .5s ease-out 0s;
+    -moz-transition: all .5s ease-out 0s;
+    -o-transition: all .5s ease-out 0s;
+    transition: all .5s ease-out 0s;
+}
+.super-multipart-progress-inner {
+	height:100%;
+	padding: 3px;
+}
+.super-multipart-progress-bar {
+	height:100%;
+}
+
+/* # 2.2 Progress steps */
+ul.super-multipart-steps {
+	list-style:none;
+	margin:0;
+	padding:0;
+	margin-bottom: 25px;
+}
+ul.super-multipart-steps * {
+    -webkit-transition: all .5s ease-out 0s;
+    -moz-transition: all .5s ease-out 0s;
+    -o-transition: all .5s ease-out 0s;
+    transition: all .5s ease-out 0s;
+}
+ul.super-multipart-steps .super-multipart-step {
+	display:inline-block;
+	width: 56px;
+	height: 56px;
+	position: relative;
+	padding: 4px;
+	margin-right: 20px;
+	margin-left:0;
+	cursor: pointer;
+}
+ul.super-multipart-steps .super-multipart-step:after {
+	content:'';
+	width: 20px;
+	display:inline-block;
+	position:absolute;
+	right: -21px;
+	top: 27px;
+}
+ul.super-multipart-steps .super-multipart-step.last-step:after {
+	display:none;
+}
+ul.super-multipart-steps .super-multipart-step .super-multipart-step-wrapper {
+	position:absolute;
+	left: 5px;
+	top: 5px;
+	width: 44px;      
+	height: 44px;
+}
+ul.super-multipart-steps .super-multipart-step .super-multipart-step-count {
+	width: 100%;
+	display: inline-block;
+	text-align: center;
+	line-height: 44px;
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	font-size:20px;
+}
+ul.super-multipart-steps .super-multipart-step .super-multipart-step-name {
+	display:none;
+}
+ul.super-multipart-steps .super-multipart-step .super-multipart-step-description {
+	display:none;
+}
+ul.super-multipart-steps .super-multipart-step .super-multipart-step-icon {
+	display: none;
+}
+
+
+/*--------------------------------------------------------------
+# 14.0 Form Themes
+--------------------------------------------------------------*/
+
+/* # 14.1 Square Theme */
+.super-shortcode-field,
+.super-form .super-field > p {
+	-webkit-border-radius:0px;
+	-moz-border-radius:0px;
+	border-radius:0px;
+	-moz-box-sizing: border-box;   
+	-webkit-box-sizing:border-box;  
+	box-sizing:border-box;
+}
+
+/* # 14.2 Rounded Theme */
+.super-form.rounded .super-shortcode-field,
+.super-form.rounded .super-field-wrapper.super-icon-outside .super-icon,
+.super-form.rounded .super-fileupload-button,
+.super-form.rounded .super-dropdown-ui,
+.super-form.rounded .super-dropdown-ui li.super-placeholder,
+.super-form.rounded > p {
+	-webkit-border-radius:4px;
+	-moz-border-radius:4px;
+	border-radius:4px;
+}
+.super-form.rounded ul.super-multipart-steps .super-multipart-step .super-multipart-step-wrapper {
+	-webkit-border-radius: 100%;      
+	-moz-border-radius: 100%;      
+	border-radius: 100%;
+}
+.super-form.rounded ul.super-multipart-steps .super-multipart-step {
+	-webkit-border-radius: 100%;      
+	-moz-border-radius: 100%;      
+	border-radius: 100%;
+}
+.super-form.rounded .super-multipart-progress-inner {
+	-webkit-border-radius: 15px;  
+	-moz-border-radius: 15px;  
+	border-radius: 15px;
+}
+.super-form.rounded .super-multipart-progress-bar {
+	-webkit-border-radius: 15px;  
+	-moz-border-radius: 15px;  
+	border-radius: 15px;
+}
+
+
+/*--------------------------------------------------------------
+# 14.0 WP Editor (TinyMCE)
+--------------------------------------------------------------*/
+
+.super-form .wp-editor-wrap {
+}
+.super-form .wp-editor-wrap .wp-editor-tools {float: left;width: 100%;min-height: 25px;}
+.mce-container, 
+.mce-container *, 
+.mce-widget, 
+.mce-widget *, 
+.mce-reset {
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+.mce-btn .mce-txt {
+	text-transform:none;
+}
+.super-form .wp-editor-wrap div.mce-edit-area {
+	border-width: 1px!important;
+	border: solid 1px #cdcdcd;
+}
+.super-form .wp-editor-wrap div.mce-toolbar-grp {
+	border: 1px solid #e5e5e5;
+	border-bottom:0;
+}
+.super-form .wp-editor-wrap .wp-editor-container {
+    border:0;
+}
+.super-form .wp-editor-wrap .quicktags-toolbar {
+    border: 1px solid #e5e5e5;
+    border-bottom:0;
+}
+.super-form .wp-editor-wrap div.mce-statusbar {
+	border-top:0;
+}
+.super-form .wp-editor-wrap .wp-editor-tools .wp-media-buttons {
+	margin-bottom: 6px;
+}
+.super-form .wp-editor-wrap .wp-editor-tools .wp-editor-tabs {
+	position:absolute;
+	right:0px;
+	bottom:0px;
+}
+.super-form .wp-editor-wrap .wp-editor-tools .wp-editor-tabs .wp-switch-editor {
+	margin: 0px 0px -1px 3px;
+	padding:0px;
+	display: block;
+	float: left;
+	background-color: #f5f5f5;
+	color: #929292;
+	border: 0;
+	position: initial;
+	font-size: 12px;
+	padding: 0px 10px 0px 10px;
+	height: 25px;
+	line-height: 24px;
+	-webkit-border-radius: 0px;
+	-moz-border-radius:0px;
+	border-radius:0px;
+	background: #ebebeb;
+	color: #666;
+	border: 1px solid #e5e5e5;
+}
+.super-form .wp-editor-wrap.html-active .wp-editor-tools .wp-editor-tabs .wp-switch-editor.switch-html,
+.super-form .wp-editor-wrap.tmce-active .wp-editor-tools .wp-editor-tabs .wp-switch-editor.switch-tmce {
+    background: #f5f5f5;
+    color: #555;
+    border-bottom-color: #f5f5f5;
+}
+.super-form .wp-editor-wrap .mce-btn button {
+}
+.super-form .wp-editor-wrap .mce-btn button:hover {
+    background: #fafafa;
+    border-color: #555d66;
+    color: #23282d;
+    -webkit-box-shadow: inset 0 1px 0 #fff,0 1px 0 rgba(0,0,0,.08);
+    box-shadow: inset 0 1px 0 #fff,0 1px 0 rgba(0,0,0,.08);
+    outline: 0;
+}
+.super-form .mce-ico.mce-i-resize {
+    font-family:tinymce, Arial;
+}
+
+
+/*--------------------------------------------------------------
+# 14.3 RTL Support	@since 1.2.8
+--------------------------------------------------------------*/
+.super-rtl .super-field .super-label,
+.super-rtl .super-field .super-description,
+.super-rtl .super-field .super-field-wrapper .super-shortcode-field,
+.super-rtl .super-skype-button,
+.super-rtl .super-html .super-html-content {
+	text-align:right;
+}
+.super-rtl .super-field.super-quantity .super-field-wrapper .super-shortcode-field {
+	text-align:center;
+}
+.super-rtl .super-quantity .super-minus-button,
+.super-rtl .super-quantity .super-field-wrapper,
+.super-rtl .super-quantity .super-plus-button,
+.super-rtl .super-field,
+.super-rtl .super-checkbox.display-vertical .super-field-wrapper,
+.super-rtl .super-radio.display-vertical .super-field-wrapper,
+.super-rtl .super-shipping.display-vertical .super-field-wrapper,
+.super-rtl .super-checkbox.display-vertical .super-field-wrapper label,
+.super-rtl .super-radio.display-vertical .super-field-wrapper label,
+.super-rtl .super-shipping.display-vertical .super-field-wrapper label,
+.super-rtl .super-rating {
+	float:right;
+}
+.super-rtl .super-field .super-field-wrapper .super-dropdown-ui li.super-placeholder {
+	text-align:right;
+	padding-left: 0;
+	padding-right: 15px;
+}
+.super-rtl .super-field .super-field-wrapper .super-dropdown-arrow {
+	left: 10px;
+	right: inherit;
+}
+.super-rtl .super-field.grouped.grouped-start {
+	padding-right:0px;
+	padding-left: 15px;
+}
+.super-rtl .super-field.grouped.grouped-end {
+	padding-right:15px;
+	padding-left:0px;	
+}
+.super-rtl .super-checkbox .super-field-wrapper label:before,
+.super-rtl .super-radio .super-field-wrapper label:before {
+	left: inherit;
+	right: 0px;
+}
+.super-rtl .super-checkbox.display-vertical .super-field-wrapper label,
+.super-rtl .super-radio.display-vertical .super-field-wrapper label {
+	padding: 5px 25px 0px 0px;
+}
+.super-rtl .super-checkbox .super-field-wrapper label:after,
+.super-rtl .super-radio .super-field-wrapper label:after {
+	left:inherit;
+	right:4px;
+}
+.super-rtl .super-fileupload-button i {
+	left:inherit;
+	right: 15px;
+}
+.super-rtl .super-fileupload-button {
+	padding: 8px 35px 7px 15px;
+	text-align:right;
+}
+.super-rtl .super-field .super-field-wrapper .super-dropdown-ui li {
+	text-align:right;
+	padding: 0px 15px 0px 0px;
+}
+.super-rtl .super-radio.display-horizontal .super-field-wrapper label,
+.super-rtl .super-checkbox.display-horizontal .super-field-wrapper label {
+	padding: 10px 25px 10px 20px;
+	float:right;
+	margin: 0px 0px 0px 30px;
+}
+
+
+/* Button icon sizes */
+.super-button-icon-visibility-visible a .super-button-name i {
+	position: inherit;
+	-webkit-transform: translate(0,0);
+	-moz-transform: translate(0,0);
+	-ms-transform: translate(0,0);
+	-o-transform: translate(0,0);
+	transform: translate(0,0);
+	ms-transform: translate(0,0);
+	display: inline-block;
+	float: inherit;
+}
+.super-button-icon-visibility-visible a .super-button-name {
+	display: inline-block;
+	width: auto;
+}
+.super-button-massive.super-button-icon-visibility-visible a .super-button-name i {
+	padding-right:15px;
+	padding-top:0px;
+}
+.super-button-massive.super-button-icon-option-right.super-button-icon-visibility-visible a .super-button-name i {
+	padding-left:15px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Button Icon Sizes */
+.super-button-mini .super-button-name i {
+	font-size:11px;
+}
+.super-button-tiny .super-button-name i {
+	font-size:12px;
+}
+.super-button-small .super-button-name i {
+	font-size:13px;
+}
+.super-button-medium .super-button-name i {
+	font-size:14px;
+}
+.super-button-large .super-button-name i {
+	font-size:15px;
+}
+.super-button-big .super-button-name i {
+	font-size:16px;
+}
+.super-button-huge .super-button-name i {
+	font-size:17px;
+}
+.super-button-massive .super-button-name i {
+	font-size:18px;
+}
+
+
+/* Button Icon Left and Always visible Paddings */
+.super-button-mini.super-button-icon-option-left .super-button-name i {
+	padding:0px 3px 0px 0px;
+}
+.super-button-tiny.super-button-icon-option-left .super-button-name i {
+	padding:0px 4px 0px 0px;
+}
+.super-button-small.super-button-icon-option-left .super-button-name i {
+	padding:0px 5px 0px 0px;
+}
+.super-button-medium.super-button-icon-option-left .super-button-name i {
+	padding:0px 6px 0px 0px;
+}
+.super-button-large.super-button-icon-option-left .super-button-name i {
+	padding:0px 7px 0px 0px;
+}
+.super-button-big.super-button-icon-option-left .super-button-name i {
+	padding:0px 8px 0px 0px;
+}
+.super-button-huge.super-button-icon-option-left .super-button-name i {
+	padding:0px 10px 0px 0px;
+}
+.super-button-massive.super-button-icon-option-left .super-button-name i {
+	padding:0px 15px 0px 0px;
+}
+
+
+/* Button Icon Right and Always visible Paddings */
+.super-button-mini.super-button-icon-option-right .super-button-name i {
+	padding:0px 0px 0px 3px;
+}
+.super-button-tiny.super-button-icon-option-right .super-button-name i {
+	padding:0px 0px 0px 4px;
+}
+.super-button-small.super-button-icon-option-right .super-button-name i {
+	padding:0px 0px 0px 5px;
+}
+.super-button-medium.super-button-icon-option-right .super-button-name i {
+	padding:0px 0px 0px 6px;
+}
+.super-button-large.super-button-icon-option-right .super-button-name i {
+	padding:0px 0px 0px 7px;
+}
+.super-button-big.super-button-icon-option-right .super-button-name i {
+	padding:0px 0px 0px 8px;
+}
+.super-button-huge.super-button-icon-option-right .super-button-name i {
+	padding: 0px 0px 0px 10px;
+}
+.super-button-massive.super-button-icon-option-right .super-button-name i {
+	padding:0px 0px 0px 15px;
+}
+
+
+/* Button Icon Animations */
+.super-button-icon-animation-horizontal .super-button-name {
+	-webkit-transform: translate(10px,0);
+	-moz-transform: translate(10px,0);
+	-ms-transform: translate(10px,0);
+	-o-transform: translate(10px,0);
+	transform: translate(10px,0);
+	ms-transform: translate(10px,0);
+}
+.super-button-icon-animation-horizontal .super-button-name i,
+.super-button-icon-animation-vertical .super-button-name i {
+	display: inline-block;
+	-webkit-transition: opacity .2s ease-out;
+	-moz-transition: opacity .2s ease-out;
+	-ms-transition: opacity .2s ease-out;
+	-o-transition: opacity .2s ease-out;
+	transition: opacity .2s ease-out;
+	opacity: 0;
+}
+.super-button-icon-animation-horizontal a:hover .super-button-name i,
+.super-button-icon-animation-vertical a:hover .super-button-name i {
+	opacity:1;
+}
+.super-button-icon-animation-horizontal a:hover .super-button-name {
+	-webkit-transform: translate(0,0);
+	-moz-transform: translate(0,0);
+	-ms-transform: translate(0,0);
+	-o-transform: translate(0,0);
+	transform: translate(0,0);
+	ms-transform: translate(0,0);
+}
+.super-button-icon-animation-vertical .super-button-name i {
+	position:absolute;
+	left:50%;
+	margin-left: -5px;
+	top: -50px;
+	padding: 0px!important;
+}
+.super-button-icon-animation-vertical .super-button-name {
+	-webkit-transform: translate(0,0);
+	-moz-transform: translate(0,0);
+	-ms-transform: translate(0,0);
+	-o-transform: translate(0,0);
+	transform: translate(0,0);
+	ms-transform: translate(0,0);
+}
+.super-button-icon-animation-vertical:not(.super-loading) a:hover .super-button-name {
+	-webkit-transform: translate(0,50px);
+	-moz-transform: translate(0,50px);
+	-ms-transform: translate(0,50px);
+	-o-transform: translate(0,50px);
+	transform: translate(0,50px);
+	ms-transform: translate(0,50px);
+}
+
+
+/* Button Icon Loading State */
+.super-button-mini.super-loading a .super-button-name i {
+	left: 5px;
+}
+.super-button-tiny.super-loading a .super-button-name i {
+	left: 4px;
+}
+.super-button-small.super-loading a .super-button-name i {
+	left: 2px;
+}
+.super-button-medium.super-loading a .super-button-name i {
+	left: 0px;
+}
+.super-button-large.super-loading a .super-button-name i {
+	left: -2px;
+}
+.super-button-big.super-loading a .super-button-name i {
+	left: -4px;
+}
+.super-button-huge.super-loading a .super-button-name i {
+	left: -5px;
+}
+.super-button-massive.super-loading a .super-button-name i {
+	left: -10px;
+}
+.super-button-icon-option-left.super-loading a .super-button-name,
+.super-button-icon-animation-horizontal.super-loading a .super-button-name,
+.super-button-icon-animation-vertical.super-loading a .super-button-name {
+	padding-left: 15px;
+}
+.super-button.super-loading a .super-button-name i {
+	display:none;
+}
+.super-button-icon-option-left.super-loading a .super-button-name i,
+.super-button-icon-option-right.super-loading a .super-button-name i,
+.super-button-icon-animation-horizontal.super-loading a .super-button-name i,
+.super-button-icon-animation-vertical.super-loading a .super-button-name i {
+	display:block;
+	left:inherit;
+	top:inherit;
+	bottom:inherit;
+	right:inherit;
+	top: -1px;
+	left: -5px;
+	opacity:1;
+	position:absolute;
+	padding:0;
+}
+.super-button-icon-option-right.super-loading a .super-button-name i {
+	left:inherit;
+	top:inherit;
+	bottom:inherit;
+	right:inherit;
+	right:-5px;
+}
+.super-button-icon-option-right.super-loading a .super-button-name {
+	padding-right:15px;
+	padding-left:0px;
+}
+
+
+/* @since 2.0.0 - don't zoom input fields on mobile devices */
+@media screen and (-webkit-min-device-pixel-ratio:0) { 
+	.super-window-first-responsiveness .super-shortcode-field:focus,
+	.super-window-second-responsiveness .super-shortcode-field:focus {
+		font-size: 16px!important;
+	}
+}
+@media screen and (-webkit-min-device-pixel-ratio:0) { 
+	.super-window-first-responsiveness .super-shortcode-field,
+	.super-window-first-responsiveness .super-dropdown-ui li,
+	.super-window-first-responsiveness .super-checkbox .super-field-wrapper label,
+	.super-window-first-responsiveness .super-radio .super-field-wrapper label,
+	.super-window-first-responsiveness .super-fileupload-button span,
+	.super-window-second-responsiveness .super-shortcode-field,
+	.super-window-second-responsiveness .super-dropdown-ui li,
+	.super-window-second-responsiveness .super-checkbox .super-field-wrapper label,
+	.super-window-second-responsiveness .super-radio .super-field-wrapper label,
+	.super-window-second-responsiveness .super-fileupload-button span {
+		font-size: 16px!important;
+	}
+}

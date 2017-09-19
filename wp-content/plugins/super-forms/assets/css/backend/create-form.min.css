@@ -1,0 +1,1129 @@
+#wpbody-content > .updated,
+#wpbody-content > .error,
+#wpbody-content > .notice,
+#wpbody-content > * {
+    display:none;
+}
+.super-form-settings .field input::-webkit-input-placeholder,
+.super-element-settings .field input::-webkit-input-placeholder { /* WebKit browsers */
+    color:#A1A1A1;
+}
+.super-form-settings .field input:-moz-placeholder,
+.super-element-settings .field input:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    color:#A1A1A1;
+    opacity:1;
+}
+.super-form-settings .field input::-moz-placeholder,
+.super-element-settings .field input::-moz-placeholder { /* Mozilla Firefox 19+ */
+    color:#A1A1A1;
+    opacity:1;
+}
+.super-form-settings .field input:-ms-input-placeholder,
+.super-element-settings .field input:-ms-input-placeholder { /* Internet Explorer 10+ */
+    color:#A1A1A1;
+}
+.super-elements .super-element h3 {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+.super-create-form {
+    float: left;
+    width: 100%;
+    margin-top: 10px;
+    padding-right: 10px;
+    display: block!important;
+}
+.super-create-form.sticky {
+    margin-top:50px;
+}
+.super-create-form.sticky .super-header {
+    position:fixed;
+    top:40px;
+    right:10px;
+    z-index: 999;
+    border:0;
+}
+.super-create-form.sticky .super-header > * {
+    display:none;
+}
+.super-create-form.sticky .super-header .super-actions {
+    display:block;
+}
+.super-wrapper {
+    float: left;
+    width: 100%;
+}
+.super-header {
+    float: left;
+    width: 100%;
+    padding: 0px 0px 5px 0px;
+    margin-bottom: 0px;
+    position: relative;
+    z-index: 2;
+}
+.super-header .form-name {
+    float: left;
+    display: block;
+    font-size: 12px;
+    background-color: #49B4B6;
+    border: 0px;
+    padding: 0px 10px 0px 10px;
+    color: white;
+    height: 30px;
+    line-height: 30px;
+    margin: 0px 5px 0px 0px;
+    position: relative;
+    z-index: 5;
+    width: 140px;
+}
+.super-header .super-get-form-shortcodes {
+    padding: 0px 10px 0px 10px;
+    height: 30px;
+    background-color: white;
+    font-family: Courier New;
+    font-size: 11px;
+    line-height: 30px;
+    margin: 0px;
+    float: left;
+    text-align: center;
+}
+.super-header p {
+    font-style: italic;
+    float: left;
+    margin: 0;
+    padding: 0px 0px 0px 10px;
+    height: 30px;
+    line-height: 30px;
+    font-size: 12px;
+    letter-spacing: -0.03rem;
+}
+.super-switch-forms {
+    float: left;
+    background-color: #49B4B6;
+    height: 30px;
+    width: 31px;
+    color: white;
+    text-align: center;
+    border-right: 1px solid white;
+    line-height: 30px;
+    cursor: pointer;
+    font-size: 12px;
+    position: relative;
+    z-index: 6;
+}
+.super-switch-forms i {
+    float: left;
+    display: block;
+    height: 30px;
+    width: 30px!important;
+    text-align: center;
+    line-height: 29px;
+    background-color: #49B4B6!important;
+    color: white;
+}
+.super-switch-forms ul {
+    position: absolute;
+    left: 0px;
+    top: 30px;
+    display: none;
+    margin: 0px;
+    padding-bottom: 100px;
+    z-index: 9999;
+    height:300px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    background-color: #49B4B6;
+}
+.super-switch-forms ul li {
+    float: left;
+    margin: 0px;
+}
+.super-switch-forms ul li a {
+    float: left;
+    clear: both;
+    text-align: left;
+    width: 250px;
+    padding: 0px 10px 0px 5px;
+    margin: 0px 0px 0px 0px;
+    border-top: 1px solid white;
+    background-color: #5DD0D2;
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+    font-size: 11px;
+    font-style: italic;
+    color: white;
+    text-decoration: none;
+    line-height:22px;
+    height:25px;
+}
+.super-switch-forms ul li a:hover {
+    background-color: #49B4B6;
+}
+.super-header .super-actions {
+    float: right;
+    margin: 0px 0px 5px 0px;
+}
+.super-header .super-actions span {
+    height: 30px;
+    display:inline-block;
+    line-height: 30px;
+    padding: 0px 15px 0px 45px;
+    margin-left: 5px;
+    background-color: red;
+    color: white;
+    position: relative;
+    float: initial;
+    vertical-align: top;
+    min-width: 30px;
+    font-size: 12px;
+    cursor: pointer;
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+}
+.super-header .super-actions span:hover {
+    opacity:0.7;
+}
+.super-header .super-actions span i {
+    border-right: 1px solid white;
+    width: 30px;
+    height: 30px;
+    text-align:center;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    line-height: 30px;
+}
+.super-header .super-actions span.preview {
+    padding: 0px 10px 0px 10px;
+    margin-left: 1px;
+}
+.super-header .super-actions span.preview > i {
+    border:0px;
+}
+.super-header .super-actions span.save {
+    background-color: #69BA00;
+}
+.super-header .super-actions span.clear {
+    background-color: #7F7F7F;
+}
+.super-header .super-actions span.delete {
+    background-color: #F5234B;
+    margin-right: 5px;
+}
+.super-header .super-actions span.preview {
+    background-color: #2372F5;
+}
+.super-header .super-actions span.preview.active {
+    background-color: #75A2EC;
+}
+.super-builder {
+    float:left;
+    width:100%;
+    position: relative;
+    z-index: 1;
+}
+.super-preview {
+    float: left;
+    clear: both;
+    width: 70%;
+    position: relative;
+    z-index: 3;
+}
+.super-preview .super-marketplace-notice {
+    border: 2px dashed #ded367;
+    float:left;
+    padding: 20px 20px 20px 20px;
+    margin:0px 0px 10px 0px;
+    background-color: #fff8b2;
+    color: #86804a;
+    width: 100%;
+}
+.super-preview .super-marketplace-notice h2 {
+    color: #86804a;
+    margin: 0px 0px 0px 0px;
+    font-size: 24px;
+}
+.super-preview-elements {
+    margin: 0px 0px 0px 0px;
+    padding: 10px;
+    min-height: 190px;
+    background: #fff;
+    width: 100%;
+    border-top: 0px;
+    float: left;
+}
+.super-preview-elements > * {
+    visibility:inherit!important;
+}
+.super-preview-elements .ui-sortable-placeholder {
+    visibility: visible!important;
+    background-image: url("../../images/sortable-placeholder.png");
+    border:1px solid white!important;
+}
+.super-preview-elements.drop-here-placeholder {
+    background-image: url("../../images/drop-here.png");
+    background-size: 150px;
+    background-repeat: no-repeat;
+    background-position: bottom center;
+    padding-bottom: 150px;
+    border-bottom: 30px solid white;
+}
+.super-preview-elements.drop-here-placeholder.dropping-allowed {
+    background-image: url("../../images/drop-here2.png");
+}
+.super-preview-elements.drop-here {
+    background-image: url("../../images/drop-here.png");
+    background-repeat: no-repeat;
+    background-position: center center;
+}  
+.super-preview-elements .super-element {
+    width: 99%;
+    position: relative;
+    border: 1px dashed #CECECE;
+    background-color: white;
+    padding: 5px 5px 5px 5px;
+    float: left;
+    margin: 10px 0.5%;
+    clear: initial;
+    border-style: dashed;
+}
+.super-preview-elements .super-element:hover {
+    background-color: #F9F9F9;
+    border: 1px solid #AFAFAF;
+}
+.super-preview-elements .super-element.error {
+    background-color: #FFF7F7;
+    border: 1px dashed #FF7D7D;
+}
+.super-preview-elements .super-element.editing {
+    border: 1px solid #D8C88C;
+    background-color: #FFF9E3;
+}
+.super-preview-elements .super-element.super_one_full {
+    width: 99%;
+}
+.super-preview-elements .super-element.super_four_fifth {
+    width: 79%;
+}
+.super-preview-elements .super-element.super_three_fourth {
+    width: 74%;
+}
+.super-preview-elements .super-element.super_two_third {
+    width: 65.6%;
+}
+.super-preview-elements .super-element.super_three_fifth {
+    width: 59%;
+}
+.super-preview-elements .super-element.super_one_half {
+    width: 49%;
+}
+.super-preview-elements .super-element.super_two_fifth {
+    width: 39%;
+}
+.super-preview-elements .super-element.super_one_third {
+    width: 32.3%;
+}
+.super-preview-elements .super-element.super_one_fourth {
+    width: 24%;
+}
+.super-preview-elements .super-element.super_one_fifth {
+    width: 19%;
+}
+.super-preview-elements .super-element > textarea {
+    display:none;
+}
+.super-preview-elements .super-element .super-element-header {
+    float:left;
+    width:100%;
+}
+.super-preview-elements .super-element .super-element-header .super-element-label {
+    display:inline-block;
+    position:absolute;
+    top:0px;
+    left:50%;
+    width:20%;
+    margin-left:-10%;
+    height:20px;
+    margin-top:-10px;
+    text-align:center;
+    background-color: #49b4b6;
+    -webkit-border-radius: 30px;
+    -moz-border-radius: 30px;
+    border-radius: 30px;
+    min-width: 40px;
+}
+.super-preview-elements .super-element .super-element-header .super-element-label > span {
+    padding: 0px 10px 0px 10px;
+    visibility: hidden;
+    height: 0px;
+    display: inline-block;
+    float: left;
+    position: fixed;
+    left: 0px;
+    bottom: 0px;
+}
+.super-preview-elements .super-element .super-element-header .super-element-label > input {
+    background-image: none!important;
+    background: none;
+    border: none;
+    height: 19px;
+    font-size: 12px;
+    width: 100%;
+    text-align: center;
+    margin: 0px;
+    padding: 0px;
+    -webkit-border-radius: 30px;
+    -moz-border-radius: 30px;
+    border-radius: 30px;
+    color: #ffffff;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+
+.super-preview-elements .super-element .super-element-header .super-title,
+.super-preview-elements .super-element .super-element-header .resize {
+    float: left;
+    cursor: default;
+    width: 100%;
+}
+.super-preview-elements .super-element .super-element-header .super-title {
+    color: #AEAEAE;
+    padding: 0px;
+    font-size: 11px;
+    line-height: 11px;
+}
+.super-preview-elements .super-element .super-element-header .resize {
+    padding: 0px;
+}
+.super-preview-elements .super-element .super-element-header .resize span {
+    height: 20px;
+    width: 20px;
+    display: block;
+    float: left;
+    cursor: pointer;
+    position: relative;
+    text-align: center;
+}
+.super-preview-elements .super-element .super-element-header .resize span i {
+    line-height: 19px;
+    font-size: 14px;
+}    
+.super-preview-elements .super-element .super-element-header .resize span.current {
+    padding: 0px 0px 0px 0px;
+    cursor: default;
+    width: auto;
+    background: none;
+    height: auto;
+    font-size: 11px;
+    color: #AEAEAE;
+}
+.super-preview-elements .super-element .super-element-header .super-element-actions {
+    padding: 0;
+    margin-bottom: 5px;
+    overflow: hidden;
+    cursor: default;
+    border-bottom: 1px dotted #AEAEAE;
+    float: left;
+    width: 100%;
+}
+.super-preview-elements .super-element .super-element-header .super-element-actions span {
+    float: left;
+    margin: 0px 0px 0px 0px;
+    cursor: pointer;
+    padding: 6px 6px 5px 6px;
+    font-size: 12px;
+    line-height: 12px;
+}
+.super-preview-elements .super-element .super-element-header .super-element-actions span.minimize,
+.super-preview-elements .super-element .super-element-header .super-element-actions span.delete {
+    float: right;
+    padding: 4px 8px 3px 8px;
+    position: absolute;
+    right: 0px;
+    top:0px;
+}
+.super-preview-elements .super-element .super-element-header .super-element-actions span.minimize {
+    right: 20px;
+    top:1px;
+}
+.super-preview-elements .super-element .super-element-inner {
+    float: left;
+    width: 100%;
+}
+.super-preview-elements .super-element.drop-here > .super-element-inner {
+    background-image: url("../../images/drop-here.png");
+    background-repeat: no-repeat;
+    background-size: 75px;
+    background-position: center bottom;
+    border-top: 0px;
+    padding-bottom: 70px;
+}
+.super-preview-elements .super-element.super-minimized {
+    background-color: #EEFEFF;
+    border: 1px dashed #9FB7FF;
+}
+.super-preview-elements .super-element.multipart.super-minimized > .super-element-inner,
+.super-preview-elements .super-element.super-column.super-minimized > .super-element-inner {
+    min-height: 30px;
+    padding: 0px 0px 50px 0px;
+    background-size: 50px;
+}
+.super-preview-elements .super-element.super-minimized > .super-element-inner > * {
+    display:none;
+}
+.super-preview-elements .super-element.super-minimized > .super-element-inner > .ui-sortable-placeholder {
+    display:block;
+}
+.super-preview-elements .super-element.drop-here > .super-element-inner.dropping-allowed {
+    background-image: url("../../images/drop-here2.png");
+}
+.super-live-preview {
+    float:left;
+    width:100%;
+    margin: 0px 0px 0px 0px;
+    padding: 20px 15px;
+    min-height: 250px;
+    background: #fff;
+    border-top: 0px;
+    display: none;
+}
+.super-create-form .super-live-preview {
+    display: none;
+}
+.super-create-form .super-live-preview.mobile {
+    max-width: 320px;
+}
+.super-create-form .super-live-preview.tablet {
+    max-width: 768px;
+}
+.super-debug {
+    margin: 10px 0px 0px 0px;
+    padding: 0px;
+    float: left;
+    width: 100%;
+    display:block;
+    opacity: 0.5;
+}
+.super-debug:hover {
+    opacity:1;
+}
+.super-debug textarea {
+    width: 100%;
+    min-height: 150px;
+    font-size: 11px;
+    line-height: 13px;
+    color: #888888;
+    border: 0px;
+    padding: 10px;
+}
+.super-elements {
+    float: left;
+    width: 30%;
+    position: relative;
+    z-index: 3;
+    padding-left: 10px;
+    top: 0px;
+}
+.super-create-form.sticky .super-elements {
+    position:fixed;
+    right:10px;
+    top: 80px;
+}
+.super-elements .super-element {
+    float:left;
+    width:100%;
+    background: #fff;
+}
+.super-elements .super-element h3 {
+    background-color: #49B4B6;
+    color: white;
+    margin: 0px;
+    height: 30px;
+    line-height: 28px;
+    padding: 0px 0px 0px 40px;
+    font-size: 12px;
+    font-weight: 100;
+    position: relative;
+    cursor: pointer;
+    border-bottom: 1px solid white;
+}
+.super-elements .super-element h3 i {
+    border-right: 1px solid white;
+    height: 30px;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 30px;
+    text-align: center;
+    line-height: 30px;
+    font-size: 14px;
+}
+.super-elements .super-element .super-elements-container {
+    padding: 10px;
+    float: left;
+    width: 100%;
+    -webkit-transition: initial;
+    -moz-transition: initial;
+    transition: initial;
+    display: none;
+}
+.super-elements .super-element.super-layout-elements .super-elements-container {
+    display:block;
+}
+.super-elements .super-element.super-form-elements .super-elements-container {
+    padding:5px;
+}
+.super-elements .super-element .super-elements-container .cancel-update {
+    background-color: #7F7F7F;
+    margin-left: 10px;
+}
+.super-element-settings-tabs,
+.super-form-settings-tabs {
+    width:100%;
+    float:left;
+}
+.super-element-settings-tabs > select,
+.super-form-settings-tabs > select,
+.load-form-container > select {
+    padding: 0px 10px 0px 10px;
+    height: 28px;
+    background-color: white;
+    font-size: 12px;
+    font-weight: bold;
+    line-height: 28px;
+    float: left;
+    margin: 0px 0px 10px 0px;
+    width: 100%;
+    border: 2px solid #49B4B6;
+}
+.super-element-settings .tab-content,
+.super-form-settings .tab-content {
+    display: none;
+    float: left;
+    width: 100%;
+    max-height: 500px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    padding-right: 15px;
+    padding-left: 10px;
+    padding-bottom: 0px;
+    margin-bottom: 10px;
+}
+.super-element-settings .tab-content.active,
+.super-form-settings .tab-content.active {
+    display: block;
+}
+.super-element-settings .field,
+.super-form-settings .field {
+    float: left;
+    width: 100%;
+    padding: 10px 0px 10px 0px;
+    margin: 0px;
+    font-size: 17px;
+    border-bottom: 1px solid #E0E0E0;
+    position: relative;
+}
+.super-element-settings .field-name,
+.super-form-settings .field-name {
+    position: relative;
+    display: inline-block;
+    font-size: 12px;
+    font-weight: bold;
+    color: black;
+}
+.super-element-settings .field-name > i,
+.super-form-settings .field-name > i {
+    font-weight: normal;
+    font-style:normal;
+    font-size: 12px;
+}
+.super-element-settings .info,
+.super-form-settings .info {
+    font-family:'Fontawesome';
+    height:20px;
+    padding: 0px 0px 0px 0px;
+    font-style:normal;
+    text-align:center;
+    overflow: initial;
+    display: inline-block;
+    float: right;
+    font-size: 14px;
+    position: relative;
+    cursor: pointer;
+    font-weight: 100;
+    width: auto;
+    z-index: 9999;
+}
+.super-element-settings .info:before,
+.super-form-settings .info:before {
+    content:'\f059';
+}
+.super-element-settings .field-label,
+.super-form-settings .field-label {
+    font-size: 10px;
+    padding: 0px 0px 5px 0px;
+}    
+.super-element-settings .field-input,
+.super-form-settings .field-input {
+    float: left;
+    width: 100%;
+}
+.super-element-settings .field-input .super-checkbox,
+.super-form-settings .field-input .super-checkbox {
+    font-size:12px;
+    float: left;
+}
+.super-element-settings .field-input .super-checkbox *,
+.super-form-settings .field-input .super-checkbox * {
+    float:left;
+}
+.super-element-settings .field-input .super-checkbox label,
+.super-form-settings .field-input .super-checkbox label {
+    width:100%;
+    margin:0px 0px 5px 0px;
+}
+.super-element-settings .field-input .super-checkbox input,
+.super-form-settings .field-input .super-checkbox input {
+    width: 16px;
+    height: 16px;
+    margin:0px 5px 0px 0px;
+}
+.color-picker-container {
+    float: left;
+    width: 100%;
+    margin: 0px 0px 0px 0px;
+}
+.color-picker-container .color-picker {
+    float: right;
+    width: 100%;
+}
+.color-picker-container .color-picker .wp-picker-container .wp-picker-input-wrap input {
+    width: 45%;
+    margin: 0px 5% 0px 0px
+}
+.color-picker-container .color-picker-label {
+    font-size: 10px;
+    padding: 0px 0px 0px 0px;
+}
+.color-picker-container .wp-picker-container {
+    position: relative;
+    width: 100%;
+}
+.color-picker-container .wp-picker-container .wp-picker-open {
+    margin-bottom: 230px;
+}
+.color-picker-container .wp-picker-container .wp-picker-holder {
+    position: absolute;
+    z-index: 10;
+    left: 10px;
+    top: 35px;
+}
+.color-picker-container .wp-picker-container .wp-picker-holder .iris-picker {
+    padding: 0px 0px 0px 0px;
+    background-color: white;
+    border: 0px;
+    height: 160px!important;
+}
+.color-picker-container .wp-picker-container .wp-picker-holder .iris-picker .iris-picker-inner {
+    top: 30px;
+    left: 0px;
+}
+.color-picker-container .wp-picker-container .wp-picker-holder .iris-picker .iris-square {
+    width:140px!important;
+    height:140px!important;
+    margin-right: 5px;
+}
+.color-picker-container .wp-picker-container .wp-picker-holder .iris-picker .iris-slider {
+    height:140px!important;
+} 
+.color-picker-container .wp-picker-container .wp-picker-holder .iris-picker .iris-palette-container {
+    bottom:0px;
+    left:0px;
+}
+.color-picker-container .wp-picker-container .wp-picker-holder .iris-picker .iris-palette-container > * {
+    padding:0px;
+    margin:0px;
+    width: 20px!important;
+    height: 20px!important;
+}
+.color-picker-container .wp-picker-container .wp-picker-input-wrap {
+    position: absolute;
+    z-index: 11;
+    left: 10px;
+    top: 40px;
+    width: 182px;
+}
+.super-element-settings .field-input .super-icon-field .super-icon-list {
+    margin:5px 0px 0px 4px;
+}
+.super-element-settings .field-input .super-icon-field .super-icon-list i {
+    border: 1px solid #D8D8D8;
+    display:inline-block;
+    width:26px;
+    height:25px;
+    text-align:center;
+    font-size:14px;
+    line-height:22px;
+    margin:0px 2px 2px 0px;
+    cursor: pointer;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+}
+.super-element-settings .field-input .super-icon-field .super-icon-list i:hover {
+    border: 1px solid #636363;
+}
+.super-element-settings .field-input .super-icon-field .super-icon-list i.active,
+.super-element-settings .field-input .super-icon-field .super-icon-list i.active:hover {
+    border: 1px solid #0073AA;
+    background-color: #0073AA;
+    color:white;
+}
+.super-element-settings .field-input > textarea {
+    font-size:12px;
+}
+.super-element-settings .field-input > textarea.multi-items-json {
+    display:none;
+}
+.super-element-settings .field-input .super-multi-items {
+    float:left;
+    width:100%;
+    border: 1px solid #E0E0E0;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    background-color: #F9F9F9;
+    padding: 5px;
+    margin-bottom: 5px;
+    position: relative;
+    min-height: 60px;
+}
+.super-element-settings .field-input .super-multi-items > p {
+    width:100%;
+    text-align:left!important;
+    margin:0px 0px 0px 0px!important;
+    padding:0px 0px 0px 0px;
+}
+.super-element-settings .field-input .super-multi-items > .image-field {
+    width: 100%;
+    height: auto;
+    text-align:center;
+    font-size:14px;
+    cursor:pointer;
+    color: #B1B1B1;
+    margin: 1px 0px 0px 23px;
+}
+.super-element-settings .field-input .super-multi-items > .image-field .image-preview {
+    width:200px;
+    padding: 0px 0px 0px 0px;
+}
+.super-element-settings .field-input .super-multi-items > .image-field .image-preview .delete {
+    float:left;
+    clear: initial;
+    padding: 0px 0px 0px 5px;
+}
+.super-element-settings .field-input .super-multi-items > .image-field .image-preview .image {
+    overflow:hidden;
+    padding: 5px 0px 0px 0px;
+    max-width: 36px;
+    float: left;
+    margin-left: 5px;
+}
+.super-element-settings .field-input .super-multi-items > .image-field .image-preview .image img {
+    max-height: 37px;
+    max-width: 37px;
+    margin: 0px;
+}
+
+
+
+.super-element-settings .field-input .super-multi-items > .image-field > span {
+    height: 20px;
+    width: 25px;
+    line-height: 19px;
+    font-size: 14px;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    padding: 0px;
+    border: 0px;
+    -webkit-border-radius: 0px;
+    border-radius: 0px;
+    float: left;
+    color: #A2A2A2;
+}
+.super-element-settings .field-input .super-multi-items > .image-field > span:hover {
+    color: #4E4E4E;
+}
+.super-element-settings .field-input .super-multi-items > * {
+    width: 25%;
+    float:left;
+    height: 20px;
+    line-height: 20px;
+    margin:0px;
+    font-size: 11px;
+    padding: 0px;
+    margin-right:-1px;
+    margin-bottom:-1px;
+}
+.super-element-settings .field-input .super-multi-items > select[name="conditional_field"],
+.super-element-settings .field-input .super-multi-items > select[name="conditional_field_and"] {
+    width:70px;
+}
+.super-element-settings .field-input .super-multi-items > select[name="conditional_logic"],
+.super-element-settings .field-input .super-multi-items > select[name="conditional_logic_and"] {
+    width:35px;
+}
+.super-element-settings .field-input .super-multi-items > input[name="conditional_value"],
+.super-element-settings .field-input .super-multi-items > input[name="conditional_value_and"] {
+    width:40px;
+}
+.super-element-settings .field-input .super-multi-items > select[name="conditional_and_method"] {
+    width: 47px;
+}
+.super-element-settings .field-input .super-multi-items > span.line-break {
+    width:100%;
+    border-top: 1px dashed #E0E0E0;
+    margin-top:5px;
+    height:7px;
+}
+.super-element-settings .field-input .super-multi-items > .sorting .up,
+.super-element-settings .field-input .super-multi-items > .sorting .down {
+    display: block;
+    float: left;
+    text-align: center;
+    width: 100%;
+    height: 15px;
+}
+.super-element-settings .field-input .super-multi-items > input {
+    width:70px;
+    margin-right:10px;
+    padding:0px 0px 0px 5px;
+}
+.super-element-settings .field-input .super-multi-items > i {
+    width: 20px;
+    height: 20px;
+    line-height: 20px;
+    text-align:center;
+    padding:0px;
+    font-size:14px;
+    cursor: pointer;
+    opacity: 0.5;
+    position: absolute;
+    right: 4px;
+    top: 4px;
+}
+.super-element-settings .field-input .super-multi-items > i.add {
+    margin-left: 1%;
+    right: 4px;
+    bottom: 3px;
+    top: initial;
+}
+.super-element-settings .field-input .super-multi-items > i:hover {
+    opacity:1;
+}
+.super-element-settings .field-input .super-multi-items .sorting {
+    display: inline-block;
+    float: left;
+    height: 35px;
+    width: 27px;
+    margin-top: -3px;
+    position: absolute;
+    left: 0px;
+    bottom: 0px;
+}
+.super-element-settings .field-input .super-multi-items .sorting span i {
+    height: 15px;
+    line-height: 15px;
+    text-align: center;
+    padding: 0px;
+    font-size: 12px;
+    cursor: pointer;
+    opacity: 0.5;
+    float: left;
+    width: 100%;
+}
+.super-element-settings .field-input .super-multi-items .sorting span i:hover {
+    opacity:1;
+}
+.super-element-settings .field-input .super-multi-items input {
+    width: 155px;
+    float: left;
+    height: 20px;
+    line-height: 20px;
+    margin: 0px;
+    font-size: 11px;
+    padding: 0px 0px 0px 3px;
+    margin-right: -1px;
+    margin-bottom: -1px;
+}
+.super-element-settings .field-input .super-multi-items input[type="checkbox"],
+.super-element-settings .field-input .super-multi-items input[type="radio"] {
+    width:16px;
+    height:16px;
+    margin-right: 10px;
+}
+.super-element-settings .field select,
+.super-element-settings .field input,
+.super-element-settings .field textarea,
+.super-element-settings .field .slide,
+.super-form-settings .field select,
+.super-form-settings .field input,
+.super-form-settings .field textarea,
+.super-form-settings .field .slider {
+    width:100%;
+    font-size: 11px;
+    padding: 0px 0px 0px 5px;
+    height: 20px;
+    line-height: 20px;
+}
+.super-form-settings .field .slider {
+    padding:0px 0px 0px 0px;
+}
+.super-element-settings .field select,
+.super-form-settings .field select {
+    padding:0px 0px 0px 0px;
+}
+.super-element-settings .field select[multiple],
+.super-form-settings .field select[multiple] {
+    height:auto;
+}
+.super-element-settings .field textarea,
+.super-form-settings .field textarea {
+    height:auto;
+    line-height: 12px;
+    font-size: 11px;
+    padding: 3px 3px 3px 3px;
+}
+.super-elements .super-element .super-elements-container p {
+    font-style: italic;
+    text-align: center;
+    padding: 0px;
+    margin: 0px 0px 15px 0px;
+}
+.super-element.super-layout-elements > .super-elements-container > .super-element {
+    border: 3px solid #E9E9E9;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    height: auto;
+    padding: 5px;
+    width: 23%;
+    height: 70px;
+    margin: 0px 1% 1% 1%!important;
+}
+.super-element.super-layout-elements > .super-elements-container > .super-element span {
+    background-color: #E9E9E9;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    display: block!important;
+    float: left;
+    width: 96%;
+    margin: 0px 2% 0px 2%;
+    height: 54px;
+    text-align: center;
+    line-height:54px;
+    font-size:10px;
+}
+.super-element.super-layout-elements > .super-elements-container > .super-element:hover {
+    border: 3px solid #A9A9A9;
+}
+.super-element.super-layout-elements > .super-elements-container > .super-element.super-shortcode-column_one_half span {
+    width: 46%;
+    margin: 0px 2% 0px 2%;
+}
+.super-element.super-layout-elements > .super-elements-container > .super-element.super-shortcode-column_one_third span {
+    width: 29%;
+    margin: 0px 2% 0px 2%;
+}
+.super-element > .super-elements-container > .super-element {
+    cursor: pointer;
+    float: left;
+    width: 31%;
+    margin: 0px -1px -1px 0px!important;
+    height: 20px;
+    line-height: 18px;
+    padding-left: 25px;
+    font-size: 9px;
+    position: relative!important;
+    top: initial!important;
+    left: initial!important;
+    border: 1px solid #ECECEC;
+    color: grey;
+}
+.super-element.super-form-elements > .super-elements-container > .super-element:hover {
+    color: #49B4B6;
+    border: 1px solid #49B4B6;
+    position:relative;
+    z-index:1;
+}
+.super-element > .super-elements-container > .super-element:before {
+    content:'';
+    display:none;
+}
+.super-element > .super-elements-container > .super-element i {
+    height: 20px;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 27px;
+    text-align: center;
+    line-height: 19px;
+    font-size: 12px;
+}
+.super-elements .load-form-container {
+    float:left;
+    width:100%;
+}
+.super-elements .load-form-container textarea {
+    display:none;
+}
+.field-input .browse-images,
+.field-input .browse-files {
+    float:left;
+    width:100%;
+}
+.field-input .browse-images .image-preview,
+.field-input .browse-files .file-preview {
+    float:left;
+    width: 100%;
+}
+.field-input .browse-images .image-preview .image,
+.field-input .browse-files .file-preview .image {
+    text-align:center;
+    max-width:100px;
+    padding: 10px 0px 0px 0px;
+}
+.field-input .browse-images .image-preview .image img,
+.field-input .browse-files .file-preview .image img {
+    margin-top:10px;
+    max-height:100px;
+    max-width:100px;
+    clear:both;
+    float: left;
+}
+.field-input .browse-images .image-preview > a,
+.field-input .browse-files .file-preview > a {
+    display:block;
+    float:left;
+    font-size:12px;
+    padding:3px 25px;
+    color:black;
+    clear:both;
+    text-decoration: underline;
+}
+.field-input .browse-images .image-preview > a.delete,
+.field-input .browse-files .file-preview > a.delete {
+    text-decoration:none;
+    margin-top:5px;
+}
+.field-input .browse-images .image-preview > a.delete:after,
+.field-input .browse-files .file-preview > a.delete:after {
+    content:'\f1f8';
+    font-family:'Fontawesome';
+    padding:0px 0px 0px 5px;
+}
