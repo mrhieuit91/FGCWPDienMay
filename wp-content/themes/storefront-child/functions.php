@@ -244,8 +244,127 @@ if (!function_exists('fgc_customize_single_product_page')) {
 
 }
 
-
+add_theme_support('menus');
+register_nav_menus(
+        array(
+            'categories-nav' => 'Categories Menu',
+//            'footer-nav' => 'Footer menu'
+        )
+);
 //********************************CREATE WIDGETS**********************************************
+//CATEGORIES WIDGET
+
+/*
+ * Đăng ký widget mới
+ */
+add_action('widgets_init', 'fgc_create_categories_widget');
+
+function fgc_create_categories_widget() {
+    register_widget('FGC_Categories_Widget');
+}
+
+class FGC_Categories_Widget extends WP_Widget {
+    /*
+     * Thiết lập cơ bản
+     */
+
+    public function __construct() {
+        parent::__construct(
+                'fgc_create_categories_widget', 'Danh Mục Sản Phẩm', array(
+            'description' => 'Danh mục sản phẩm' // mô tả
+                )
+        );
+    }
+
+    /*
+     * Tạo form option cho widget
+     */
+
+    function form($instance) {
+        parent::form($instance);
+
+        //Biến tạo các giá trị mặc định trong form
+        $default = array(
+            'title' => 'Tiêu đề widget'
+        );
+
+        //Gộp các giá trị trong mảng $default vào biến $instance để nó trở thành các giá trị mặc định
+        $instance = wp_parse_args((array) $instance, $default);
+
+        //Tạo biến riêng cho giá trị mặc định trong mảng $default
+        $title = esc_attr($instance['title']);
+
+        //Hiển thị form trong option của widget       
+        echo 'Nhập tiêu đề <input class="widefat" type="text" name="' . $this->get_field_name('title') . '"value="' . $title . '"/>';
+    }
+
+    /*
+     * Lưu widget form
+     */
+
+    function update($new_instance, $old_instance) {
+        parent::update($new_instance, $old_instance);
+
+        $instance = $old_instance;
+        $instance['title'] = strip_tags($new_instance['title']);
+        return $instance;
+    }
+
+    /*
+     * Hiển thị widget
+     */
+
+    function widget($args, $instance) {
+        extract($args);
+        $title = apply_filters('widget_title', $instance['title']);
+
+        echo $before_widget;
+
+        //In tiêu đề widget
+        echo $before_title . $title . $after_title;
+
+        // Nội dung trong widget
+        ?>
+        <style>
+            .contact-boder-menu{font-weight: bold;}
+            .contact-boder-menu ul {
+                margin-left: 15px;        
+            }
+            .contact-boder-menu ul li a{
+                text-decoration: none;        
+            }
+            .contact-boder-menu ul li a :hover{
+                text-decoration: underline;        
+            }
+            .menu-item ul {
+                /*display: none;*/
+            }
+        </style>
+        <div class="contact-boder-menu" style="border: dashed 1px">
+            <?php
+            wp_nav_menu(array(
+                'theme_location' => 'categories-nav', // tên location cần hiển thị
+                'container' => 'ul', // thẻ container của menu
+                'container_class' => 'categories-nav dropdown', //class của container
+                'menu_class' => 'categories-menu dropdown-toggle' // class của menu bên trong
+            ));
+            ?>
+        </div>
+        <script type="text/javascript">
+            $('.menu-item').hover(function () {
+                $('.sub-menu').css("display", "block");
+                $(this).children('.sub-menu').stop().slideToggle(400);
+            });
+        </script>
+        <?php
+        // Kết thúc nội dung trong widget
+
+        echo $after_widget;
+    }
+
+}
+
+/* ----------------------------------------------------------------------------- */
 //CONTACT WIDGET
 
 /*
@@ -289,7 +408,7 @@ class FGC_Contact_Widget extends WP_Widget {
         $title = esc_attr($instance['title']);
 
         //Hiển thị form trong option của widget       
-        echo 'Nhập tiêu đề <input class="widefat" type="text" name="'.$this->get_field_name('title').'"value="'.$title.'"/>';
+        echo 'Nhập tiêu đề <input class="widefat" type="text" name="' . $this->get_field_name('title') . '"value="' . $title . '"/>';
     }
 
     /*
@@ -319,18 +438,18 @@ class FGC_Contact_Widget extends WP_Widget {
 
         // Nội dung trong widget
         ?>
-<style>
-    .contact-boder-menu{font-weight: bold;}
-    .contact-boder-menu ul {
-        margin-left: 15px;        
-    }
-    .contact-boder-menu ul li a{
-        text-decoration: none;        
-    }
-    .contact-boder-menu ul li a :hover{
-        text-decoration: underline;        
-    }
-</style>
+        <style>
+            .contact-boder-menu{font-weight: bold;}
+            .contact-boder-menu ul {
+                margin-left: 15px;        
+            }
+            .contact-boder-menu ul li a{
+                text-decoration: none;        
+            }
+            .contact-boder-menu ul li a :hover{
+                text-decoration: underline;        
+            }
+        </style>
         <div class="contact-boder-menu" style="border: dashed 1px">
             <h4 style="color: red; padding-left: 10px; ">FGC TECHLUTION</h4>
             <ul>
@@ -346,3 +465,6 @@ class FGC_Contact_Widget extends WP_Widget {
     }
 
 }
+
+
+//remove_action( 'woocommerce_before_main_content','woocommerce_breadcrumb', 20, 0);

@@ -161,6 +161,25 @@ div.col-full {
 }
 
 /*WIDGET CUSTOMIZES*/
+.site-content .col-full .widget-area .widget {
+    margin-bottom: 20px !important;
+}
+.contact-boder-menu .categories-menu {
+    padding-left: 0;
+}
+.contact-boder-menu .categories-menu .menu-item{
+    line-height: 30px;
+    display: block;
+    border-bottom: 1px dotted #CCCCCC;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.contact-boder-menu .categories-menu .menu-item>a{
+    padding: 0 10px;
+    font-weight: bold;
+    text-decoration: none;
+}
 .site-content .col-full .widget-area .widget .widget-title {
 
     height: 55px;
