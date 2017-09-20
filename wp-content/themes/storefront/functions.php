@@ -71,3 +71,12 @@ add_action('wp_enqueue_scripts', 'custom_style');
  * Note: Do not add any custom code here. Please use a custom plugin so that your customizations aren't lost during updates.
  * https://github.com/woocommerce/theme-customisations
  */
+
+// remove default sorting dropdown in StoreFront Theme
+ 
+add_action('init','delay_remove');
+ 
+function delay_remove() {
+remove_action( 'woocommerce_after_shop_loop', 'woocommerce_catalog_ordering', 10 );
+remove_action( 'woocommerce_before_shop_loop', 'woocommerce_catalog_ordering', 10 );
+}
