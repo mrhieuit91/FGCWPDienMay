@@ -1,7 +1,95 @@
 <?php
+
 /**
- * Đặt các đoạn code cần tùy biến của bạn vào bên dưới
+ * Các đoạn code cần tùy biến của bạn vào bên dưới
  */
+/*
+ * Tạo shortcode hiển thị list tin tức
+ */
+function fgc_my_load_more_scripts() {
+
+    global $wp_query;
+    wp_enqueue_script('jquery');
+
+    // register our main script but do not enqueue it yet
+    wp_register_script('my_loadmore', get_stylesheet_directory_uri() . '/assets/fgc_loadnewsajax.js', array('jquery'));
+
+    // now the most interesting part
+    // we have to pass parameters to myloadmore.js script but we can get the parameters values only in PHP
+    // you can define variables directly in your HTML but I decided that the most proper way is wp_localize_script()
+    wp_localize_script('my_loadmore', 'fgc_loadmore_params', array(
+        'ajaxurl' => site_url() . '/wp-admin/admin-ajax.php', // WordPress AJAX
+        'posts' => serialize($wp_query->query_vars), // everything about your loop is here
+        'current_page' => get_query_var('paged') ? get_query_var('paged') : 1,
+        'max_page' => $wp_query->max_num_pages
+    ));
+
+    wp_enqueue_script('my_loadmore');
+}
+
+add_action('wp_enqueue_scripts', 'fgc_my_load_more_scripts');
+
+if (!function_exists('show_list_news_ajax')) {
+
+    function show_list_news_ajax() {
+
+
+
+        function fgc_loadmore_ajax_handler() {
+
+            // prepare our arguments for the query
+            $args = unserialize(stripslashes($_POST['query']));
+            $args['paged'] = $_POST['page'] + 1; // we need next page to be loaded
+            $args['post_status'] = 'publish';
+
+            // it is always better to use WP_Query but not here
+            query_posts($args);
+
+            if (have_posts()) :
+
+                // run the loop
+                while (have_posts()): the_post();
+
+                    // look into your theme code how the posts are inserted, but you can use your own HTML of course
+                    // do you remember? - my example is adapted for Twenty Seventeen theme
+                    get_template_part('template-parts/post/content', get_post_format());
+                    ?>
+                    <div class="col-xs-9">
+                        <div id="main_center" class="conten_product">
+                            <h1>tessssssssssssst</h1>
+                            <h1>tessssssssssssst</h1>
+                            <h1>tessssssssssssst</h1>
+                            <h1>tessssssssssssst</h1>
+                            <h1>tessssssssssssst</h1>
+                            <h1>tessssssssssssst</h1>
+                        </div>
+                    </div>
+                    <?php
+                // for the test purposes comment the line above and uncomment the below one
+                // the_title();
+
+
+                endwhile;
+
+            endif;
+            die; // here we exit the script and even no wp_reset_query() required!
+        }
+
+        add_action('wp_ajax_loadmore', 'fgc_loadmore_ajax_handler'); // wp_ajax_{action}
+        add_action('wp_ajax_nopriv_loadmore', 'fgc_loadmore_ajax_handler'); // wp_ajax_nopriv_{action}
+    }
+
+}
+add_shortcode('list_news_shortcode', 'show_list_news_ajax');
+
+/*
+ * Kết thúc các hàm tạo shortcode hiển thị list tin tức
+ */
+
+
+
+
+
 if (!function_exists('fgc_custom_style')) {
 
     function fgc_custom_style() {
@@ -50,22 +138,21 @@ if (!function_exists('fgc_custom_header_right_box')) {
 
     function fgc_custom_header_right_box() {
         $current_user = wp_get_current_user();
-        ?><div class="header-right-box"><span class="glyphicon glyphicon-user"></span><?php
+        ?><div class="header-right-box"><span class="fa fa-user"></span><?php
         if (!is_user_logged_in()) {
             ?> <a href="<?php echo wp_login_url(); ?>">Đăng nhập</a> / <a href="<?php echo wp_registration_url(); ?>">Đăng ký</a><?php
             } else {
-                ?><span>Xin chào :</span> <span style="color: red"><?php echo $current_user->user_login ?> </span> / <a href="<?php echo wp_logout_url(get_permalink()); ?>">Đăng xuất</a><?php
+                ?><span> Xin chào :</span> <span style="color: red"><?php echo $current_user->user_login ?> </span> / <a href="<?php echo wp_logout_url(get_permalink()); ?>">Đăng xuất</a><?php
             }
             ?>
             <div style="margin-top: 10px">
                 <a id="minicart" href="<?php echo WC()->cart->get_cart_url(); ?>" class="cart icon red relative">
 
-                    <?php echo sprintf('%d', WC()->cart->cart_contents_count); ?> <span>Sản phẩm</span>
+                    <span class="fa fa-cart-plus"></span> <?php echo sprintf('%d', WC()->cart->cart_contents_count); ?> <span>Sản phẩm</span>
                     <input type="button" value="Thanh toán" name="thanhtoan" style="padding: 0; margin: 0 ;width: 110px; height: 22px; line-height: 20px; background-color: #ff7c00; border: solid 1px orangered;  border-radius: 5px"/>
                 </a>
             </div>
-            <?php
-            ?></div><?php
+            <?php ?></div><?php
     }
 
 }
@@ -324,6 +411,8 @@ class FGC_Categories_Widget extends WP_Widget {
         echo $before_title . $title . $after_title;
 
         // Nội dung trong widget
+//        global $wpdb;
+//        $fgc_table = $wpdb->predix . '';
         ?>
         <style>
             .contact-boder-menu{font-weight: bold;}
@@ -466,5 +555,113 @@ class FGC_Contact_Widget extends WP_Widget {
 
 }
 
+//COMMENT WIDGET
+
+/*
+ * Đăng ký widget mới
+ */
+add_action('widgets_init', 'fgc_create_comment_widget');
+
+function fgc_create_comment_widget() {
+    register_widget('Fgc_Comment_Widget');
+}
+
+class FGC_Comment_Widget extends WP_Widget {
+    /*
+     * Thiết lập cơ bản
+     */
+
+    public function __construct() {
+        parent::__construct(
+                'fgc_comment_widget', 'Các đánh giá mới nhất', array(
+            'description' => 'Widget chứa các comments mới nhất !' // mô tả
+                )
+        );
+    }
+
+    /*
+     * Tạo form option cho widget
+     */
+
+    function form($instance) {
+        parent::form($instance);
+
+        //Biến tạo các giá trị mặc định trong form
+        $default = array(
+            'title' => 'Tiêu đề widget'
+        );
+
+        //Gộp các giá trị trong mảng $default vào biến $instance để nó trở thành các giá trị mặc định
+        $instance = wp_parse_args((array) $instance, $default);
+
+        //Tạo biến riêng cho giá trị mặc định trong mảng $default
+        $title = esc_attr($instance['title']);
+
+        //Hiển thị form trong option của widget       
+        echo 'Nhập tiêu đề <input class="widefat" type="text" name="' . $this->get_field_name('title') . '"value="' . $title . '"/>';
+    }
+
+    /*
+     * Lưu widget form
+     */
+
+    function update($new_instance, $old_instance) {
+        parent::update($new_instance, $old_instance);
+
+        $instance = $old_instance;
+        $instance['title'] = strip_tags($new_instance['title']);
+        return $instance;
+    }
+
+    /*
+     * Hiển thị widget
+     */
+
+    function widget($args, $instance) {
+        extract($args);
+        $title = apply_filters('widget_title', $instance['title']);
+
+        echo $before_widget;
+
+        //In tiêu đề widget
+        echo $before_title . $title . $after_title;
+
+        // Nội dung trong widget
+        ?>
+        <style>
+            .contact-boder-menu{font-weight: bold;}
+            .contact-boder-menu ul {
+                margin-left: 15px;        
+            }
+            .contact-boder-menu ul li a{
+                text-decoration: none;        
+            }
+            .contact-boder-menu ul li a :hover{
+                text-decoration: underline;        
+            }
+        </style>
+        <div class="contact-boder-menu" style="border: dashed 1px">
+
+            <marquee align="center" direction="up" height="422" scrollamount="4" width="100%" onmouseover="this.stop()" onmouseout="this.start()" >
+                <?php
+                $comments = get_comments();
+                foreach ($comments as $comment) {
+                    echo '<div class="user-com"><a href="index.php/sanpham/">
+                    <img src="" alt="" width="100%"/>
+                    <div class="by-user"><span><b>Khách hàng:</b></span>' . $comment->comment_author . '</div>
+                    <p>' . $comment->comment_content . '</p>
+                  </a></div>';
+                }
+                ?> 
+            </marquee>
+
+        </div>
+        <?php
+        // Kết thúc nội dung trong widget
+
+        echo $after_widget;
+    }
+
+}
 
 //remove_action( 'woocommerce_before_main_content','woocommerce_breadcrumb', 20, 0);
