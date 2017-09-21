@@ -22,7 +22,7 @@ get_header(); ?>
 
 		</main><!-- #main -->
 	</div><!-- #primary -->
-
+<?php get_the_title();  ?>
 <?php
 do_action( 'storefront_sidebar' );
 get_footer();

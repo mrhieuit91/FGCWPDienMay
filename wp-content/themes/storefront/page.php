@@ -11,6 +11,7 @@
  */
 
 get_header(); ?>
+<?php the_title();  ?>
 
 	<div id="primary" class="content-area">
 		<main id="main" class="site-main" role="main">
