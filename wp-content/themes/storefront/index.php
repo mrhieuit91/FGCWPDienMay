@@ -18,7 +18,7 @@ get_header(); ?>
 
 		<?php if ( have_posts() ) :
 
-			get_template_part( 'loop' );
+			get_template_part( 'homepage' );
 
 		else :
 
