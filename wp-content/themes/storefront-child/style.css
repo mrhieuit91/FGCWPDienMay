@@ -249,3 +249,7 @@ div.col-full {
     height: 500px;
 }
 .wcps-container #wcps-74 .items-info{}
+
+.entry-content {
+    width: 100% !important;
+}

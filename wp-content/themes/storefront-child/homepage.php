@@ -10,6 +10,7 @@
     <div class="product_list col-xs-12">
         <div class="product-slide">
             <?php echo do_shortcode('[wcps id="74"]'); ?>
+            
         </div>
         
     </div>

@@ -6,81 +6,37 @@
 /*
  * Tạo shortcode hiển thị list tin tức
  */
-function fgc_my_load_more_scripts() {
+/*************************************HÀM LOAD TIN TỨC KHÔNG CÓ AJAX*******************/
+if (!function_exists('load_all_news')) {
 
-    global $wp_query;
-    wp_enqueue_script('jquery');
+    function load_all_news() {
+        global $post;
+        $args = array('posts_per_page' => 5, 'offset' => 1, 'category' => 'tin-tuc');
+        $myposts = get_posts($args);
+        ?>
 
-    // register our main script but do not enqueue it yet
-    wp_register_script('my_loadmore', get_stylesheet_directory_uri() . '/assets/fgc_loadnewsajax.js', array('jquery'));
-
-    // now the most interesting part
-    // we have to pass parameters to myloadmore.js script but we can get the parameters values only in PHP
-    // you can define variables directly in your HTML but I decided that the most proper way is wp_localize_script()
-    wp_localize_script('my_loadmore', 'fgc_loadmore_params', array(
-        'ajaxurl' => site_url() . '/wp-admin/admin-ajax.php', // WordPress AJAX
-        'posts' => serialize($wp_query->query_vars), // everything about your loop is here
-        'current_page' => get_query_var('paged') ? get_query_var('paged') : 1,
-        'max_page' => $wp_query->max_num_pages
-    ));
-
-    wp_enqueue_script('my_loadmore');
-}
-
-add_action('wp_enqueue_scripts', 'fgc_my_load_more_scripts');
-
-if (!function_exists('show_list_news_ajax')) {
-
-    function show_list_news_ajax() {
-
-
-
-        function fgc_loadmore_ajax_handler() {
-
-            // prepare our arguments for the query
-            $args = unserialize(stripslashes($_POST['query']));
-            $args['paged'] = $_POST['page'] + 1; // we need next page to be loaded
-            $args['post_status'] = 'publish';
-
-            // it is always better to use WP_Query but not here
-            query_posts($args);
-
-            if (have_posts()) :
-
-                // run the loop
-                while (have_posts()): the_post();
-
-                    // look into your theme code how the posts are inserted, but you can use your own HTML of course
-                    // do you remember? - my example is adapted for Twenty Seventeen theme
-                    get_template_part('template-parts/post/content', get_post_format());
-                    ?>
-                    <div class="col-xs-9">
-                        <div id="main_center" class="conten_product">
-                            <h1>tessssssssssssst</h1>
-                            <h1>tessssssssssssst</h1>
-                            <h1>tessssssssssssst</h1>
-                            <h1>tessssssssssssst</h1>
-                            <h1>tessssssssssssst</h1>
-                            <h1>tessssssssssssst</h1>
-                        </div>
-                    </div>
+        <div class="col-xs-9">
+            <div id="main_center" class="news-content">
+                <ul style="list-style-type: none">
+                    <?php foreach ($myposts as $post) : setup_postdata($post); ?>
+                        <li>
+                            <h3><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
+                            <p><?php the_excerpt(); ?></p>
+                            <a href="<?php the_permalink(); ?>">Read more..</a>
+                            <hr>
+                        </li>
                     <?php
-                // for the test purposes comment the line above and uncomment the below one
-                // the_title();
-
-
-                endwhile;
-
-            endif;
-            die; // here we exit the script and even no wp_reset_query() required!
-        }
-
-        add_action('wp_ajax_loadmore', 'fgc_loadmore_ajax_handler'); // wp_ajax_{action}
-        add_action('wp_ajax_nopriv_loadmore', 'fgc_loadmore_ajax_handler'); // wp_ajax_nopriv_{action}
+                    endforeach;
+                    wp_reset_postdata();
+                    ?>
+                </ul>
+            </div>
+        </div>
+        <?php
     }
 
 }
-add_shortcode('list_news_shortcode', 'show_list_news_ajax');
+add_shortcode('load_list_news', 'load_all_news');
 
 /*
  * Kết thúc các hàm tạo shortcode hiển thị list tin tức
@@ -183,10 +139,23 @@ if (!function_exists('fgc_storefront_header_customizes')) {
         add_action('storefront_header', 'fgc_custom_header_right_box', 40);
         add_action('storefront_header', 'show_custom_menu', 42);
 //        add_action('storefront_header', 'add_search_form', 50);
+
+        /**
+         * Functions hooked into storefront_single_post add_action
+         *
+         * @hooked storefront_post_header          - 10
+         * @hooked storefront_post_meta            - 20
+         * @hooked storefront_post_content         - 30
+         */
+//        remove_action('storefront_single_post', 'storefront_post_header',10);
+        remove_action('storefront_single_post', 'storefront_post_meta', 20);
+//        remove_action('woocommerce_after_shop_loop_item', 'woocommerce_template_loop_add_to_cart', 10);
     }
 
     add_action('init', 'fgc_storefront_header_customizes');
 }
+
+
 //Customize Main Content
 if (!function_exists('fgc_storefont_homepage_custom')) {
 
@@ -416,11 +385,21 @@ class FGC_Categories_Widget extends WP_Widget {
         ?>
         <style>
             .contact-boder-menu{font-weight: bold;}
-            .contact-boder-menu ul {
-                margin-left: 15px;        
+            .contact-boder-menu .product-catogory-widget ul {
+                margin-left: 15px;
+                margin-right: 10px;
+                color: #000;
+
+            }
+            .contact-boder-menu>.product-catogory-widget>.product-categories>.cat-parent a{
+                height: 30px;
+                color: #000 !important;
+                font-weight: bold !important;
             }
             .contact-boder-menu ul li a{
-                text-decoration: none;        
+                text-decoration: none;   
+
+
             }
             .contact-boder-menu ul li a :hover{
                 text-decoration: underline;        
@@ -429,22 +408,24 @@ class FGC_Categories_Widget extends WP_Widget {
                 /*display: none;*/
             }
         </style>
-        <div class="contact-boder-menu" style="border: dashed 1px">
+        <div class="contact-boder-menu" style="border: dashed 1px">          
+
             <?php
-            wp_nav_menu(array(
-                'theme_location' => 'categories-nav', // tên location cần hiển thị
-                'container' => 'ul', // thẻ container của menu
-                'container_class' => 'categories-nav dropdown', //class của container
-                'menu_class' => 'categories-menu dropdown-toggle' // class của menu bên trong
+            echo '<nav class="product-catogory-widget col-2" aria-label="' . esc_html__('Product Categories', 'storefront') . '">';
+            the_widget('WC_Widget_Product_Categories', array(
+                'count' => 1,
             ));
+
+            echo '</nav>';
             ?>
+
         </div>
-        <script type="text/javascript">
+        <!--        <script type="text/javascript">
             $('.menu-item').hover(function () {
                 $('.sub-menu').css("display", "block");
                 $(this).children('.sub-menu').stop().slideToggle(400);
             });
-        </script>
+        </script>-->
         <?php
         // Kết thúc nội dung trong widget
 
@@ -694,7 +675,6 @@ class FGC_Recent_News_Posts extends WP_Widget {
         $this->alt_option_name = 'widget_recent_news_entries';
     }
 
-    
     public function widget($args, $instance) {
         if (!isset($args['widget_id'])) {
             $args['widget_id'] = $this->id;
@@ -710,7 +690,7 @@ class FGC_Recent_News_Posts extends WP_Widget {
             $number = 5;
         $show_date = isset($instance['show_date']) ? $instance['show_date'] : false;
 
-       
+
         $r = new WP_Query(apply_filters('widget_posts_args', array(
                     'posts_per_page' => $number,
                     'no_found_rows' => true,
@@ -730,7 +710,7 @@ class FGC_Recent_News_Posts extends WP_Widget {
                 .contact-boder-menu{font-weight: bold;}
                 .contact-boder-menu ul {
                     margin-left: 15px;
-                    
+
                 }
                 .contact-boder-menu ul li a{
                     text-decoration: none !important; 
@@ -758,7 +738,7 @@ class FGC_Recent_News_Posts extends WP_Widget {
 
         endif;
     }
-    
+
     public function update($new_instance, $old_instance) {
         $instance = $old_instance;
         $instance['title'] = sanitize_text_field($new_instance['title']);
@@ -766,7 +746,7 @@ class FGC_Recent_News_Posts extends WP_Widget {
         $instance['show_date'] = isset($new_instance['show_date']) ? (bool) $new_instance['show_date'] : false;
         return $instance;
     }
-    
+
     public function form($instance) {
         $title = isset($instance['title']) ? esc_attr($instance['title']) : '';
         $number = isset($instance['number']) ? absint($instance['number']) : 5;
@@ -786,3 +766,7 @@ class FGC_Recent_News_Posts extends WP_Widget {
 }
 
 //remove_action( 'woocommerce_before_main_content','woocommerce_breadcrumb', 20, 0);
+
+/*
+ * COMPARE PRODUCTS MODULE
+ */
