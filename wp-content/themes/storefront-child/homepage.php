@@ -16,7 +16,7 @@
     </div>
     <div class="product_list col-xs-12">
         <div class="box-center">
-            <h3>Sản phẩm mới nhất</h3>
+            <h3><a href="">Sản phẩm mới nhất</a></h3>
         </div>
         <div class="content_product col-xs-12">
             <?php echo do_shortcode('[recent_products per_page="6" columns="3" orderby="date" order="desc"]'); ?>
