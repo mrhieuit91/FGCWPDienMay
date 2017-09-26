@@ -35,10 +35,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 	 	return;
 	 }
 ?>
-
+<div class="woocommerce-products-header page-title"> 
+	<?php	do_action( 'woocommerce_shop_loop_item_title' ); ?> 
+</div>
 <div id="product-<?php the_ID(); ?>" <?php post_class(); ?>>
-
+	  
+	<div class="image">
 	<?php
+
 		/**
 		 * woocommerce_before_single_product_summary hook.
 		 *
@@ -47,7 +51,25 @@ if ( ! defined( 'ABSPATH' ) ) {
 		 */
 		do_action( 'woocommerce_before_single_product_summary' );
 	?>
+	</div>
+	<div class="product-title-price-cart">
+		
+		<div class="cart">
 
+			<?php	do_action( 'woocommerce_after_shop_loop_item' ); ?>
+
+		</div>
+		<div class="product-title-price">
+			<?php
+			do_action( 'woocommerce_shop_loop_item_title' );	
+			do_action( 'woocommerce_template_single_meta' );
+			do_action( 'woocommerce_after_shop_loop_item_title' ); ?>
+		</div>
+		
+		
+		
+	
+	</div>
 	<div class="summary entry-summary">
 
 		<?php
@@ -63,7 +85,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 			 * @hooked woocommerce_template_single_sharing - 50
 			 * @hooked WC_Structured_Data::generate_product_data() - 60
 			 */
-			do_action( 'woocommerce_single_product_summary' );
+			do_action( 'truong_single_product_summary' );
+			// do_action( 'woocommerce_single_product_summary' );
+
 		?>
 
 	</div><!-- .summary -->

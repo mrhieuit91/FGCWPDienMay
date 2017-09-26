@@ -148,6 +148,24 @@ add_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_m
 add_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_sharing', 50 );
 
 /**
+/**
+ * Product Summary Box.
+ *
+ * @see woocommerce_template_single_title()
+ * @see woocommerce_template_single_rating()
+ * @see woocommerce_template_single_price()
+ * @see woocommerce_template_single_excerpt()
+ * @see woocommerce_template_single_meta()
+ * @see woocommerce_template_single_sharing()
+ */
+add_action( 'truong_single_product_summary', 'woocommerce_template_single_title', 5 );
+add_action( 'truong_single_product_summary', 'woocommerce_template_single_rating', 10 );
+add_action( 'truong_single_product_summary', 'woocommerce_template_single_price', 10 );
+add_action( 'truong_single_product_summary', 'woocommerce_template_single_excerpt', 20 );
+add_action( 'truong_single_product_summary', 'woocommerce_template_single_meta', 40 );
+
+
+/**
  * Reviews
  *
  * @see woocommerce_review_display_gravatar()
