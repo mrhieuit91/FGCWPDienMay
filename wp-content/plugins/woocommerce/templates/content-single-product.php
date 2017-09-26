@@ -49,49 +49,87 @@ if ( ! defined( 'ABSPATH' ) ) {
 		 * @hooked woocommerce_show_product_sale_flash - 10
 		 * @hooked woocommerce_show_product_images - 20
 		 */
-		do_action( 'woocommerce_before_single_product_summary' );
+		//do_action( 'woocommerce_before_single_product_summary' );
 	?>
 	</div>
 	<div class="product-title-price-cart">
 		
-		<div class="cart">
-
-			<?php	do_action( 'woocommerce_after_shop_loop_item' ); ?>
-
-		</div>
+		
 		<div class="product-title-price">
 			<?php
-			do_action( 'woocommerce_shop_loop_item_title' );	
-			do_action( 'woocommerce_template_single_meta' );
-			do_action( 'woocommerce_after_shop_loop_item_title' ); ?>
-		</div>
-		
-		
-		
-	
-	</div>
-	<div class="summary entry-summary">
-
-		<?php
 			/**
-			 * woocommerce_single_product_summary hook.
-			 *
-			 * @hooked woocommerce_template_single_title - 5
-			 * @hooked woocommerce_template_single_rating - 10
-			 * @hooked woocommerce_template_single_price - 10
-			 * @hooked woocommerce_template_single_excerpt - 20
-			 * @hooked woocommerce_template_single_add_to_cart - 30
-			 * @hooked woocommerce_template_single_meta - 40
-			 * @hooked woocommerce_template_single_sharing - 50
-			 * @hooked WC_Structured_Data::generate_product_data() - 60
+			 * truong Product Summary Box.
+			 * 
+			 * @see woocommerce_template_single_excerpt()
+			 * @see woocommerce_template_single_price()
 			 */
 			do_action( 'truong_single_product_summary' );
-			// do_action( 'woocommerce_single_product_summary' );
+			 ?>
+		</div>
+						<?php   global $woocommerce;
+    $items = $woocommerce->cart->get_cart();
+    print_r($items);   ?>
 
-		?>
+		<div class="cart" style="text-align: center;">
 
-	</div><!-- .summary -->
+ 
+                <button type="button" class="btn-buy" data-product-id="<?=$product->id?>">Mua ngay</button> 
+                <button type="button" class="btn-addtocart" data-product-id="'.$product->id.'">Thêm vào giỏ hàng</button> 
+                <button type="button" class="btn-compare" data-product-id="'.$product->id.'">Thêm vào danh sách so sánh</button>
+        </div>
+                        <!-- <script type="text/javascript">
+                            var price = $('.product-price').text().trim();
+                            $('.product-price').text(format_curency(price));
 
+                            $('.btn-compare').click(function() {
+                                var param = {
+                                    type: 'addtocompare',
+                                    products: $('.btn-compare').data('product-id'),
+                                };
+                                $.post('compare', param, function(data) {
+                                    if(data.status) {
+                                        var number = data.number;
+                                        $('.btn-compare').text('So sánh ngay ('+number+' sp)');
+                                        $('.btn-compare').attr("onclick","window.location='compare'");
+                                    }
+                                });
+                            });
+
+                            $('.btn-buy').click(function() {
+                                $.post('cart', {
+                                    type: 'addtocart',
+                                    products: $('.btn-buy').data('product-id'),
+                                }, function(data) {
+                                    if(data.status) {
+                                        location.href = 'cart/';
+                                    }
+                                });
+                            });
+                            $('.btn-addtocart').click(function() {
+                                var param = {
+                                    type: 'addtocart',
+                                    products: $('.btn-addtocart').data('product-id'),
+                                };
+                                $.post('cart', param, function(data) {
+                                    if(data.status) {
+                                        $('.btn-addtocart').text('Đã thêm vào giỏ hàng');//.prop('disabled', true);
+                                        $('.btn-addtocart').attr("onclick","window.location='cart'");
+                                        var number = parseInt($('span#count_shopping_cart_store').text())+1;
+                                        if(data.number) number = data.number;
+                                        $('span#count_shopping_cart_store').text(number);
+                                        $('#img-cart').show();
+                                    }
+                                });
+                            });
+
+                        </script> -->
+
+		
+		
+		
+		
+	</div>
+	<div class="product-description">
 	<?php
 		/**
 		 * woocommerce_after_single_product_summary hook.
@@ -100,8 +138,13 @@ if ( ! defined( 'ABSPATH' ) ) {
 		 * @hooked woocommerce_upsell_display - 15
 		 * @hooked woocommerce_output_related_products - 20
 		 */
-		do_action( 'woocommerce_after_single_product_summary' );
+		do_action( 'truong_woocommerce_after_single_product_summary' );
 	?>
+		
+
+	</div><!-- .summary -->
+
+	
 
 </div><!-- #product-<?php the_ID(); ?> -->
 
