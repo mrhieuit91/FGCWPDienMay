@@ -101,7 +101,7 @@ if (empty($product) || !$product->is_visible()) {
     #product-contents:hover .product-hover {
         color: #fff !important;
         display: block;
-        /*opacity: 0.7;*/
+        opacity: 0.8;
         background-color: #6f6969;
         position: absolute;
         width: 100%;
@@ -143,7 +143,7 @@ if (empty($product) || !$product->is_visible()) {
             </div>
             <div id="cart-container">
                 <button type="button" class="btn btn-default btn-sm pull-left btn-shopping-cart" >
-                    <span class="glyphicon glyphicon-shopping-cart"></span> Thêm vào giỏ hàng
+                    <a href="<?php do_shortcode('[add_to_cart_url id="99"]'); ?>"><span class="glyphicon glyphicon-shopping-cart"></span> Thêm vào giỏ hàng </a>
                 </button>
                 <button type="button" class="btn btn-default btn-sm pull-right btn-details" >
                     <a href="<?php the_permalink(); ?>"><span class="glyphicon glyphicon-list-alt"></span> Chi tiết</a>
