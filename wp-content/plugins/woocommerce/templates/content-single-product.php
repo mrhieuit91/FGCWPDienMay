@@ -40,7 +40,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	</div>
 	<div id="product-<?php get_the_ID(); ?>" <?php post_class(); ?>>
 		<div class="image" style="width: 100%;min-height: 630px; margin-bottom: 30px;">
-			<div id="gallery_01" style="width: 20%; min-height:300px;float: left; clear: both;  ">
+			<div id="gallery_01" style="width: 10%; min-height:300px;float: left; clear: both;  ">
 				<div class="list_img_products imager-thumbail" >	
 					<?php 
 					$product_id = get_the_ID();

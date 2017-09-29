@@ -204,7 +204,9 @@ ul#menu-primary-menu {
 }
 .list_img_products.imager-thumbail {
     border: 1px solid #25e0d5;
-    padding: 10px 0 0 44px;
+    padding: 29px 0 0 16px;
+    height: 381px;
+    overflow: overlay;
 }
 .list_img_products.imager-thumbail img {
     margin-bottom: 10px;
