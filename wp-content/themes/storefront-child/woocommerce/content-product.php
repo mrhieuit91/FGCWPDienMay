@@ -141,10 +141,10 @@ if (empty($product) || !$product->is_visible()) {
             <div>
 
             </div>
-            <div id="cart-container">
-                <button type="button" class="btn btn-default btn-sm pull-left btn-shopping-cart" >
-                    <a href="<?php echo  do_shortcode('[add_to_cart id="'.get_the_ID().'"]'); ?>"></a>
-                </button>
+            <div id="cart-container"> 
+                
+                <?php echo  do_shortcode('[add_to_cart id="'.get_the_ID().'" show_price="false" style="false"]'); ?>
+               
                
                 <button type="button" class="btn btn-default btn-sm pull-right btn-details" >
                     <a href="<?php the_permalink(); ?>"><span class="glyphicon glyphicon-list-alt"></span> Chi tiết</a>

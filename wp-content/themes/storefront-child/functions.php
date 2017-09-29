@@ -138,6 +138,8 @@ if (!function_exists('fgc_storefront_header_customizes')) {
 //        add_action('storefront_header', 'storefront_header_cart', 40);
         add_action('storefront_header', 'fgc_custom_header_right_box', 40);
         add_action('storefront_header', 'show_custom_menu', 42);
+        
+//        remove_filter( 'woocommerce_sale_flash', 'filter_woocommerce_sale_flash', 10, 3 );
 //        add_action('storefront_header', 'add_search_form', 50);
 
         /**
@@ -149,13 +151,14 @@ if (!function_exists('fgc_storefront_header_customizes')) {
          */
 //        remove_action('storefront_single_post', 'storefront_post_header',10);
         remove_action('storefront_single_post', 'storefront_post_meta', 20);
-//        remove_action('woocommerce_after_shop_loop_item', 'woocommerce_template_loop_add_to_cart', 10);
+        remove_action('woocommerce_before_shop_loop_item_title', 'woocommerce_show_product_loop_sale_flash', 10);
         
     }
 
     add_action('init', 'fgc_storefront_header_customizes');
 }
 remove_filter( 'the_content', 'wpautop' );
+
 
 
 //Customize Main Content
