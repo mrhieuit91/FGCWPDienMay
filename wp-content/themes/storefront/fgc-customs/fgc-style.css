@@ -197,7 +197,15 @@ div#gioithieu p {
 
 /*phan menu*/
 ul#menu-primary-menu {
-    width: 70% !important;
+    width: 1
+    00% !important;
     margin-top: -3px !important;
 
+}
+.list_img_products.imager-thumbail {
+    border: 1px solid #25e0d5;
+    padding: 10px 0 0 44px;
+}
+.list_img_products.imager-thumbail img {
+    margin-bottom: 10px;
 }
