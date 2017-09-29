@@ -28,20 +28,59 @@ if ( ! defined( 'ABSPATH' ) ) {
 	 *
 	 * @hooked wc_print_notices - 10
 	 */
-	 do_action( 'woocommerce_before_single_product' );
+	do_action( 'woocommerce_before_single_product' );
 
-	 if ( post_password_required() ) {
-	 	echo get_the_password_form();
-	 	return;
-	 }
-?>
-<div class="woocommerce-products-header page-title"> 
-	<?php	do_action( 'woocommerce_shop_loop_item_title' ); ?> 
-</div>
-<div id="product-<?php the_ID(); ?>" <?php post_class(); ?>>
-	  
-	<div class="image">
-	<?php
+	if ( post_password_required() ) {
+		echo get_the_password_form();
+		return;
+	}
+	?>
+	<div class="woocommerce-products-header page-title"> 
+		<?php	do_action( 'woocommerce_shop_loop_item_title' ); ?> 
+	</div>
+	<div id="product-<?php get_the_ID(); ?>" <?php post_class(); ?>>
+		<div class="image" style="width: 100%;min-height: 630px; margin-bottom: 30px;">
+			<div id="gallery_01" style="width: 20%; min-height:300px;background-color: red; float: left; clear: both;  ">
+				<div class="list_img_products imager-thumbail" >	
+					<?php 
+					$product_id = get_the_ID();
+					$product = new WC_product($product_id);
+					$attachment_ids = $product->get_gallery_attachment_ids();
+					
+					foreach( $attachment_ids as $attachment_id ) 
+					{
+	          	// Display the image URL
+					$Original_image_url = wp_get_attachment_url( $attachment_id );
+
+	          	// Display Image instead of URL
+					// echo '<a class="elevatezoom-gallery active " href="#" data-update="" data-image="" data-zoom-image="">'.wp_get_attachment_image($attachment_id, array( 190, 90)).'
+
+	    //  		</a>';  
+					echo '<a class="thumnail_pro elevatezoom-gallery active " href="#" data-update="" data-image="'. $Original_image_url.'" data-zoom-image="'.$Original_image_url.'">
+	                                 <img src="'.$Original_image_url .'" width="60%">
+	                            </a>';         
+					}
+				?>
+				</div>
+			</div>
+			<div class="image-product smallimage" style="width: 95%; min-height: 500px; margin: auto; ">
+                <img id="zoom_03f"  width="65%" style="text-align: center; border:1px solid #e8e8e6;" src="<?php echo wp_get_attachment_url( $attachment_id ); ?>" data-zoom-image="<?php echo wp_get_attachment_url( $attachment_id ); ?>" >
+            </div>
+            <script type="text/javascript">
+                        jQuery(document).ready(function ($) {
+                            $("#zoom_03f").elevateZoom({
+                                gallery:'gallery_01', 
+                                cursor: 'pointer', 
+                                easing : true,
+                                galleryActiveClass: "active"
+                            }); 
+                        });
+                        
+
+                    </script>
+
+			
+			<?php
 
 		/**
 		 * woocommerce_before_single_product_summary hook.
@@ -50,7 +89,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 		 * @hooked woocommerce_show_product_images - 20
 		 */
 		//do_action( 'woocommerce_before_single_product_summary' );
-	?>
+		?>
 	</div>
 	<div class="product-title-price-cart">
 		
@@ -64,33 +103,22 @@ if ( ! defined( 'ABSPATH' ) ) {
 			 * @see woocommerce_template_single_price()
 			 */
 			do_action( 'truong_single_product_summary' );
-			 ?>
+			?>
 		</div>
-						<?php   global $woocommerce;
-    $items = $woocommerce->cart->get_cart();
-       ?>
+		<?php   global $woocommerce;
+		$items = $woocommerce->cart->get_cart();
+		?>
 
 		<div class="cart" style="text-align: center;">
 
- 
-                <button type="button" class="btn-buy" data-product-id="<?=$product->id?>">Mua ngay</button> 
-                <!-- <button type="button" class="btn-addtocart" data-product-id="'.$product->id.'">Thêm vào giỏ hàng</button> 
-                <button type="button" class="btn-compare" data-product-id="'.$product->id.'">Thêm vào danh sách so sánh</button>
- -->
-                			<button type="button" class="btn btn-primary btn-buy" data-product-id="<?=$product->id?>">Mua ngay</button> 
-                            <?php 
-                            //var_dump($this->session->userdata("cart"));exit;
-                            //var_dump($this->session->userdata("compare"));exit;
-                            if(is_array($woocommerce->cart->get_cart();) && array_key_exists($product->id,$woocommerce->cart->get_cart();))
-                                echo '<button type="button" class="btn btn-success disable" data-product-id="'.$product->id.'" onclick="window.location=\'cart\'">Đã có trong giỏ hàng</button> ';
-                            else echo '<button type="button" class="btn btn-success btn-addtocart" data-product-id="'.$product->id.'">Thêm vào giỏ hàng</button> ';
 
-                            if(is_array($this->session->userdata("compare")) && in_array($product->id,$this->session->userdata("compare")))
-                                echo '<button type="button" class="btn btn-info btn-compare" data-product-id="'.$product->id.'" onclick="window.location=\'compare\'">Đã có trong danh sách so sánh</button> ';
-                            else echo '<button type="button" class="btn btn-info btn-compare" data-product-id="'.$product->id.'">Thêm vào danh sách so sánh</button> ';?>
+			<button type="button" class="btn-buy" >Mua ngay</button> 
+			<button type="button" class="btn-addtocart" data-product-id="'.$product->id.'">Thêm vào giỏ hàng</button> 
+			<button type="button" class="btn-compare" data-product-id="'.$product->id.'">Thêm vào danh sách so sánh</button>
 
 
-        </div>
+
+		</div>
                         <!-- <script type="text/javascript">
                             var price = $('.product-price').text().trim();
                             $('.product-price').text(format_curency(price));
@@ -138,13 +166,13 @@ if ( ! defined( 'ABSPATH' ) ) {
 
                         </script> -->
 
-		
-		
-		
-		
-	</div>
-	<div class="product-description">
-	<?php
+
+
+
+
+                    </div>
+                    <div class="product-description">
+                    	<?php
 		/**
 		 * woocommerce_after_single_product_summary hook.
 		 *
@@ -153,7 +181,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 		 * @hooked woocommerce_output_related_products - 20
 		 */
 		do_action( 'truong_woocommerce_after_single_product_summary' );
-	?>
+		?>
 		
 
 	</div><!-- .summary -->

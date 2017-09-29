@@ -67,7 +67,17 @@ function custom_style (){
     wp_enqueue_style('fgc_customs_style',get_template_directory_uri() . '/fgc-customs/fgc-style.css', array(), null);
 }
 add_action('wp_enqueue_scripts', 'custom_style');
+
+
+function elevatezoom_master_scripts() {
+	//wp_enqueue_script('jquery'); /* không cần thiết vì bên dưới file ntuts.js đã phụ thuộc vào jquery */
+	wp_enqueue_script('elevatezoom_master', get_template_directory_uri() .'/assets/js/elevatezoom-master/jquery.elevateZoom-3.0.8.min.js', array('jquery'),'v1.38',true );
+}   
+add_action('init', 'elevatezoom_master_scripts');
+
+
 /**
+
  * Note: Do not add any custom code here. Please use a custom plugin so that your customizations aren't lost during updates.
  * https://github.com/woocommerce/theme-customisations
  */
