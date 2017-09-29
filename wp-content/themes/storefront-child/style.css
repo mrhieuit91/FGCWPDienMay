@@ -242,6 +242,7 @@ div.col-full {
 .wcps-container #wcps-74{
     width: 100%;
     width: 550px;
+    margin: 0 auto;
 }
 .wcps-container #wcps-74 .wcps-items{}
 .wcps-container #wcps-74 .wcps-items-thumb{
@@ -252,4 +253,8 @@ div.col-full {
 
 .entry-content {
     width: 100% !important;
+}
+
+.product_list .content_product {
+    margin: 0 auto;
 }

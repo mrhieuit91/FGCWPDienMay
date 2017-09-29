@@ -690,7 +690,22 @@ class FGC_Recent_News_Posts extends WP_Widget {
 
 }
 
+/*
+ * Đổi text cho button thêm vào giỏ hàng
+ */
+add_filter( 'woocommerce_product_single_add_to_cart_text', 'woo_custom_cart_button_text' );    // 2.1 +
+ 
+function woo_custom_cart_button_text() {
+ 
+        return __( 'Thêm vào giỏ hàng', 'woocommerce' );
+ 
+}
+add_filter( 'add_to_cart_text', 'woo_custom_cart_button_text' );    // &amp;lt; 2.1
+add_filter( 'woocommerce_product_add_to_cart_text','woo_custom_cart_button_text');
+
+
 //remove_action( 'woocommerce_before_main_content','woocommerce_breadcrumb', 20, 0);
+
 
 /*
  * COMPARE PRODUCTS MODULE
