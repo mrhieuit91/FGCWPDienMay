@@ -1,12 +1,11 @@
 <?php
-
 /**
  * Các đoạn code cần tùy biến của bạn vào bên dưới
  */
 /*
  * Tạo shortcode hiển thị list tin tức
  */
-/*************************************HÀM LOAD TIN TỨC KHÔNG CÓ AJAX*******************/
+/* * ***********************************HÀM LOAD TIN TỨC KHÔNG CÓ AJAX****************** */
 if (!function_exists('load_all_news')) {
 
     function load_all_news() {
@@ -25,7 +24,7 @@ if (!function_exists('load_all_news')) {
                             <a href="<?php the_permalink(); ?>">Read more..</a>
                             <hr>
                         </li>
-                    <?php
+                        <?php
                     endforeach;
                     wp_reset_postdata();
                     ?>
@@ -138,7 +137,7 @@ if (!function_exists('fgc_storefront_header_customizes')) {
 //        add_action('storefront_header', 'storefront_header_cart', 40);
         add_action('storefront_header', 'fgc_custom_header_right_box', 40);
         add_action('storefront_header', 'show_custom_menu', 42);
-        
+
 //        remove_filter( 'woocommerce_sale_flash', 'filter_woocommerce_sale_flash', 10, 3 );
 //        add_action('storefront_header', 'add_search_form', 50);
 
@@ -152,12 +151,11 @@ if (!function_exists('fgc_storefront_header_customizes')) {
 //        remove_action('storefront_single_post', 'storefront_post_header',10);
         remove_action('storefront_single_post', 'storefront_post_meta', 20);
         remove_action('woocommerce_before_shop_loop_item_title', 'woocommerce_show_product_loop_sale_flash', 10);
-        
     }
 
     add_action('init', 'fgc_storefront_header_customizes');
 }
-remove_filter( 'the_content', 'wpautop' );
+remove_filter('the_content', 'wpautop');
 
 
 
@@ -317,7 +315,6 @@ class FGC_Categories_Widget extends WP_Widget {
                 margin-left: 15px;
                 margin-right: 10px;
                 color: #000;
-
             }
             .contact-boder-menu>.product-catogory-widget>.product-categories>.cat-parent a{
                 height: 30px;
@@ -325,15 +322,36 @@ class FGC_Categories_Widget extends WP_Widget {
                 font-weight: bold !important;
             }
             .contact-boder-menu ul li a{
-                text-decoration: none;   
-
-
+                text-decoration: none;
             }
             .contact-boder-menu ul li a :hover{
                 text-decoration: underline;        
             }
+            .contact-boder-menu ul {
+                margin-left: 0px;
+            }
             .menu-item ul {
                 /*display: none;*/
+            }
+            .product-categories-hidden {
+                display: none;
+            }
+            .parent-product-categories {
+                border-bottom: #2E4453 dashed 1px;
+            }
+            .parent-product-categories:last-child {
+                border-bottom: none;
+            }
+            .parent-product-categories .product-categories-name {
+                display: block;
+                margin-top: 2em;
+                transform: translateY(-50%);
+            }
+            .parent-product-categories:hover {
+                cursor: pointer;
+            }
+            .parent-product-categories:hover .product-categories-hidden{
+                display: block;
             }
         </style>
         <div class="contact-boder-menu" style="border: dashed 1px">          
@@ -346,6 +364,21 @@ class FGC_Categories_Widget extends WP_Widget {
 
             echo '</nav>';
             ?>
+
+<!--            <script type="text/javascript">
+                
+                jQuery(".cat-parent").hover(function () {
+                    jQuery("li.cat-parent").show("2000", function () {
+                        jQuery(".children").css({"display": "block"});
+                    });
+                });
+                
+                jQuery(".cat-parent").mouseleave(function () {
+                    jQuery(".children").hide();
+                    
+                });
+            </script>-->
+
 
         </div>
         <!--        <script type="text/javascript">
@@ -696,15 +729,15 @@ class FGC_Recent_News_Posts extends WP_Widget {
 /*
  * Đổi text cho button thêm vào giỏ hàng
  */
-add_filter( 'woocommerce_product_single_add_to_cart_text', 'woo_custom_cart_button_text' );    // 2.1 +
- 
+add_filter('woocommerce_product_single_add_to_cart_text', 'woo_custom_cart_button_text');    // 2.1 +
+
 function woo_custom_cart_button_text() {
- 
-        return __( 'Thêm vào giỏ hàng', 'woocommerce' );
- 
+
+    return __('Thêm vào giỏ hàng', 'woocommerce');
 }
-add_filter( 'add_to_cart_text', 'woo_custom_cart_button_text' );    // &amp;lt; 2.1
-add_filter( 'woocommerce_product_add_to_cart_text','woo_custom_cart_button_text');
+
+add_filter('add_to_cart_text', 'woo_custom_cart_button_text');    // &amp;lt; 2.1
+add_filter('woocommerce_product_add_to_cart_text', 'woo_custom_cart_button_text');
 
 
 //remove_action( 'woocommerce_before_main_content','woocommerce_breadcrumb', 20, 0);
