@@ -91,3 +91,45 @@ remove_action( 'woocommerce_after_shop_loop', 'woocommerce_catalog_ordering', 10
 remove_action( 'woocommerce_before_shop_loop', 'woocommerce_catalog_ordering', 10 );
 }
 
+
+// add_filter('add_to_cart_redirect', 'custom_add_to_cart_redirect');
+  
+// function custom_add_to_cart_redirect() {
+//      return wc_get_page_permalink( 'cart' ); // Replace with the url of your choosing
+// }
+// apply_filters( 'woocommerce_add_to_cart_redirect', wc_get_cart_url() );
+// // add_filter('add_to_cart_redirect', 'custom_add_to_cart_redirect');
+  
+// // function custom_add_to_cart_redirect() {
+// //     global $woocommerce;
+// //     $count=WC()->cart->cart_contents_count;
+// //     $amount = floatval( preg_replace( '#[^\d.]#', '', $woocommerce->cart->get_cart_total() ) );
+     
+// //     if($count>=5 && $amount>=100)
+// //      return get_permalink(get_option('woocommerce_catalog_ordering')); // Replace with the url of your choosing
+// // }
+
+add_filter( 'add_to_cart_text', 'woo_custom_cart_button_text' );                                // < 2.1
+add_filter( 'woocommerce_product_single_add_to_cart_text', 'woo_custom_cart_button_text' );    // 2.1 +
+add_filter( 'add_to_cart_text', 'woo_custom_cart_button_text' );                        // < 2.1
+add_filter( 'woocommerce_product_add_to_cart_text', 'woo_custom_cart_button_text' );    // 2.1 +
+function woo_custom_cart_button_text() {
+  
+        return __( 'Mua Ngay', 'woocommerce' );
+  
+}
+
+add_filter('add_to_cart_redirect', 'custom_add_to_cart_redirect');
+function custom_add_to_cart_redirect() {
+	     /**
+	      * Replace with the url of your choosing
+	      */
+	     return wc_get_page_permalink( 'cart' );
+}
+
+function add_woocommerce_loop_add_to_cart_link($value,$product){
+
+	return "ADD to cart new". $value;
+}
+
+add_filter( 'woocommerce_loop_add_to_cart_link', 'add_woocommerce_loop_add_to_cart_link',2,2); 

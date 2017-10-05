@@ -95,36 +95,38 @@ if ( ! defined( 'ABSPATH' ) ) {
 			$items = $woocommerce->cart->get_cart();
 			?>
 			<div class="cart" style="text-align: center;">
-				<button type="button" class="btn btn-primary btn-buy" data-product-id="<?php get_the_ID();?>">Mua ngay</button> 
-				<button type="button" class="btn-addtocart" data-product-id="<?php get_the_ID();?>"><?php get_the_ID();?>Thêm vào giỏ hàng</button> 
+				<?php 
+					do_action( 'woocommerce_after_shop_loop_item' ); 
+				?>
+				<button type="button" class="btn-addtocart" data-product-id="<?php get_the_ID();?>">Thêm vào giỏ hàng</button> 
 				<button type="button" class="btn-compare" data-product-id="<?php get_the_ID();?>">Thêm vào danh sách so sánh</button>
 
 				<script type="text/javascript">
 					var url_website = location.href;
 					var $urlbase = '<?php echo get_site_url();?>'
 		            $(document).ready(function () {
-		                $('.btn-buy').click(function () {
-		                	//alert($urlbase)
-		                    $.ajax({
-		                        url: $urlbase+"/wp-content/plugins/woocommerce/templates/cart/buy-product.php",
-		                        data: {'data-product-id': <?php echo get_the_ID();?>},
-                        		type: 'POST',
-		                        success: function (result) {
-		                            $(".btn-primary").html(result);
-		                        }
-		                    });
-		                });
+		                // $('.btn-buy').click(function () {
+		                // 	//alert($urlbase)
+		                //     $.ajax({
+		                //         url: $urlbase+"/wp-content/plugins/woocommerce/templates/cart/buy-product.php",
+		                //         data: {'data-product-id': <?php echo get_the_ID();?>},
+                  //       		type: 'POST',
+		                //         success: function (result) {
+		                //             $(".btn-primary").html(result);
+		                //         }
+		                //     });
+		                // });
 
-		                $('.btn-addtocart').click(function () {
-		                	//alert($urlbase)
-		                    $.ajax({
-		                        url: $urlbase+"/wp-content/plugins/woocommerce/templates/cart/buy-product-for-cart.php",
+		                // $('.btn-addtocart').click(function () {
+		                // 	//alert($urlbase)
+		                //     $.ajax({
+		                //         url: $urlbase+"/wp-content/plugins/woocommerce/templates/cart/buy-product-for-cart.php",
 		                        
-		                        success: function (result) {
-		                            $(".btn-addtocart").html(result);
-		                        }
-		                    });
-		                });
+		                //         success: function (result) {
+		                //             $(".btn-addtocart").html(result);
+		                //         }
+		                //     });
+		                // });
 
 		                $('.btn-compare').click(function () {
 		                	//alert($urlbase)
