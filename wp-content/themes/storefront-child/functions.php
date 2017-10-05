@@ -151,6 +151,8 @@ if (!function_exists('fgc_storefront_header_customizes')) {
 //        remove_action('storefront_single_post', 'storefront_post_header',10);
         remove_action('storefront_single_post', 'storefront_post_meta', 20);
         remove_action('woocommerce_before_shop_loop_item_title', 'woocommerce_show_product_loop_sale_flash', 10);
+        remove_action('woocommerce_after_shop_loop', 'woocommerce_catalog_ordering', 10);
+        remove_action('woocommerce_before_shop_loop', 'woocommerce_catalog_ordering', 10);
     }
 
     add_action('init', 'fgc_storefront_header_customizes');
@@ -365,19 +367,19 @@ class FGC_Categories_Widget extends WP_Widget {
             echo '</nav>';
             ?>
 
-<!--            <script type="text/javascript">
-                
-                jQuery(".cat-parent").hover(function () {
-                    jQuery("li.cat-parent").show("2000", function () {
-                        jQuery(".children").css({"display": "block"});
-                    });
-                });
-                
-                jQuery(".cat-parent").mouseleave(function () {
-                    jQuery(".children").hide();
-                    
-                });
-            </script>-->
+                <!--            <script type="text/javascript">
+                                
+                                jQuery(".cat-parent").hover(function () {
+                                    jQuery("li.cat-parent").show("2000", function () {
+                                        jQuery(".children").css({"display": "block"});
+                                    });
+                                });
+                                
+                                jQuery(".cat-parent").mouseleave(function () {
+                                    jQuery(".children").hide();
+                                    
+                                });
+                            </script>-->
 
 
         </div>
