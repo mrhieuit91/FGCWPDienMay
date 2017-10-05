@@ -201,3 +201,36 @@ ul#menu-primary-menu {
     margin-top: -3px !important;
 
 }
+/*phần tin tức*/
+aside.entry-meta, span.posted-on {
+    opacity: 0;
+}
+span.gamma.widget-title {
+    border: 1px solid gray;
+    font-size: 24px;
+    text-align: center;
+    font-weight: 700;
+    padding-bottom: 0px;
+    border-bottom: 8px solid #FF9900;
+    border-radius: 5px;
+    background-color: #D6D6D6;
+}
+.textwidget {
+    border: 1px dashed #ccc;
+}
+ul {
+    border: 1px dashed #ccc;
+}
+entry-content {
+    border-bottom: 2px solid #ccc;
+}
+
+nav.woocommerce-breadcrumb {
+    margin-top: -113px;
+}
+img.alignnone.size-medium.wp-image-114 {
+    margin-top: -208px;
+}
+h1.entry-title {
+    margin-top: 117px;
+}
