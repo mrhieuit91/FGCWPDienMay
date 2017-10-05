@@ -74,13 +74,22 @@ function elevatezoom_master_scripts() {
 	wp_enqueue_script('elevatezoom_master', get_template_directory_uri() .'/assets/js/elevatezoom-master/jquery.elevateZoom-3.0.8.min.js', array('jquery'),'v1.38',true );
 }   
 add_action('init', 'elevatezoom_master_scripts');
-
-
 /**
 
  * Note: Do not add any custom code here. Please use a custom plugin so that your customizations aren't lost during updates.
  * https://github.com/woocommerce/theme-customisations
  */
+
+function short_title($after = '', $length) {
+    $qdztitle = explode(' ', get_the_title(), $length);
+if (count($qdztitle) >= $length) {
+        array_pop($qdztitle);
+        $qdztitle = implode(" ", $qdztitle) . $after;
+    } else {
+        $qdztitle = implode(" ", $qdztitle);
+    }
+    return $qdztitle;
+}
 
 // remove default sorting dropdown in StoreFront Theme
  
@@ -91,24 +100,6 @@ remove_action( 'woocommerce_after_shop_loop', 'woocommerce_catalog_ordering', 10
 remove_action( 'woocommerce_before_shop_loop', 'woocommerce_catalog_ordering', 10 );
 }
 
-
-// add_filter('add_to_cart_redirect', 'custom_add_to_cart_redirect');
-  
-// function custom_add_to_cart_redirect() {
-//      return wc_get_page_permalink( 'cart' ); // Replace with the url of your choosing
-// }
-// apply_filters( 'woocommerce_add_to_cart_redirect', wc_get_cart_url() );
-// // add_filter('add_to_cart_redirect', 'custom_add_to_cart_redirect');
-  
-// // function custom_add_to_cart_redirect() {
-// //     global $woocommerce;
-// //     $count=WC()->cart->cart_contents_count;
-// //     $amount = floatval( preg_replace( '#[^\d.]#', '', $woocommerce->cart->get_cart_total() ) );
-     
-// //     if($count>=5 && $amount>=100)
-// //      return get_permalink(get_option('woocommerce_catalog_ordering')); // Replace with the url of your choosing
-// // }
-
 add_filter( 'add_to_cart_text', 'woo_custom_cart_button_text' );                                // < 2.1
 add_filter( 'woocommerce_product_single_add_to_cart_text', 'woo_custom_cart_button_text' );    // 2.1 +
 add_filter( 'add_to_cart_text', 'woo_custom_cart_button_text' );                        // < 2.1
@@ -118,7 +109,6 @@ function woo_custom_cart_button_text() {
         return __( 'Mua Ngay', 'woocommerce' );
   
 }
-
 add_filter('add_to_cart_redirect', 'custom_add_to_cart_redirect');
 function custom_add_to_cart_redirect() {
 	     /**
@@ -126,10 +116,72 @@ function custom_add_to_cart_redirect() {
 	      */
 	     return wc_get_page_permalink( 'cart' );
 }
+//$adjacent = $previous ? 'previous' : 'next';
+//{$adjacent}_post_link", $output, $format, $link, $post, $adjacent
 
-// function add_woocommerce_loop_add_to_cart_link($value,$product){
+function fgcchangePreviousAndNextLink($output, $format, $link, $post, $adjacent) {
 
-// 	return "ADD to cart new". $value;
-// }
+    //echo $output;
+    //print_r($post);
+    if ($output) {
+        $dom = new DOMDocument();
+        $dom->loadHTML($output);
+        $nodes = $dom->getElementsByTagName('a');
+        foreach ($nodes as $key => $value) {
+            if ($adjacent == 'next') {
+                $value->nodeValue = 'Bài tiếp';
+            } else {
+                $value->nodeValue = 'Bài trước';
+            }
+            break;
+            //print_r($value);
+        }
 
-// add_filter( 'woocommerce_loop_add_to_cart_link', 'add_woocommerce_loop_add_to_cart_link',2,2); 
+        return $dom->saveHTML();
+    }
+    return $output;
+}
+
+add_filter('previous_post_link', 'fgcchangePreviousAndNextLink', 1, 5);
+
+//function fgcchangeNextLink($output, $format, $link, $post, $adjacent) {
+//
+//    if ($output) {
+//        $dom = new DOMDocument();
+//        $dom->loadHTML($output);
+//        $nodes = $dom->getElementsByTagName('a');
+//        foreach ($nodes as $key => $value) {
+//            $value->nodeValue = 'Next';
+//            break;
+//        }
+//
+//        return $dom->saveHTML(); //str_replace($post->post_title, 'Previous', $output); //$output;//str_replace($post->post_title, 'Previous',$output);
+//    }
+//    return $output;
+//}
+
+add_filter('next_post_link', 'fgcchangePreviousAndNextLink', 1, 5);
+
+//
+//if ( ! function_exists( 'custom_entry_content' ) ) {
+//  function custom_entry_content() {
+// 
+//    if ( ! is_single() ) :
+//      the_excerpt();
+//    else :
+//      the_content();
+// 
+//      /*
+//       * Code hiển thị phân trang trong post type
+//       */
+//      $link_pages = array(
+//        'before' => __('<p>Page:', 'Textdomain'),
+//        'after' => '</p>',
+//        'nextpagelink'     => __( 'Next page', 'Textdomain' ),
+//        'previouspagelink' => __( 'Previous page', 'Textdomain' )
+//      );
+//      wp_link_pages( $link_pages );
+//    endif;
+// 
+//  }
+//}
