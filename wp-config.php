@@ -33,30 +33,32 @@ if($_SERVER["SERVER_NAME"]==="localhost") {
 
 	/** MySQL hostname */
 	define('DB_HOST', 'localhost');
-}elseif($_SERVER["SERVER_NAME"]==="http://vanhieu.wdev.fgct.net/FGCWPDienMay/"){
-    define('WP_SITEURL', 'http://vanhieu.wdev.fgct.net/FGCWPDienMay/');
+}elseif($_SERVER["SERVER_NAME"]==="http://quangtruong.wdev.fgct.net/FGCWPDienMay/"){
+    define('WP_SITEURL', 'http://quangtruong.wdev.fgct.net/FGCWPDienMay/');
     define('WP_HOME', WP_SITEURL);
     define('DB_NAME', 'vanhieu_wordpress_fgcwpdienmay');
 
+
+
     /** MySQL database username */
-    define('DB_USER', 'vanhieu');
+    define('DB_USER', 'quangtruong');
 
     /** MySQL database password */
-    define('DB_PASSWORD', 'hieu.123456');
+    define('DB_PASSWORD', 'truong.1992');
 
     /** MySQL hostname */
     define('DB_HOST', 'localhost');
 
-}elseif(strpos($_SERVER["SERVER_NAME"], 'vanhieu.wdev.fgct.net') !== false) {
-	define('WP_SITEURL', 'http://vanhieu.wdev.fgct.net/FGCWPDienMay/');
+}elseif(strpos($_SERVER["SERVER_NAME"], 'quangtruong.wdev.fgct.net') !== false) {
+	define('WP_SITEURL', 'http://quangtruong.wdev.fgct.net/FGCWPDienMay/');
 	define('WP_HOME', WP_SITEURL);
 	define('DB_NAME', 'vanhieu_wordpress_fgcwpdienmay');
 
 	/** MySQL database username */
-	define('DB_USER', 'vanhieu');
+	define('DB_USER', 'quangtruong');
 
 	/** MySQL database password */
-	define('DB_PASSWORD', 'hieu.123456');
+	define('DB_PASSWORD', 'truong.1992');
 
 	/** MySQL hostname */
 	define('DB_HOST', 'localhost');
