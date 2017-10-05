@@ -127,9 +127,9 @@ function custom_add_to_cart_redirect() {
 	     return wc_get_page_permalink( 'cart' );
 }
 
-function add_woocommerce_loop_add_to_cart_link($value,$product){
+// function add_woocommerce_loop_add_to_cart_link($value,$product){
 
-	return "ADD to cart new". $value;
-}
+// 	return "ADD to cart new". $value;
+// }
 
-add_filter( 'woocommerce_loop_add_to_cart_link', 'add_woocommerce_loop_add_to_cart_link',2,2); 
+// add_filter( 'woocommerce_loop_add_to_cart_link', 'add_woocommerce_loop_add_to_cart_link',2,2); 
