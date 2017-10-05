@@ -11,6 +11,7 @@
  */
 
 get_header(); ?>
+<?php the_title();  ?>
 
 	<div id="primary" class="content-area">
 		<main id="main" class="site-main" role="main">
@@ -34,5 +35,5 @@ get_header(); ?>
 	</div><!-- #primary -->
 
 <?php
-//do_action( 'storefront_sidebar' );
+do_action( 'storefront_sidebar' );
 get_footer();
