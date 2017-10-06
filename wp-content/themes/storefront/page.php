@@ -10,7 +10,7 @@
  * @package storefront
  */
 
-<<<<<<< HEAD
+
 get_header();?>
     
 =======
