@@ -308,5 +308,5 @@ add_action( 'woocommerce_account_edit-account_endpoint', 'woocommerce_account_ed
 
 //add to cart and go to cart
 add_action( 'woocommerce_add_to_cart_item', 'woocommerce_template_loop_add_to_cart', 10 );
-add_action( 'woocommerce_go_to_cart', 'custom_add_to_cart_redirect', 10 );
+add_action( 'woocommerce_go_to_cart', 'woocommerce_template_loop_add_go_to_cart', 10 );
 //add_action( 'woocommerce_add_product_to_cart_item', 'woocommerce_simple_add_to_cart', 10 );// thêm số lượng sản phẩm
