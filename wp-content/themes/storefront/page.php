@@ -9,8 +9,20 @@
  *
  * @package storefront
  */
+<<<<<<< HEAD
 get_header();?>
     
+=======
+
+
+get_header();?>
+    
+=======
+get_header(); ?>
+<?php the_title();  ?>
+
+>>>>>>> b4a5336d74233cc1ad454d62d1a11fa130199c21
+>>>>>>> a23179d571a468251696207cf57491228445325d
 	<div id="primary" class="content-area">
 		<main id="main" class="site-main" role="main">
 

@@ -7,3 +7,212 @@ and open the template in the editor.
     Created on : Sep 11, 2017, 9:43:22 AM
     Author     : PhamHieu
 */
+<<<<<<< HEAD
+=======
+
+body{
+    margin: 0 auto;
+    width: 1349px;
+}
+/* 
+    Created on : Sep 11, 2017, 2:43:22 PM
+    Author     : Nguy?n Minh Quang
+*/
+
+#backtotop { 
+    bottom: 7px; 
+    display: none; 
+    margin: 0 20px 20px 0; 
+    position: fixed; 
+    right: 0; 
+    z-index: 2; 
+} 
+#backtotop a { 
+    background: url("http://i.imgur.com/zODWZlw.png") no-repeat scroll 50% 50% rgba(0, 0, 0, 0.5); 
+    border: 0 none; 
+    display: block; 
+    height: 35px; 
+    text-decoration: none; 
+    transition: all 0.1s ease-in-out 0s; 
+    width: 35px; 
+    border-radius: 50%;
+} 
+#backtotop a:hover { 
+    -webkit-box-shadow: 0 0 10px 3px rgba(255, 255, 255, 0.5); 
+    box-shadow: 0 0 10px 3px rgba(255, 255, 255, 0.5); 
+    background-color: red; 
+}   
+
+/*Trang liên hệ*/
+#phananh{
+    width: 1062px;  
+}
+nav.woocommerce-breadcrumb {
+    margin-top: 6px;
+}
+img.alignnone.size-medium.wp-image-114 {
+      margin-top: -200px;
+   	margin-top: -200px;
+}
+h1 {
+    margin-left: 101px;
+    margin-top: -154px;
+    font-family: Roboto Condensed;
+}
+#phananh{
+    margin-bottom: 208px;
+}
+#anhlienhe h1{
+    margin-left: 100px;
+    margin-top: -75px;
+    font-size: 50px;
+    font-family: Roboto Condensed;
+}
+input#pirate-forms-contact-name {
+    float: right;
+    margin-top: -268px;
+    margin-right: 148px;
+    width: 250px;
+    height: 35px;
+    border:1px solid #0796a5;
+    background-color: white;
+    border-radius: 4px;
+}
+input#pirate-forms-contact-email {
+    float: right;
+    margin-top: -220px;
+    margin-right: 148px;
+    width: 250px;
+    height: 35px;
+    border:1px solid #0796a5;
+    background-color: white;
+    border-radius: 4px;
+}
+input#pirate-forms-contact-subject {
+    float: right;
+    margin-top: -174px;
+    margin-right: 148px;
+    width: 250px;
+    height: 35px;
+    border:1px solid #0796a5;
+    background-color: white;
+    border-radius: 4px;
+}
+textarea#pirate-forms-contact-message {
+    margin-left: 108px;
+    margin-top: -118px;
+    width: 406px;
+    border:1px solid #0796a5;
+    background-color: white;
+    border-radius: 4px;
+}
+button#pirate-forms-contact-submit {
+    margin-right: 238px;
+    margin-top: -15px;
+    border-radius: 4px;
+    background-color: gainsboro;
+}
+button#pirate-forms-contact-submit {
+    font-size: 14px;
+    font-weight: 400;
+    text-align: center;
+    vertical-align: middle;
+    margin-right: 263px;
+    border-radius: 4px;
+}
+#tieude_lienlac{
+    color: red;
+}
+h3 {
+    margin-top: -49px;
+    font-size: 24px;
+    margin-top: 6px;
+    font-weight: 500;
+    line-height: 1.1;
+}
+div#thongtinlienhe {
+    margin-bottom: 24px;
+}
+lable {
+    color: black;
+    font-weight: 700;
+}
+h2 {
+    color: black;
+}
+div#primary {
+    margin-bottom: -67px;
+}
+.col-sm-12 col-lg-12{
+width: 1040px;
+height: 40px;
+background-color: grey;
+}
+/*phan footer*/
+
+.site-footer{
+    background-color: #ece1e1;
+    width: 1066px;
+    height: 120px;
+    margin-left: 140px;
+}
+div#footerL {
+    width: 700px;
+    float: left;
+}
+#footer_social img{
+    float: right;
+}
+h4{
+    margin-bottom: -18px;
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 1.1;
+    margin-top: -16px;
+}
+/*trang gioi thieu*/
+h1.entry-title {
+    margin-top: 0px;
+}
+#gioithieu h1{
+    font-size: 24px;
+    text-align: center;
+    color: red;
+    padding-bottom: 30px;
+    margin-top: 35px;
+}
+#gioithieu {
+    border: 3px solid #f1b3b3;
+    border-radius: 18px;
+    margin-top: 10px;
+}
+div#gioithieu {
+    margin-top: -192px;
+}
+div#gioithieu p {
+    margin-left: 14px;
+    text-align: justify;
+    padding: 15px;
+    text-indent: 28px;
+}
+.woocommerce-breadcrumb,.entry-title{
+    opacity: 0;
+}
+
+/*phan menu*/
+ul#menu-primary-menu {
+    width: 1
+    00% !important;
+    margin-top: -3px !important;
+
+}
+.list_img_products.imager-thumbail {
+    border: 1px solid #25e0d5;
+    padding: 29px 0 0 16px;
+    height: 381px;
+    overflow: overlay;
+}
+.list_img_products.imager-thumbail img {
+    margin-bottom: 10px;
+}
+>>>>>>> a23179d571a468251696207cf57491228445325d

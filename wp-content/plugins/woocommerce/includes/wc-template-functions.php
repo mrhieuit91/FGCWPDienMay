@@ -2663,3 +2663,23 @@ function wc_logout_url( $redirect = '' ) {
 function wc_empty_cart_message() {
 	echo '<p class="cart-empty">' . apply_filters( 'wc_empty_cart_message', __( 'Your cart is currently empty.', 'woocommerce' ) ) . '</p>';
 }
+
+if ( ! function_exists( 'custom_add_to_cart_redirect' ) ) {
+	/**
+	 * Get the add to cart template for the loop.
+	 *
+	 * @subpackage    Loop
+	 *
+	 * @param array $args
+	 */
+	function custom_add_to_cart_redirect() {
+		add_filter('add_to_cart_redirect', 'custom_add_to_cart_redirect_cart');
+		function custom_add_to_cart_redirect_cart() {
+			     /**
+			      * Replace with the url of your choosing
+			      */
+			     return wc_get_page_permalink( 'cart' );
+		}
+	}
+}
+
