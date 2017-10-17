@@ -43,6 +43,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 			<div id="gallery_01" style="width: 10%; min-height:300px;float: left; clear: both;  ">
 				<div class="list_img_products imager-thumbail" >	
 					<?php 
+					
 					$product_id = get_the_ID();
 					$product = new WC_product($product_id);
 					$attachment_ids = $product->get_gallery_attachment_ids();
@@ -91,21 +92,18 @@ if ( ! defined( 'ABSPATH' ) ) {
 				do_action( 'truong_single_product_summary' );
 				?>
 			</div>
-			<?php   global $woocommerce;
-			$items = $woocommerce->cart->get_cart();
-			?>
 			<div class="cart" style="text-align: center;">
 				<?php 
-					do_action( 'woocommerce_after_shop_loop_item' ); 
+					do_action( 'woocommerce_after_shop_loop_item' );
+					do_action( 'woocommerce_add_to_cart_no_go' ); 					
 				?>
-				<?php 
-					do_action( 'woocommerce_go_to_cart' ); 
-				?>
+				
 				<button type="button" class="btn-compare" data-product-id="<?php get_the_ID();?>">Thêm vào danh sách so sánh</button>
-
+				
 				<script type="text/javascript">
 					var url_website = location.href;
-					var $urlbase = '<?php echo get_site_url();?>'
+					var $urlbase = '<?php echo get_site_url();?>';
+					var productid = '<?php echo get_the_ID(); ?>';
 		            $(document).ready(function () {
 		                // $('.btn-buy').click(function () {
 		                // 	//alert($urlbase)
@@ -119,16 +117,24 @@ if ( ! defined( 'ABSPATH' ) ) {
 		                //     });
 		                // });
 
-		                // $('.btn-addtocart').click(function () {
-		                // 	//alert($urlbase)
-		                //     $.ajax({
-		                //         url: $urlbase+"/wp-content/plugins/woocommerce/templates/cart/buy-product-for-cart.php",
-		                        
-		                //         success: function (result) {
-		                //             $(".btn-addtocart").html(result);
-		                //         }
-		                //     });
-		                // });
+		                $('.btn-seccess').click(function () {
+		                 	
+		                	//alert($urlbase)
+		                    $.ajax({
+		                        //url: $urlbase+"/?action=addProduct",
+		                        url: $urlbase+"/buy-product-for-cart.php",
+		                        type: 'POST',
+					            //cache: false,
+					            cache: false,
+        						//contentType: ,
+        						dataType: 'html',
+        						//processData: false,
+					            data: {products: $('.btn-addtocart').data('product-id')},
+		                        success: function (result) {
+		                            $(".btn-addtocart").html(result);
+		                        }
+		                    });
+		                });
 
 		                $('.btn-compare').click(function () {
 		                	//alert($urlbase)

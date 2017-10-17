@@ -133,3 +133,35 @@ function custom_add_to_cart_redirect() {
 // }
 
 // add_filter( 'woocommerce_loop_add_to_cart_link', 'add_woocommerce_loop_add_to_cart_link',2,2); 
+
+add_action('init', 'myStartSession', 1);
+function myStartSession() {
+    if(!session_id()) {
+        session_start();
+    }
+}
+
+// add_filter( 'woocommerce_product_single_add_to_cart_text', 'woo_custom_cart_button_text' );
+// function woo_custom_cart_button_text() {
+//     global $woocommerce;
+//     foreach($woocommerce->cart->get_cart() as $cart_item_key => $values ) {
+//         $_product = $values['data'];
+  
+//         if( get_the_ID() == $_product->id ) {
+//             return __('Already in cart - Add Again?', 'woocommerce');
+//         }
+//     }
+//     return __('Add to cart', 'woocommerce');
+// }
+  
+// add_filter( 'add_to_cart_text', 'woo_archive_custom_cart_button_text' );
+// function woo_archive_custom_cart_button_text() {
+//     global $woocommerce;
+//     foreach($woocommerce->cart->get_cart() as $cart_item_key => $values ) {
+//         $_product = $values['data'];
+//         if( get_the_ID() == $_product->id ) {
+//             return __('Already in cart', 'woocommerce');
+//         }
+//     }
+//     return __('Add to cart', 'woocommerce');
+// }

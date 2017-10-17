@@ -2712,3 +2712,35 @@ if ( ! function_exists( 'woocommerce_template_loop_add_go_to_cart' ) ) {
 		}
 	}
 }
+
+if ( ! function_exists( 'add_product_to_cart1' ) ) {
+
+	/**
+	 * check if product already in cart
+	 *
+	 * @subpackage    Loop
+	 *
+	 * @param array $args
+	 */
+
+	function add_product_to_cart1() {
+	        global $woocommerce;
+	        $product_id = get_the_ID();
+	        $found = false;
+	        //check if product already in cart
+	        if ( sizeof( $woocommerce->cart->get_cart() ) > 0 ) {
+	            foreach ( $woocommerce->cart->get_cart() as $cart_item_key => $values ) {
+	                $_product = $values['data'];
+	                $product_id_cart = $_product->get_id();
+	                if ($product_id_cart == $product_id )
+	                    $found = true;
+	            }
+	        }
+	        //echo $found
+	        if ($found==true) {
+	        	$html  = '<button type="button" class="btn btn-success disable " data-product-id="'.get_the_ID().'" onclick="window.location=\'cart\'">Đã có trong giỏ hàng</button> ';
+			} else $html = '<button type="button" class="btn btn-success btn-addtocart " data-product-id="'.get_the_ID().'">Thêm vào giỏ hàng</button> ';
+		//}
+		echo $html;
+	}
+}
