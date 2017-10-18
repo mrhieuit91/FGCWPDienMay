@@ -104,6 +104,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 					var url_website = location.href;
 					var $urlbase = '<?php echo get_site_url();?>';
 					var productid = '<?php echo get_the_ID(); ?>';
+					var num ='<?php echo WC()->cart->get_cart_contents_count(); ?>' ;
+					 
 		            $(document).ready(function () {
 		                // $('.btn-buy').click(function () {
 		                // 	//alert($urlbase)
@@ -117,30 +119,47 @@ if ( ! defined( 'ABSPATH' ) ) {
 		                //     });
 		                // });
 
-		                $('.btn-seccess').click(function () {
-		                 	
-		                	//alert($urlbase)
-		                    $.ajax({
-		                        //url: $urlbase+"/?action=addProduct",
-		                        url: $urlbase+"/buy-product-for-cart.php",
-		                        type: 'POST',
-					            //cache: false,
-					            cache: false,
-        						//contentType: ,
-        						dataType: 'html',
-        						//processData: false,
-					            data: {products: $('.btn-addtocart').data('product-id')},
-		                        success: function (result) {
-		                            $(".btn-addtocart").html(result);
-		                        }
-		                    });
+		                $('button.btn-success').click(function () {
+		                	
+						    	if (!$('button.btn').hasClass(".btn-addtocart")) {
+						    		
+						    		
+						    		$.ajax({
+				                        url: $urlbase+"/?action=addProduct",
+				                        //url: $urlbase+"/buy-product-for-cart.php",
+				                        type: 'POST',
+							            //cache: false,
+							            cache: false,
+		        						//contentType: ,
+		        						dataType: 'html',
+		        						//processData: false,
+							            data: {products: $('.btn-addtocart').data('product-id')},
+				                        success: function (result) {
+				                        	//alert("Test");
+				                            $(".btn-success").html("Đã có trong giỏ hàng");
+				                        }
+				                    });
+						    		$('button.btn').addClass("default");
+						    		$('button.btn').removeClass("btn-addtocart");
+						    		$(".btn").html("Đã có trong giỏ hàng");
+						    		var numm = parseInt(num) +1;
+						    		//print(num);
+						    		//alert(numm);
+						    		$(".number").html(numm);
+
+						    	}
+						    
+		                 	//if (!$('div.btn').hasClass(".btn-addtocart")) {
+		                 		 //$('div.btn').text("Hello world!");
+			               
+
 		                });
 
 		                $('.btn-compare').click(function () {
 		                	//alert($urlbase)
 		                    $.ajax({
-		                        url: $urlbase+"/wp-content/plugins/woocommerce/templates/cart/compare-product.php",
-		                        
+		                        url: $urlbase+"/?action=compare",
+				                        
 		                        success: function (result) {
 		                            $(".btn-compare").html(result);
 		                        }

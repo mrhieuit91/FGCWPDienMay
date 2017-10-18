@@ -1,6 +1,10 @@
 <?php
- 	require(dirname( __FILE__ ). '\wp-blog-header.php' );
+define('WP_USE_THEMES', true);
+/** Loads the WordPress Environment and Template */
+require( dirname( __FILE__ ) . '/wp-blog-header.php' );
+ 	//$product_id= "44";
 	//$product_id= get_the_ID();
+	
 	$product_id= $_REQUEST['products'];
 	//echo $product_id;
 	WC()->cart->add_to_cart( $product_id, 1 );

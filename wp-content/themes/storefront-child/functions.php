@@ -58,8 +58,8 @@ if (!function_exists('fgc_custom_header_right_box')) {
             ?>
             <div style="margin-top: 10px">
                 <a id="minicart" href="<?php echo WC()->cart->get_cart_url(); ?>" class="cart icon red relative">
-
-                    <?php echo sprintf('%d', WC()->cart->cart_contents_count); ?> <span>Sản phẩm</span>
+                    <span class="number"><?php echo sprintf('%d', WC()->cart->cart_contents_count); ?> </span>
+                    <span>Sản phẩm</span>
                     <input type="button" value="Thanh toán" name="thanhtoan" style="padding: 0; margin: 0 ;width: 110px; height: 22px; line-height: 20px; background-color: #ff7c00; border: solid 1px orangered;  border-radius: 5px"/>
                 </a>
             </div>
