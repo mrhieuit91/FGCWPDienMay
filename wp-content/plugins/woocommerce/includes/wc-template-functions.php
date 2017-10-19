@@ -2738,7 +2738,7 @@ if ( ! function_exists( 'add_product_to_cart1' ) ) {
 	        }
 	        //echo $found
 	        if ($found==true) {
-	        	$html  = '<button type="button" class="btn btn-success disable " data-product-id="'.get_the_ID().'" onclick="window.location=\'cart\'">Đã có trong giỏ hàng</button> ';
+	        	$html  = '<button type="button" class="btn btn-success disable " data-product-id="'.get_the_ID().'" >Đã có trong giỏ hàng</button> ';
 			} else $html = '<button type="button" class="btn btn-success btn-addtocart " data-product-id="'.get_the_ID().'">Thêm vào giỏ hàng</button> ';
 		//}
 		echo $html;
