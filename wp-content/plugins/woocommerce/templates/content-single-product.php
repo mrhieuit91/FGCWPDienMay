@@ -98,34 +98,26 @@ if ( ! defined( 'ABSPATH' ) ) {
 					do_action( 'woocommerce_add_to_cart_no_go' ); 					
 				?>
 				
-				<button type="button" class="btn-compare" data-product-id="<?php get_the_ID();?>">Thêm vào danh sách so sánh</button>
+				<button type="button" class="compare btn-compare" data-product-id="<?php get_the_ID();?>">Thêm vào danh sách so sánh</button>
 				
 				<script type="text/javascript">
 					var url_website = location.href;
 					var $urlbase = '<?php echo get_site_url();?>';
-					var productid = '<?php echo get_the_ID(); ?>';
+					var productid = '<?php echo get_the_ID(); ?>';// id sp
+					//var compare_name = '<? echo $product->post->post_title; ?>';
 					var num ='<?php echo WC()->cart->get_cart_contents_count(); ?>' ;
-					var cla = $('button.btn').hasClass(".disable");
+					
+					var disable_yes = $('button.btn').hasClass(".disable");
+					var compare_yes = $('button.compare').hasClass('comparing');
 		            $(document).ready(function () {
-		                // $('.btn-buy').click(function () {
-		                // 	//alert($urlbase)
-		                //     $.ajax({
-		                //         url: $urlbase+"/wp-content/plugins/woocommerce/templates/cart/buy-product.php",
-		                //         data: {'data-product-id': <?php echo get_the_ID();?>},
-                  		//     		type: 'POST',
-		                //         success: function (result) {
-		                //             $(".btn-primary").html(result);
-		                //         }
-		                //     });
-		                // });
 		                $('button.btn.btn-success').bind("click", function() {
 		                	
 		                	//alert(cla);
-					    	if (cla != false) {
+					    	if (disable_yes != false) {
 					    		window.location.replace($urlbase+"/cart");
 					    	}else {					    		
 					    		$.ajax({
-			                        url: $urlbase+"/?action=addProduct",
+			                        url: $urlbase+"/?fgcaction=addProduct",
 			                        //url: $urlbase+"/buy-product-for-cart.php",
 			                        type: 'POST',
 						            //cache: false,
@@ -136,63 +128,72 @@ if ( ! defined( 'ABSPATH' ) ) {
 						            data: {products: $('.btn-addtocart').data('product-id')},
 			                        success: function (result) {
 			                        	//alert("Test");
-			                            $(".btn-success").html("Đã có trong giỏ hàng");
+			                           
 			                            $('button.btn').addClass("disable");
 							    		$('button.btn').removeClass("btn-addtocart");
 							    		$('button.btn').attr("onclick","window.location='cart'");
-							    		$(".btn").html("Đã có trong giỏ hàng");
+							    		//$(".btn").html("Đã có trong giỏ hàng");
+							    		 $(".btn.btn-success").html("Đã có trong giỏ hàng");
 							    		var numm = parseInt(num) +1;
 							    		$(".number").html(numm);
 			                        }
 			                    });	
 					    	}
         				});
-		        //         $('button.btn.btn-success.btn-addtocart').click(function () {
-		                	
-
-					    	// if (!$('button.btn').hasClass(".disable")) {
-					    	// 	location.assign($urlbase+"/cart");
-					    	// }else 
-					    		
-					    	// 	$.ajax({
-			       //                  url: $urlbase+"/?action=addProduct",
-			       //                  //url: $urlbase+"/buy-product-for-cart.php",
-			       //                  type: 'POST',
-						    //         //cache: false,
-						    //         cache: false,
-	        	// 					//contentType: ,
-	        	// 					dataType: 'html',
-	        	// 					//processData: false,
-						    //         data: {products: $('.btn-addtocart').data('product-id')},
-			       //                  success: function (result) {
-			       //                  	//alert("Test");
-			       //                      $(".btn-success").html("Đã có trong giỏ hàng");
-			       //                      $('button.btn').addClass("disable");
-							   //  		$('button.btn').removeClass("btn-addtocart");
-							   //  		$('button.btn').attr("onclick","window.location='cart'");
-							   //  		$(".btn").html("Đã có trong giỏ hàng");
-							   //  		var numm = parseInt(num) +1;
-							   //  		$(".number").html(numm);
-			       //                  }
-			       //              });	
-					    	// }
-			               
-
-		        //         });
-		        //         $('button.btn.btn-success.disable').click(function () {
-		        //         	location.assign($urlbase+"/cart");
-		        //         });
-
-		                $('.btn-compare').click(function () {
-		                	//alert($urlbase)
-		                    $.ajax({
-		                        url: $urlbase+"/?action=compare",
-				                        
-		                        success: function (result) {
-		                            $(".btn-compare").html(result);
-		                        }
-		                    });
+        				$('button.compare').bind("click", function() {
+        					
+		                	if (compare_yes != false) {
+					    		//window.location.replace($urlbase+"/cart");
+					    	}else {					    		
+					    		$.ajax({
+			                        url: $urlbase+"/?fgcaction=compareProduct",
+			                        //url: $urlbase+"/buy-product-for-cart.php",
+			                        type: 'POST',
+						            //cache: false,
+						            cache: false,
+	        						//contentType: ,
+	        						dataType: 'html',
+	        						//processData: false,
+						            data: {products: $('.btn-addtocart').data('product-id')},
+			                        success: function (result) {
+			                        	//alert("Test");
+			                            
+			                            $('button.compare').addClass("comparing");
+							    		$('button.compare').removeClass("btn-compare");
+							    		$('button.compare').attr("onclick","window.location='cart'");
+							    		//$("button.compare").html("Đã có trong giỏ hàng");
+							    		var numm = parseInt(num) +1;
+							    		$(".compare").html('So sánh ngay ('+numm+' sp)');
+			                        }
+			                    });	
+					    	}
 		                });
+
+		                // $('.btn-compare').click(function () {
+		                // 	//alert($urlbase)
+		                //     $.ajax({
+		                //         url: $urlbase+"/?action=compare",
+				                        
+		                //         success: function (result) {
+		                //             $(".btn-compare").html(result);
+		                //         }
+		                //     });
+		                // });
+
+		                // $('.btn-compare').click(function() {
+                  //               var param = {
+                  //                   type: 'addtocompare',
+                  //                   products: $('.btn-compare').data('product-id'),
+                  //               };
+                  //               $.post('compare', param, function(data) {
+                  //                   if(data.status) {
+                  //                       var number = data.number;
+                  //                       $('.btn-compare').text('So sánh ngay ('+number+' sp)');
+                  //                       $('.btn-compare').attr("onclick","window.location='compare'");
+                  //                   }
+                  //               });
+                  //           });
+
 		            });
 		        </script>	
 			</div> <!-- end cart -->
