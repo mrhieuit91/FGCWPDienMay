@@ -95,16 +95,15 @@ if ( ! defined( 'ABSPATH' ) ) {
 			<div class="cart" style="text-align: center;">
 				<?php 
 					do_action( 'woocommerce_after_shop_loop_item' );
-					do_action( 'woocommerce_add_to_cart_no_go' ); 					
+					do_action( 'woocommerce_add_to_cart_no_go' ); 	
+					do_action( 'woocommerce_compare_product_to_view' );				
 				?>
-				
-				<button type="button" class="compare btn-compare" data-product-id="<?php get_the_ID();?>">Thêm vào danh sách so sánh</button>
 				
 				<script type="text/javascript">
 					var url_website = location.href;
 					var $urlbase = '<?php echo get_site_url();?>';
 					var productid = '<?php echo get_the_ID(); ?>';// id sp
-					//var compare_name = '<? echo $product->post->post_title; ?>';
+					
 					var num ='<?php echo WC()->cart->get_cart_contents_count(); ?>' ;
 					
 					var disable_yes = $('button.btn').hasClass(".disable");
@@ -133,9 +132,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 							    		$('button.btn').removeClass("btn-addtocart");
 							    		$('button.btn').attr("onclick","window.location='cart'");
 							    		//$(".btn").html("Đã có trong giỏ hàng");
-							    		 $(".btn.btn-success").html("Đã có trong giỏ hàng");
-							    		var numm = parseInt(num) +1;
-							    		$(".number").html(numm);
+							    		$(".btn.btn-success").html('Đã thêm vào giỏ hàng '+$urlbase );
+							    		
 			                        }
 			                    });	
 					    	}
@@ -143,10 +141,10 @@ if ( ! defined( 'ABSPATH' ) ) {
         				$('button.compare').bind("click", function() {
         					
 		                	if (compare_yes != false) {
-					    		//window.location.replace($urlbase+"/cart");
+							    	
 					    	}else {					    		
 					    		$.ajax({
-			                        url: $urlbase+"/?fgcaction=compareProduct",
+			                        url: $urlbase+"/?fgcaction=addcompareProduct",
 			                        //url: $urlbase+"/buy-product-for-cart.php",
 			                        type: 'POST',
 						            //cache: false,
@@ -160,10 +158,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 			                            
 			                            $('button.compare').addClass("comparing");
 							    		$('button.compare').removeClass("btn-compare");
-							    		$('button.compare').attr("onclick","window.location='cart'");
-							    		//$("button.compare").html("Đã có trong giỏ hàng");
-							    		var numm = parseInt(num) +1;
-							    		$(".compare").html('So sánh ngay ('+numm+' sp)');
+							    		$('button.compare').attr("onclick","window.location='compare'");
+							    		$("button.compare").html('So sánh ngay  ');
+							    		//var numm = parseInt(num) +1;
+							    		//$(".compare").html(result);
 			                        }
 			                    });	
 					    	}
