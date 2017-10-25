@@ -339,7 +339,6 @@ div#ContentPost_Q {
 a.more-link {
     padding-left: 400px;
 }
-
-input#post {
-    text-align: justify;
+.entry-content {
+    padding-left: 125px;
 }
