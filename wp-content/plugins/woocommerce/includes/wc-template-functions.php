@@ -2730,16 +2730,16 @@ if ( ! function_exists( 'add_product_to_cart1' ) ) {
 	        //check if product already in cart
 	        if ( sizeof( $woocommerce->cart->get_cart() ) > 0 ) {
 	            foreach ( $woocommerce->cart->get_cart() as $cart_item_key => $values ) {
-	                $_product = $values['data'];
-	                $product_id_cart = $_product->get_id();
+	                $product = $values['data'];
+	                $product_id_cart = $product->get_id();
 	                if ($product_id_cart == $product_id )
 	                    $found = true;
 	            }
 	        }
 	        //echo $found
 	        if ($found==true) {
-	        	$html  = '<button type="button" class="btn btn-success disable " data-product-id="'.get_the_ID().'" >Đã có trong giỏ hàng</button> ';
-			} else $html = '<button type="button" class="btn btn-success btn-addtocart " data-product-id="'.get_the_ID().'">Thêm vào giỏ hàng</button> ';
+	        	$html  = '<button type="button" class="btn btn-success disable " data-product-id="'.$product_id.'" onclick="window.location=\'cart\'">Đã có trong giỏ hàng</button> ';
+			} else $html = '<button type="button" class="btn btn-success btn-addtocart " data-product-id="'.$product_id.'">Thêm vào giỏ hàng</button> ';
 		//}
 		echo $html;
 	}

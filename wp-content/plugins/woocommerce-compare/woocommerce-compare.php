@@ -70,13 +70,15 @@ if ( ! function_exists( 'fgc_woocommercer_add_hook_compare_product' ) ) {
 	 			//global $woocommerce;
 	 			//echo  $_REQUEST['products'];
 	 			//WC_AJAX::init();
-	 			$post_id = isset($_REQUEST['products'])? $_REQUEST['products']:0;
+	 			$post_id = isset($_REQUEST['product_id'])? $_REQUEST['product_id']:[];
 	 			//$_POST['quantity'] = 1;
 	 			//global $woocommerce;
 	 			//print_r($woocommerce->cart);
 	 			//WC_AJAX::add_to_cart($_REQUEST['products']) ;
 	 			//echo $_POST['product_id'];
+//	 			var_dump( $post_id);
 	 			WC()->cart->add_to_cart( $post_id, 1 );
+	 			echo WC()->cart->get_cart_contents_count();
 	 			//echo WC()->cart->get_cart_contents_count(); in ra số sản phẩm trong giỏ
 	 			break;
 			case 'addcompareProduct':
@@ -84,14 +86,19 @@ if ( ! function_exists( 'fgc_woocommercer_add_hook_compare_product' ) ) {
 				//global $woocommerce;
 				//echo  $_REQUEST['products'];
 				//WC_AJAX::init();
-				$product_compare_id = isset($_REQUEST['products'])?$_REQUEST['products']:[];
-				$list_product_in_compare = !empty($_SESSION['compares']) ? $_SESSION['compares'] : [];
+				$product_compare_id = isset($_REQUEST['product_id'])?$_REQUEST['product_id']:[];
+				//var_dump( $_SESSION['compares']);
+				// 	echo '<pre>';
+				// print_r($_SESSION['compares']);
+				// echo '</pre>';
+				$list_product_in_compare = !empty($_SESSION['compares']) ? $_SESSION['compares'] :0;
 
 				if ( !in_array($product_compare_id,$list_product_in_compare ) ){
 					$list_product_in_compare[] = $product_compare_id;
 					$_SESSION['compares'] = $list_product_in_compare;
 				}
-
+				$num = count($_SESSION['compares']);
+				echo $num;
 				
 				//$_POST['quantity'] = 1;
 				// echo $_POST['product_id'] ;
@@ -104,15 +111,21 @@ if ( ! function_exists( 'fgc_woocommercer_add_hook_compare_product' ) ) {
 				break;
 				
 			case 'deletecomparingProduct':
-				$product_compare_id = isset($_REQUEST['products'])?$_REQUEST['products']:[];
+
+				$product_compare_id = isset($_REQUEST['product_id'])?$_REQUEST['product_id']:[""];
 				
 				foreach($_SESSION['compares']  as $key=>$value_id)
 				{
+
 				    if($value_id == $product_compare_id)
 				    {
 				        unset($_SESSION['compares'][$key]);
+				        
 				    }
+
+					
 				}
+
 			
 				
 
@@ -135,6 +148,13 @@ if ( ! function_exists( 'fgc_woocommercer_add_hook_compare_product' ) ) {
 
 				break;
 
+			case 'deleteall':
+				
+				unset($_SESSION['compares']);
+
+			
+
+				break;
 			
 			
 		}
