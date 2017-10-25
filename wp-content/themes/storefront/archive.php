@@ -90,7 +90,7 @@ if ($page === 1) :
             $numberPage = ceil($numberPost / 5);
             if ($numberPage > 1) {
                 ?>
-                <div id='loading' style="display:none; "><img src="images\loading.gif" alt="Image loading..." width="100" height="50"/>
+                <div id="loading" style="display:none;"><img src="images\loading.gif" alt="Image loading..." width="100" height="50"/>
                 </div>
                 <input type="button" name="clickme" id="post"/>
             <?php } ?>

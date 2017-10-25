@@ -197,8 +197,8 @@ div#gioithieu p {
 
 /*phan menu*/
 ul#menu-primary-menu {
-    width: 70% !important;
-    margin-top: -3px !important;
+    width: 100% !important;
+    margin-top: -4px !important;
 
 }
 /*phần tin tức*/
@@ -223,4 +223,120 @@ ul {
 }
 entry-content {
     border-bottom: 2px solid #ccc;
+}
+
+
+
+
+
+.list_img_products.imager-thumbail {
+    border: 1px solid #25e0d5;
+    padding: 29px 0 0 16px;
+    height: 381px;
+    overflow: overlay;
+}
+.list_img_products.imager-thumbail img {
+    margin-bottom: 10px;
+}
+
+
+/*phan post*/
+
+.category-tin-tuc h1{
+    margin-top: -100px;
+    padding-top: 50px;
+    font-size: 24px;
+    text-align: center;
+    font-weight: bold;
+    text-decoration: none;
+}
+.category-tin-tuc h1:hover{
+    color: blue;
+    text-decoration: none;
+}
+.category-tin-tuc{
+    border-bottom: 2px solid #ccc;
+    padding-bottom: 22px;
+    margin-top: 38px;
+    text-align: justify;
+}
+#informationPost{
+    text-align: center;
+    margin-left: 300px;
+}
+.category-tin-tuc a{
+    color: black;
+}
+
+#pageNews{
+    width: 100%;
+}
+#contentSidebar{
+    width: 25%;
+    float: left;
+}
+#ContentNews {
+    width: 70%;
+    float: left;
+}
+#ContentNews a:hover{
+    color: #337ab7;
+    text-decoration: underline;
+}
+
+input#post {
+    float: right;
+}
+nav.woocommerce-breadcrumb {
+    margin-top: -92px;
+}
+h1.entry-title {
+    margin-top: 96px;
+}
+
+
+#loading img{
+    margin:auto;
+    padding-left: 10px;
+}
+/*phan id post*/
+section#comments {
+    opacity: 0;
+}
+aside.entry-meta {
+    opacity: 0;
+}
+.entry-content {
+    margin-top: -227px;
+}
+img.alignnone.size-medium.wp-image-114 {
+    margin-top: 10px;
+}
+div#gioithieu {
+    margin-top: 36px;
+}
+div#title_post_Q {
+    text-align: center;
+    font-size: 24px;
+    color: black;
+}
+span.posted-on {
+    opacity: 0;
+}
+div#ContentPost_Q {
+    margin-left: -160px;
+    text-align: justify;
+}
+.nav-previous {
+    margin-left: 120px;
+}
+.nav-next {
+    margin-top: -36px;
+}
+a.more-link {
+    padding-left: 400px;
+}
+
+input#post {
+    text-align: justify;
 }
