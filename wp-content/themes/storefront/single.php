@@ -4,25 +4,34 @@
  *
  * @package storefront
  */
+get_header();
+?>
 
-get_header(); ?>
-    
-	<div id="primary" class="content-area">
-		<main id="main" class="site-main" role="main">
 
-		<?php while ( have_posts() ) : the_post();
+<div id="primary" class="content-area">
+    <main id="main" class="site-main" role="main">
+        <div id="title_post_Q">
+            <?php the_title(); ?>
+        </div>
+        <div id="ContentPost_Q">
+        <?php
+        while (have_posts()) : the_post();
 
-			do_action( 'storefront_single_post_before' );
 
-			get_template_part( 'content', 'single' );
+            do_action('storefront_single_post_before');
 
-			do_action( 'storefront_single_post_after' );
+            get_template_part('content', 'single');
 
-		endwhile; // End of the loop. ?>
+            do_action('storefront_single_post_after');
 
-		</main><!-- #main -->
-	</div><!-- #primary -->
-<?php get_the_title();  ?>
+        endwhile; // End of the loop. 
+       
+        ?>
+        </div>
+    </main><!-- #main -->
+</div><!-- #primary -->
+
+			
 <?php
-do_action( 'storefront_sidebar' );
+do_action('storefront_sidebar');
 get_footer();
