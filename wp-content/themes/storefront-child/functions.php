@@ -13,7 +13,11 @@ if (!function_exists('load_all_news')) {
         $args = array('posts_per_page' => 5, 'offset' => 1, 'category' => 'tin-tuc');
         $myposts = get_posts($args);
         ?>
-
+        <style type="text/css">
+            .loading {
+                display: none;
+            }
+        </style>
         <div class="col-xs-9">
             <div id="main_center" class="news-content">
                 <ul style="list-style-type: none">
@@ -29,8 +33,48 @@ if (!function_exists('load_all_news')) {
                     wp_reset_postdata();
                     ?>
                 </ul>
+                <div class="loading">
+                    <p>Loading</p>
+                </div>
             </div>
         </div>
+
+        <script type="text/javascript">
+            jQuery(document).ready(function () {
+                var win = jQuery(window);
+                var loadmore = false;
+
+                win.scroll(function () {
+                    if (jQuery(document).height() - win.height() == win.scrollTop()) {
+                        var query = null;
+                        var uri = "array('posts_per_page' => 5, 'offset' => 1, 'category' => 'tin-tuc')";
+                        console.log(uri);
+
+                        if (loadmore === true) {
+                            loadmore = false;
+                            jQuery('.loading').show();
+                            jQuery.ajax({
+                                dataType: 'html',
+                                success: function (html) {
+                                    if (html && html.length > 10) {
+                                        loadmore = true;
+                                        console.log('Have data');
+                                        jQuery('.conten_product').append(html);
+                                        jQuery('.loading').hide();
+                                    } else {
+                                        console.log('No more data');
+                                        loadmore = false;
+                                        jQuery('#loading').html('Đã hết dữ liệu');
+                                    }
+                                }
+                            });
+                        } else {
+                            //$('#loading').hide();
+                        }
+                    }
+                });
+            });
+        </script>
         <?php
     }
 
@@ -366,16 +410,16 @@ class FGC_Categories_Widget extends WP_Widget {
 
             echo '</nav>';
             ?>
-<!--                    <script type="text/javascript">
-                            jQuery(".cat-parent").hover(function () {
-                                jQuery("li.cat-parent").show("2000", function () {
-                                    jQuery(".children").css({"display": "block"});
-                                        });
-                                });
-                                jQuery(".cat-parent").mouseleave(function () {
-                                jQuery(".children").hide();
-                            });
-                    </script>-->
+                <!--                    <script type="text/javascript">
+                                            jQuery(".cat-parent").hover(function () {
+                                                jQuery("li.cat-parent").show("2000", function () {
+                                                    jQuery(".children").css({"display": "block"});
+                                                        });
+                                                });
+                                                jQuery(".cat-parent").mouseleave(function () {
+                                                jQuery(".children").hide();
+                                            });
+                                    </script>-->
 
 
         </div>
@@ -1024,7 +1068,7 @@ function custom_registration_shortcode() {
 function custom_login_interface() {
     ?>
     <style type="text/css">
-        
+
         body {
             background-color: #ffffff !important;
         }
@@ -1180,10 +1224,11 @@ function custom_login_interface() {
 //THAY THẾ CHỮ SALE BẰNG PHẦN TRĂM GIẢM GIÁ
 
 add_filter('woocommerce_sale_flash', 'fgc_woocommerce_sale_flash', 10, 2);
-function fgc_woocommerce_sale_flash($post, $product){
+
+function fgc_woocommerce_sale_flash($post, $product) {
     global $product;
     $sale_price = $product->get_sale_price();
     $regular_price = $product->get_regular_price();
-    $tmp = ($sale_price * 100)/$regular_price;
-    return '<span class="onsale">-'.(int)number_format(100-$tmp,2).'%</span>';
+    $tmp = ($sale_price * 100) / $regular_price;
+    return '<span class="onsale">-' . (int) number_format(100 - $tmp, 2) . '%</span>';
 }
