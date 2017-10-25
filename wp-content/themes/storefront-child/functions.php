@@ -13,7 +13,11 @@ if (!function_exists('load_all_news')) {
         $args = array('posts_per_page' => 5, 'offset' => 1, 'category' => 'tin-tuc');
         $myposts = get_posts($args);
         ?>
-
+        <style type="text/css">
+            .loading {
+                display: none;
+            }
+        </style>
         <div class="col-xs-9">
             <div id="main_center" class="news-content">
                 <ul style="list-style-type: none">
@@ -29,8 +33,48 @@ if (!function_exists('load_all_news')) {
                     wp_reset_postdata();
                     ?>
                 </ul>
+                <div class="loading">
+                    <p>Loading</p>
+                </div>
             </div>
         </div>
+
+        <script type="text/javascript">
+            jQuery(document).ready(function () {
+                var win = jQuery(window);
+                var loadmore = false;
+
+                win.scroll(function () {
+                    if (jQuery(document).height() - win.height() == win.scrollTop()) {
+                        var query = null;
+                        var uri = "array('posts_per_page' => 5, 'offset' => 1, 'category' => 'tin-tuc')";
+                        console.log(uri);
+
+                        if (loadmore === true) {
+                            loadmore = false;
+                            jQuery('.loading').show();
+                            jQuery.ajax({
+                                dataType: 'html',
+                                success: function (html) {
+                                    if (html && html.length > 10) {
+                                        loadmore = true;
+                                        console.log('Have data');
+                                        jQuery('.conten_product').append(html);
+                                        jQuery('.loading').hide();
+                                    } else {
+                                        console.log('No more data');
+                                        loadmore = false;
+                                        jQuery('#loading').html('Đã hết dữ liệu');
+                                    }
+                                }
+                            });
+                        } else {
+                            //$('#loading').hide();
+                        }
+                    }
+                });
+            });
+        </script>
         <?php
     }
 
@@ -366,20 +410,16 @@ class FGC_Categories_Widget extends WP_Widget {
 
             echo '</nav>';
             ?>
-
-                <!--            <script type="text/javascript">
-                                
-                                jQuery(".cat-parent").hover(function () {
-                                    jQuery("li.cat-parent").show("2000", function () {
-                                        jQuery(".children").css({"display": "block"});
-                                    });
-                                });
-                                
-                                jQuery(".cat-parent").mouseleave(function () {
-                                    jQuery(".children").hide();
-                                    
-                                });
-                            </script>-->
+                <!--                    <script type="text/javascript">
+                                            jQuery(".cat-parent").hover(function () {
+                                                jQuery("li.cat-parent").show("2000", function () {
+                                                    jQuery(".children").css({"display": "block"});
+                                                        });
+                                                });
+                                                jQuery(".cat-parent").mouseleave(function () {
+                                                jQuery(".children").hide();
+                                            });
+                                    </script>-->
 
 
         </div>
@@ -741,10 +781,454 @@ function woo_custom_cart_button_text() {
 add_filter('add_to_cart_text', 'woo_custom_cart_button_text');    // &amp;lt; 2.1
 add_filter('woocommerce_product_add_to_cart_text', 'woo_custom_cart_button_text');
 
-
 //remove_action( 'woocommerce_before_main_content','woocommerce_breadcrumb', 20, 0);
 
 
 /*
- * COMPARE PRODUCTS MODULE
+ * CUSTOMIZE LOGIN PAGE
  */
+
+function registration_form($username, $password, $email, $website, $first_name, $last_name, $nickname, $bio) {
+
+    echo '
+    <div class="register-form-container">
+        <form action="' . $_SERVER['REQUEST_URI'] . '" method="post">
+            <div>
+                <label for="username">Tên Đăng Nhập <strong>*</strong></label>
+                <input type="text" name="username" value="' . ( isset($_POST['username']) ? $username : null ) . '">
+            </div>
+
+            <div>
+                <label for="password">Mật Khẩu <strong>*</strong></label>
+                <input type="password" name="password" value="' . ( isset($_POST['password']) ? $password : null ) . '">
+            </div>
+
+            <div>
+                <label for="email">Email <strong>*</strong></label>
+                <input type="text" name="email" value="' . ( isset($_POST['email']) ? $email : null ) . '">
+            </div>
+
+            <div>
+                <label for="website">Website</label>
+                <input type="text" name="website" value="' . ( isset($_POST['website']) ? $website : null ) . '">
+            </div>
+
+            <div>
+                <label for="firstname">Họ</label>
+                <input type="text" name="fname" value="' . ( isset($_POST['fname']) ? $first_name : null ) . '">
+            </div>
+
+            <div>
+                <label for="website">Tên</label>
+                <input type="text" name="lname" value="' . ( isset($_POST['lname']) ? $last_name : null ) . '">
+            </div>
+
+            <div>
+                <label for="nickname">Tên hiển thị</label>
+                <input type="text" name="nickname" value="' . ( isset($_POST['nickname']) ? $nickname : null ) . '">
+            </div>
+
+            <div>
+                <label for="bio">Đôi chút về bản thân</label>
+                <textarea name="bio">' . ( isset($_POST['bio']) ? $bio : null ) . '</textarea>
+            </div>
+            <div id="reg-last-items">
+                <input type="reset" name="reset" value="Nhập Lại"/>
+                <input type="submit" name="submit" value="Đăng Ký"/>
+            </div>
+            
+        </form>
+    </div>
+    ';
+    ?>
+
+    <!-- Mixins-->
+    <!-- Pen Title-->
+    <div class="pen-title">
+        <h1>Hãy đăng nhập hoặc đăng ký</h1><span>Hoặc <i class='fa fa-code'></i><a href='#'>Quay lại trang chủ</a></span>
+    </div>
+    <div class="rerun"><a href="home">Quay lại</a></div>
+    <div class="container">
+        <div class="card"></div>
+        <div class="card">
+            <h1 class="title">Đăng nhập</h1>
+            <?php
+            if (isset($error))
+                echo '<div class="alert alert-danger" role="alert">
+              <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+              <span class="sr-only">Error:</span>
+              ' . $error . '
+            </div>';
+            elseif (isset($message))
+                echo '<div class="alert alert-info" role="alert">
+              <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+              ' . $message . '
+            </div>';
+            if (isset($redirect))
+                echo '<script>setTimeout(function(){window.location.replace("' . $redirect . '");}, 2000);</script>';
+            ?>
+            <form method="post" action="user/login" name="login">
+                <input type="hidden" name="dologin" value="true"/>
+                <div class="input-container">
+                    <input name="email" type="text" id="email"/>
+                    <label for="email">Email đăng nhập</label>
+                    <div class="error" id="email_error"><?php echo form_error('email') ?></div>
+
+                    <div class="bar"></div>
+                </div>
+                <div class="input-container">
+                    <input name="password" type="password" id="password" />
+                    <label for="password">Mật khẩu</label>
+                    <div class="error" id="password_error"><?php echo form_error('password') ?></div>
+                    <div class="bar"></div>
+                </div>
+                <div class="button-container">
+                    <button name="login" type="submit"><span>Đăng nhập</span></button>
+                </div>
+                <div class="footer"><a href="login/facebook">Facebook</a> | <a href="login/google">Google</a> | <a href="user/forgot">Quên mật khẩu?</a></div>
+            </form>
+        </div>
+        <div class="card alt">
+            <div class="toggle"><a href=""></a></div>
+            <h1 class="title">Đăng ký
+                <div class="close"></div>
+            </h1>
+            <form method="post" action="<?php $_SERVER['REQUEST_URI']; ?>" name="register">
+                <div class="input-container">
+                    <input name="remail" type="text" id="email"/>
+                    <label for="email">Email</label>
+                    <div class="r_error"><?php echo form_error('remail'); ?></div>
+                    <div class="bar"></div>
+                </div>
+                <div class="input-container">
+                    <input name="rname" type="text" id="name"/>
+                    <label for="name">Họ và tên</label>
+                    <div class="r_error"><?php echo form_error('rname'); ?></div>
+                    <div class="bar"></div>
+                </div>
+                <div class="input-container">
+                    <input name="rpass" type="password" id="password"/>
+                    <label for="password">Mật khẩu</label>
+                    <div class="r_error"><?php echo form_error('rpass'); ?></div>
+                    <div class="bar"></div>
+                </div>
+                <div class="input-container">
+                    <input name="rrepass" type="password" id="re_password"/>
+                    <label for="re_password">Nhập lại mật khẩu</label>
+                    <div class="r_error"><?php echo form_error('rrepass'); ?></div>
+                    <div class="bar"></div>
+                </div>
+                <div class="button-container">
+                    <button><span>Đăng ký</span></button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <!-- Portfolio--><a id="portfolio" href="#" onclick="goBack()" title="View my portfolio!"><i class="fa fa-link"></i></a>
+    <!-- CodePen--><a id="codepen" href="#" onclick="goBack()" title="Follow me!"><i class="fa fa-codepen"></i></a>
+    <script>
+        function goBack() {
+            window.history.back();
+        }
+    </script>
+    <script src='public/themes/js/jquery-1.7.2.min.js'></script>
+    <script src="public/admin/js/index.js"></script>
+
+    <?php
+}
+
+function registration_validation($username, $password, $email, $website, $first_name, $last_name, $nickname, $bio) {
+    global $reg_errors;
+    $reg_errors = new WP_Error;
+
+    // Kiểm tra các trường bắt buộc có dữ liệu Username, Password và Email
+    if (empty($username) || empty($password) || empty($email)) {
+        $reg_errors->add('field', 'Không được bỏ trống các trường Username, Password và Email');
+    }
+    // Yêu cầu số ký tự để đăng ký Username phải nhiều hơn 4 ký tự
+    if (4 > strlen($username)) {
+        $reg_errors->add('username_length', 'Username quá ngắn. Tên đăng nhập phải có ít nhất 4 ks tự');
+    }
+    // Kiểm tra xem Username đã tồn tại hay chưa
+    if (username_exists($username)) {
+        $reg_errors->add('user_name', 'Xin lỗi! Username này đã tồn tại!');
+    }
+    // Sử dụng hàm validate_username trong WordPress để đảm bảo rằng username là hợp lệ.
+    if (!validate_username($username)) {
+        $reg_errors->add('username_invalid', 'Xin lỗi! Username bạn nhập không hợp lệ');
+    }
+    // Yêu cầu số ký tự của Password phải  nhiều hơn 5 ký tự
+    if (5 > strlen($password)) {
+        $reg_errors->add('password', 'Độ dài của mật khẩu phải nhiều hơn 5 ký tự');
+    }
+    // Kiểm tra tính hợp lệ của email
+    if (!is_email($email)) {
+        $reg_errors->add('email_invalid', 'Email của bạn không hợp lệ');
+    }
+    // Kiểm tra xem email đã được đăng ký hay chưa
+    if (email_exists($email)) {
+        $reg_errors->add('email', 'Email đã được đăng ký bởi người dùng khác');
+    }
+    //Nếu trường website đã được điền, kiểm tra xem nó có hợp lệ hay không
+    if (!empty($website)) {
+        if (!filter_var($website, FILTER_VALIDATE_URL)) {
+            $reg_errors->add('website', 'Website không hợp lệ');
+        }
+    }
+    // lặp qua các lỗi trong đối tượng WP_Error và hiển thị từng lỗi.
+    if (is_wp_error($reg_errors)) {
+
+        foreach ($reg_errors->get_error_messages() as $error) {
+
+            echo '<div class="reg-errors">';
+            echo '<strong style="color: red !important; font-weight: bold !important;">OOP..!</strong>:';
+            echo '<span style="color: red !important;">' . $error . '</span> <br/>';
+            echo '</div>';
+        }
+    }
+}
+
+// Hàm để xử lý đăng ký người dùng
+function complete_registration() {
+    global $reg_errors, $username, $password, $email, $website, $first_name, $last_name, $nickname, $bio;
+    if (1 > count($reg_errors->get_error_messages())) {
+        $userdata = array(
+            'user_login' => $username,
+            'user_email' => $email,
+            'user_pass' => $password,
+            'user_url' => $website,
+            'first_name' => $first_name,
+            'last_name' => $last_name,
+            'nickname' => $nickname,
+            'description' => $bio,
+        );
+        $user = wp_insert_user($userdata);
+        echo 'Đăng ký thành công. Đi đến <a href="' . get_site_url() . '/wp-login.php">trang đăng nhập</a>.';
+    }
+}
+
+function custom_registration_function() {
+    // Xác định xem form đã được submit hay chưa bằng cách kiểm tra $_POST['submit'] có được thiết lập hay chưa
+    if (isset($_POST['submit'])) {
+        // Nếu form đã được submit, chúng ta gọi hàm registration_validation để xác nhận form.
+        registration_validation(
+                $_POST['username'], $_POST['password'], $_POST['email'], $_POST['website'], $_POST['fname'], $_POST['lname'], $_POST['nickname'], $_POST['bio']
+        );
+
+        // Sàng lọc thông tin user nhập vào
+        global $username, $password, $email, $website, $first_name, $last_name, $nickname, $bio;
+        $username = sanitize_user($_POST['username']);
+        $password = esc_attr($_POST['password']);
+        $email = sanitize_email($_POST['email']);
+        $website = esc_url($_POST['website']);
+        $first_name = sanitize_text_field($_POST['fname']);
+        $last_name = sanitize_text_field($_POST['lname']);
+        $nickname = sanitize_text_field($_POST['nickname']);
+        $bio = esc_textarea($_POST['bio']);
+
+        // Gọi hàm complete_registration để tạo user chỉ khi không có lỗi WP_error được tìm thấy
+        complete_registration(
+                $username, $password, $email, $website, $first_name, $last_name, $nickname, $bio
+        );
+    }
+
+    registration_form(
+            $username = "", $password = "", $email = "", $website = "", $first_name = "", $last_name = "", $nickname = "", $bio = ""
+    );
+}
+
+function user_infomation_details() {
+    $current_user = wp_get_current_user();
+    ?>
+    <h1> Thông tin tài khoản</h1>
+    <p>Welcome:  <span style="color: red !important; font-weight: bold !important;"><?php echo $current_user->display_name; ?></span></p> 
+    <p>ID:  <span style="color: red !important; font-weight: bold !important;"><?php echo $current_user->ID; ?></span></p>
+    <p>Email:  <span style="color: red !important; font-weight: bold !important;"><?php echo $current_user->user_email; ?></span></p>
+    <p><a href="<?php home_url('/FGCClass_WordPress/') ?>">Quay về trang chủ</a></p>
+    <?php
+}
+
+// Tạo mới 1 shortcode [fgc_custom_registration]
+add_shortcode('fgc_custom_registration', 'custom_registration_shortcode');
+
+// Hàm gọi
+function custom_registration_shortcode() {
+    ob_start();
+    if (!is_user_logged_in()) {
+        custom_registration_function();
+    } else {
+        user_infomation_details();
+//        remove_action(custom_registration_function());
+    }
+    return ob_get_clean();
+}
+
+// CUSTOM LOGIN PAGE INTERFACE
+
+function custom_login_interface() {
+    ?>
+    <style type="text/css">
+
+        body {
+            background-color: #ffffff !important;
+        }
+        .login-main-container {
+            padding: 0;
+            margin: 0 auto;
+            position: relative;
+        }
+        #login h1 a {
+            background-image: none;
+            width: 300px;
+            height: 100px;
+            background-size: 300px 100px;            
+        }
+        #dangnhap {
+            border-radius: 5px;
+        }
+        .login-container #backtoblog a, .login #nav a {
+            color: #1674d2 !important;
+        }
+        .login-container div#login form#dangnhap p.submit input#wp-submit {
+            outline: 0;
+            cursor: pointer;
+            position: relative;
+            display: inline-block;
+            background: 0;
+            width: 240px;
+            border: 2px solid #e3e3e3;
+            padding: 20px 0;
+            font-size: 24px;
+            font-weight: 600;
+            line-height: 1;
+            text-transform: uppercase;
+            overflow: hidden;
+            -webkit-transition: .3s ease;
+            transition: .3s ease;
+            text-shadow:none;
+            box-shadow: none;
+            color: #e3e3e3;
+        }
+        .login-container div#login form#dangnhap p.submit input#wp-submit:hover {
+            border-color: #ed2553;
+            color: #ed2553;
+        }
+        /* Pen Title */
+        .pen-title {
+            padding: 50px 0 !important;
+            text-align: center;
+            letter-spacing: 2px;
+            font-weight: bold !important;
+        }
+        .pen-title h1 {
+            margin: 0 0 20px;
+            font-size: 48px;
+            font-weight: 300;
+        }
+        .pen-title span {
+            font-size: 12px;
+        }
+        .pen-title span .fa {
+            color: #ed2553;
+        }
+        .pen-title span a {
+            color: #ed2553;
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        /* Rerun */
+        .rerun {
+            margin: 0 0 30px;
+            text-align: center;
+        }
+        .rerun a {
+            cursor: pointer;
+            display: inline-block;
+            background: #ed2553;
+            border-radius: 3px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+            padding: 10px 20px;
+            color: #ffffff;
+            text-decoration: none;
+            -webkit-transition: 0.3s ease;
+            transition: 0.3s ease;
+        }
+        .rerun a:hover {
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+        }
+        .card:first-child {
+            background: #fafafa;
+            height: 10px;
+            border-radius: 5px 5px 0 0;
+            margin: 0 10px;
+            padding: 0;
+        }
+        .card {
+            position: relative;
+            background: #ffffff;
+            border-radius: 5px;
+            padding: 60px 0 40px 0;
+            box-sizing: border-box;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+            -webkit-transition: .3s ease;
+            transition: .3s ease;
+        }
+
+    </style>
+    <div class="login-main-container">
+        <div class="pen-title">
+            <h1>Hãy đăng nhập hoặc đăng ký</h1><span>Hoặc <i class='fa fa-code'></i><a href="<?php echo home_url(); ?>">Quay lại trang chủ</a></span>
+        </div>
+        <div class="rerun"><a href="<?php echo home_url(); ?>">Quay lại</a></div>
+
+        <div class="login-container">
+            <div class="card"></div>
+            <div class="card">
+                <h1 class="title">Đăng nhập</h1>
+                <?php
+                if (isset($error))
+                    echo '<div class="alert alert-danger" role="alert">
+              <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+              <span class="sr-only">Error:</span>
+              ' . $error . '
+            </div>';
+                elseif (isset($message))
+                    echo '<div class="alert alert-info" role="alert">
+              <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+              ' . $message . '
+            </div>';
+                if (isset($redirect))
+                    echo '<script>setTimeout(function(){window.location.replace("' . $redirect . '");}, 2000);</script>';
+                ?>
+
+                <?php
+                $arrgs = array(
+                    'redirect' => site_url($_SERVER['REQUEST_URI']),
+                    'form_id' => 'dangnhap', //Để dành viết CSS
+                    'label_username' => __('Tài khoản'),
+                    'label_password' => __('Mật khẩu'),
+                    'label_remember' => __('Ghi nhớ'),
+                    'label_log_in' => __('Đăng nhập'),
+                );
+                wp_login_form($arrgs);
+                ?>
+            </div>
+        </div>
+    </div>
+
+    <?php
+}
+
+//add_action('login_enqueue_scripts', 'custom_login_interface');
+//THAY THẾ CHỮ SALE BẰNG PHẦN TRĂM GIẢM GIÁ
+
+add_filter('woocommerce_sale_flash', 'fgc_woocommerce_sale_flash', 10, 2);
+
+function fgc_woocommerce_sale_flash($post, $product) {
+    global $product;
+    $sale_price = $product->get_sale_price();
+    $regular_price = $product->get_regular_price();
+    $tmp = ($sale_price * 100) / $regular_price;
+    return '<span class="onsale">-' . (int) number_format(100 - $tmp, 2) . '%</span>';
+}
