@@ -16,6 +16,7 @@ body{
     Created on : Sep 11, 2017, 2:43:22 PM
     Author     : Nguy?n Minh Quang
 */
+/* ph?n t?o n�t cu?i trang tr? v? d?u trang*/
 
 #backtotop { 
     bottom: 7px; 
@@ -49,8 +50,8 @@ nav.woocommerce-breadcrumb {
     margin-top: 6px;
 }
 img.alignnone.size-medium.wp-image-114 {
-      margin-top: -200px;
-   	margin-top: -200px;
+   
+  margin-top: -200px;
 }
 h1 {
     margin-left: 101px;
@@ -141,13 +142,13 @@ h2 {
 div#primary {
     margin-bottom: -67px;
 }
+
 .col-sm-12 col-lg-12{
 width: 1040px;
 height: 40px;
 background-color: grey;
 }
 /*phan footer*/
-
 .site-footer{
     background-color: #ece1e1;
     width: 1066px;
@@ -202,7 +203,30 @@ ul#menu-primary-menu {
     width: 1
     00% !important;
     margin-top: -3px !important;
+}
 
+/*phần tin tức*/
+aside.entry-meta, span.posted-on {
+    opacity: 0;
+}
+span.gamma.widget-title {
+    border: 1px solid gray;
+    font-size: 24px;
+    text-align: center;
+    font-weight: 700;
+    padding-bottom: 0px;
+    border-bottom: 8px solid #FF9900;
+    border-radius: 5px;
+    background-color: #D6D6D6;
+}
+.textwidget {
+    border: 1px dashed #ccc;
+}
+ul {
+    border: 1px dashed #ccc;
+}
+entry-content {
+    border-bottom: 2px solid #ccc;
 }
 .list_img_products.imager-thumbail {
     border: 1px solid #25e0d5;
