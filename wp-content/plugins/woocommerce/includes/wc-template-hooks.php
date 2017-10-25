@@ -205,6 +205,8 @@ add_action( 'woocommerce_external_add_to_cart', 'woocommerce_external_add_to_car
 add_action( 'woocommerce_single_variation', 'woocommerce_single_variation', 10 );
 add_action( 'woocommerce_single_variation', 'woocommerce_single_variation_add_to_cart_button', 20 );
 
+//add_action( 'woocommerce_single_product_summary22', 'woocommerce_template_single_add_to_cart', 30 );
+
 /**
  * Pagination after shop loops.
  *
@@ -308,5 +310,7 @@ add_action( 'woocommerce_account_edit-account_endpoint', 'woocommerce_account_ed
 
 //add to cart and go to cart
 add_action( 'woocommerce_add_to_cart_item', 'woocommerce_template_loop_add_to_cart', 10 );
-add_action( 'woocommerce_go_to_cart', 'custom_add_to_cart_redirect', 10 );
+add_action( 'woocommerce_go_to_cart', 'woocommerce_template_loop_add_go_to_cart', 10 );
 //add_action( 'woocommerce_add_product_to_cart_item', 'woocommerce_simple_add_to_cart', 10 );// thêm số lượng sản phẩm
+add_action( 'woocommerce_add_to_cart_no_go', 'add_product_to_cart1', 10 );
+

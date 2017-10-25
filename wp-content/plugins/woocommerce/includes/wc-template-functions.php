@@ -2683,3 +2683,64 @@ if ( ! function_exists( 'custom_add_to_cart_redirect' ) ) {
 	}
 }
 
+if ( ! function_exists( 'woocommerce_template_loop_add_go_to_cart' ) ) {
+
+	/**
+	 * Get the add to cart template for the loop.
+	 *
+	 * @subpackage    Loop
+	 *
+	 * @param array $args
+	 */
+	function woocommerce_template_loop_add_go_to_cart( $args = array() ) {
+		global $product;
+
+		if ( $product ) {
+			$defaults = array(
+				'quantity' => 1,
+				'class'    => implode( ' ', array_filter( array(
+						'blude button',
+						'product_type_' . $product->get_type(),
+						$product->is_purchasable() && $product->is_in_stock() ? 'add_to_cart_button' : '',
+						$product->supports( 'ajax_add_to_cart' ) ? 'ajax_add_to_cart' : '',
+				) ) ),
+			);
+
+			$args = apply_filters( 'woocommerce_loop_add_to_cart_args', wp_parse_args( $args, $defaults ), $product );
+
+			wc_get_template( 'loop/add-to-cart1.php', $args );
+		}
+	}
+}
+
+if ( ! function_exists( 'add_product_to_cart1' ) ) {
+
+	/**
+	 * check if product already in cart
+	 *
+	 * @subpackage    Loop
+	 *
+	 * @param array $args
+	 */
+
+	function add_product_to_cart1() {
+	        global $woocommerce;
+	        $product_id = get_the_ID();
+	        $found = false;
+	        //check if product already in cart
+	        if ( sizeof( $woocommerce->cart->get_cart() ) > 0 ) {
+	            foreach ( $woocommerce->cart->get_cart() as $cart_item_key => $values ) {
+	                $product = $values['data'];
+	                $product_id_cart = $product->get_id();
+	                if ($product_id_cart == $product_id )
+	                    $found = true;
+	            }
+	        }
+	        //echo $found
+	        if ($found==true) {
+	        	$html  = '<button type="button" class="btn btn-success disable " data-product-id="'.$product_id.'" onclick="window.location=\'cart\'">Đã có trong giỏ hàng</button> ';
+			} else $html = '<button type="button" class="btn btn-success btn-addtocart " data-product-id="'.$product_id.'">Thêm vào giỏ hàng</button> ';
+		//}
+		echo $html;
+	}
+}

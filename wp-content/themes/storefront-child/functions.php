@@ -1,5 +1,6 @@
 <?php
 /**
+
  * Các đoạn code cần tùy biến của bạn vào bên dưới
  */
 /*
@@ -41,10 +42,6 @@ add_shortcode('load_list_news', 'load_all_news');
  * Kết thúc các hàm tạo shortcode hiển thị list tin tức
  */
 
-
-
-
-
 if (!function_exists('fgc_custom_style')) {
 
     function fgc_custom_style() {
@@ -67,7 +64,6 @@ register_nav_menus(
 if (!function_exists('show_custom_menu')) {
 
     function show_custom_menu() {
-
         wp_nav_menu(array(
             'theme_location' => 'main-nav', // tên location cần hiển thị
             'container' => 'nav', // thẻ container của menu
@@ -81,7 +77,6 @@ if (!function_exists('show_custom_menu')) {
 
 }
 //Customize Search box
-
 if (!function_exists('fgc_custom_search_box')) {
 
     function fgc_custom_search_box() {
@@ -102,6 +97,7 @@ if (!function_exists('fgc_custom_header_right_box')) {
             ?>
             <div style="margin-top: 10px">
                 <a id="minicart" href="<?php echo WC()->cart->get_cart_url(); ?>" class="cart icon red relative">
+					<?php echo sprintf('%d', WC()->cart->cart_contents_count); ?> <span>Sản phẩm</span>
 
                     <span class="fa fa-cart-plus"></span> <?php echo sprintf('%d', WC()->cart->cart_contents_count); ?> <span>Sản phẩm</span>
                     <input type="button" value="Thanh toán" name="thanhtoan" style="padding: 0; margin: 0 ;width: 110px; height: 22px; line-height: 20px; background-color: #ff7c00; border: solid 1px orangered;  border-radius: 5px"/>
@@ -110,9 +106,7 @@ if (!function_exists('fgc_custom_header_right_box')) {
             <?php ?></div><?php
     }
 
-}
-
-// Function customizes Page Header
+}// Function customizes Page Header
 if (!function_exists('fgc_storefront_header_customizes')) {
 
     function fgc_storefront_header_customizes() {
@@ -193,6 +187,7 @@ function add_search_form($items, $args) {
 }
 
 //add_filter('wp_nav_menu_items', 'add_search_form', 10, 2);
+
 //******************************************************************************
 
 add_filter('woocommerce_breadcrumb_defaults', 'fgc_change_breadcrumb_home_text');
