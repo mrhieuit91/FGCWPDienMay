@@ -38,7 +38,7 @@ if ( ! function_exists( 'woocommerce_compare_product' ) ) {
 	        }
 	        if($found != false) {
 	        
-	        	$html  = '<button type="button" class="compare comparing" data-product-id="'.get_the_ID().'" onclick="window.location=\'compare\'">Đã có trong danh sách so sánh ( '.count($list_product_in_compare).' )</button> ';
+	        	$html  = '<button type="button" class="compare comparing" data-product-id="'.get_the_ID().'" onclick="window.location=\'?page_id=266\'">Đã có trong danh sách so sánh ( '.count($list_product_in_compare).' )</button> ';
 			} else {
 				$html = '<button type="button" class="compare btn-compare" data-product-id="'.get_the_ID().'">Thêm vào danh sách so sánh</button>';
 			}

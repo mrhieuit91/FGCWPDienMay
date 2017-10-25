@@ -157,7 +157,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 		                           
 		                            //$('button.btn').addClass("disable");
 						    		//$('button.btn').removeClass("btn-addtocart");
-						    		$('button.btn-addtocart').attr("onclick","window.location='cart'");
+						    		$('button.btn-addtocart').attr("onclick","window.location='?page_id=5'");
 						    		//$(".btn").html("Đã có trong giỏ hàng");
 						    		var numm = parseInt(num) +1;
  -							    	$(".number").html(numm);
@@ -176,10 +176,10 @@ if ( ! defined( 'ABSPATH' ) ) {
                                 
                                     
                                     $('.btn-compare').text('So sánh ngay ('+result+' sp)');
-                                    $('.btn-compare').attr("onclick","window.location='compare'");
+                                    $('.btn-compare').attr("onclick","window.location='?page_id=266'");
 
-		                            $('button.compare').addClass("comparing");
-						    		$('button.compare').removeClass("btn-compare");
+		          //                   $('button.compare').addClass("comparing");
+						    		// $('button.compare').removeClass("btn-compare");
 						    		$('button.compare').attr("onclick","window.location='compare'");
                                 
                             	}
