@@ -71,7 +71,7 @@ div.col-full {
     width: 30%;
 }
 .storefront-primary-navigation .fgc-search-form .search-form {
-    overflow: auto;
+    overflow: hidden;
     padding: 0;
     margin-bottom: 0px;
     /*margin-left: 28px;*/
@@ -289,9 +289,16 @@ div.col-full {
 .product-categories .cat-parent:hover .children{   
     display: block;
 }
+.product-categories .cat-parent .children {
+    margin-left: -.4rem;
+}
 .product-categories .cat-parent .children li{
     
     border-bottom: 1px #CCCCCC dotted;
+    padding-bottom: .5rem !important;
+}
+.product-categories .cat-parent .children li:last-child {
+    border-bottom: none;
 }
 .product-categories .cat-parent .children li a{
     color: #000;
@@ -303,4 +310,18 @@ div.col-full {
 }
 .product-categories .cat-parent .children li::before{
     list-style-type: upper-alpha !important;
+}
+.onsale {
+    width: 50px !important;
+    height: 50px !important;
+    border-radius: 25px !important;
+    background-color: #dd3d36 !important;
+    color: #fff !important;
+    position: absolute;
+    border: 1px solid transparent;
+    top: 0;
+    right: 0;
+    line-height: 45px;
+    margin-right: .5rem;
+    margin-top: 3rem;
 }
