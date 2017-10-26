@@ -21,7 +21,7 @@
 // ** MySQL settings - You can get this info from your web host ** //
 /** The name of the database for WordPress */
 if($_SERVER["SERVER_NAME"]==="localhost") {
-	define('WP_SITEURL', 'http://localhost:8080/FGCWPDienMay');
+	define('WP_SITEURL', 'http://localhost:8080/Test1/FGCWPDienMay');
 	define('WP_HOME', WP_SITEURL);
 	define('DB_NAME', 'wordpress_fgcwpdienmay');
 
