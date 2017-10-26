@@ -180,7 +180,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 		          //                   $('button.compare').addClass("comparing");
 						    		// $('button.compare').removeClass("btn-compare");
-						    		$('button.compare').attr("onclick","window.location='compare'");
+						    		//$('button.compare').attr("onclick","window.location='compare'");
                                 
                             	}
                             );

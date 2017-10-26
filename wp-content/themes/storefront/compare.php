@@ -7,7 +7,7 @@ get_header();
 
     if(empty($list_product_in_compare1)) { // neu bien session[compare] ko rong
     	echo '<h1>Hãy chọn sản phẩm để so sánh</h1>';
-        echo '<center><a href="sanpham" class="btn btn-primary">Mua sắm</a></center>';
+        echo '<center><a href="?post_type=product" class="btn btn-primary">Mua sắm</a></center>';
     } else{
 ?>
 	    <div id="guide_compare">
@@ -72,8 +72,7 @@ get_header();
     </tr>
   <tbody>
 </table>
-	<div class=" xoahet">czxczxc</div>
-    <div class="clear space2 ">czxczxc</div>
+	<div class=" xoahet">xóa DANH SÁCH SO SÁNH</div>
 <?php } ?>
             	<script type="text/javascript">
             		var $urlbase = '<?php echo get_site_url();?>';
@@ -105,7 +104,7 @@ get_header();
                                     
                                         
                                         $('.xoahet').text('da xoa het');
-                                        $('.xoahet').attr("onclick","window.location='compare'");
+                                        $('.xoahet').attr("onclick","window.location='?page_id=266''");
 
                                     
                                 	}

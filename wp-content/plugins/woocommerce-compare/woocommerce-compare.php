@@ -86,16 +86,19 @@ if ( ! function_exists( 'fgc_woocommercer_add_hook_compare_product' ) ) {
 				//global $woocommerce;
 				//echo  $_REQUEST['products'];
 				//WC_AJAX::init();
-				$product_compare_id = isset($_REQUEST['product_id'])?$_REQUEST['product_id']:[];
-				//var_dump( $_SESSION['compares']);
+				$product_compare_id = isset($_REQUEST['product_id'])?$_REQUEST['product_id']: 0;
+				//var_dump( $product_compare_id);
 				// 	echo '<pre>';
 				// print_r($_SESSION['compares']);
 				// echo '</pre>';
-				$list_product_in_compare = !empty($_SESSION['compares']) ? $_SESSION['compares'] :0;
+				$list_product_in_compare = !empty($_SESSION['compares']) ? $_SESSION['compares'] : array();
 
 				if ( !in_array($product_compare_id,$list_product_in_compare ) ){
+
 					$list_product_in_compare[] = $product_compare_id;
+
 					$_SESSION['compares'] = $list_product_in_compare;
+					
 				}
 				$num = count($_SESSION['compares']);
 				echo $num;

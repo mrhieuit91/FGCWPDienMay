@@ -53,11 +53,7 @@ img.alignnone.size-medium.wp-image-114 {
    
   margin-top: -200px;
 }
-h1 {
-    margin-left: 101px;
-    margin-top: -154px;
-    font-family: Roboto Condensed;
-}
+
 #phananh{
     margin-bottom: 208px;
 }
@@ -341,4 +337,9 @@ a.more-link {
 }
 .entry-content {
     padding-left: 125px;
+}
+.woocommerce-loop-product__title {
+    font-size: 23px;
+    padding-top: 12px;
+    font-weight: bold;
 }
