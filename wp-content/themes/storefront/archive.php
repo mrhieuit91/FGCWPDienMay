@@ -36,20 +36,21 @@ if ($page === 1) :
                 var page = 1;
                 $("#informationPost").hide();
                 $(window).scroll(function () {
-                    if (window.innerHeight + $(window).scrollTop() == $(document).height()) {
-                        $("#loading").show();
-                        page++;
-                        $.get("+ window.location.href/?cat=27&page=" + page, function (data) {
-                            $("#loading").hide();
-                            $(".post:last").after(data);
-                            $("#post").hide();
-                            $("#informationPost").show();
-                        });
-                    }
+                    if (window.innerHeight + $(window).scrollTop() == $(document).height()){
+                          $("#loading").show();
+                    page++;
+                    $.get(window.location.href+"&page=" + page, function (data) {
+                        $("#loading").hide();
+                        $(".post:last").after(data);
+                        $("#post").hide();
+                        $("#informationPost").show();
+                    });
 
+                    }
+                      
                 });
 
-            })
+            });
 
         </script>
         <div id="contentSidebar" class="widget-area" role="complementary">
@@ -90,9 +91,9 @@ if ($page === 1) :
             $numberPage = ceil($numberPost / 5);
             if ($numberPage > 1) {
                 ?>
-                <div id="loading" style="display:none;"><img src="images\loading.gif" alt="Image loading..." width="100" height="50"/>
+                <div id='loading' style="display:none; "><img src="images\loading.gif" alt="Image loading..." width="100" height="50"/>
                 </div>
-                <input type="button" name="clickme" id="post"/>
+                <input type="button" name="clickme" id="post" value=""/>
             <?php } ?>
         </div>
         <?php
