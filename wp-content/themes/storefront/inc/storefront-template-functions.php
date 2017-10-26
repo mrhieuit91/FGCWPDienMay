@@ -324,6 +324,7 @@ if ( ! function_exists( 'storefront_page_header' ) ) {
 			?>
 		</header><!-- .entry-header -->
 		<?php
+                
 	}
 }
 

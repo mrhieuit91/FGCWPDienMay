@@ -10,14 +10,20 @@
  * @package storefront
  */
 
+
+get_header();?>
+    
+=======
 get_header(); ?>
 <?php the_title();  ?>
 
+>>>>>>> b4a5336d74233cc1ad454d62d1a11fa130199c21
 	<div id="primary" class="content-area">
 		<main id="main" class="site-main" role="main">
 
 			<?php while ( have_posts() ) : the_post();
-
+                                
+             
 				do_action( 'storefront_page_before' );
 
 				get_template_part( 'content', 'page' );

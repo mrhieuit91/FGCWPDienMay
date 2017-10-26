@@ -89,8 +89,12 @@ get_header();
 					// var compare_yes = $('button.compare').hasClass('comparing');
 		            function deleteItem(id) {
 				       //$('.compare-product-'+id).hide();
-				        $.post($urlbase+"/?fgcaction=deletecomparingProduct", {type:'POST',cache: false,dataType: 'html',product_id:id}, function(result) {$('.compare-product-'+id).hide();});
-				    }
+				        $.post(
+				        	$urlbase+"/?fgcaction=deletecomparingProduct", 
+				        	{type:'POST',cache: false,dataType: 'html',product_id:id}, 
+				        	function(result) {$('.compare-product-'+id).hide();}
+                  );
+				        }
 				    $('.xoahet').click(function() {
                                 
                                 $.post(
